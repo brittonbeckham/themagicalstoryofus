@@ -17,7 +17,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
 body {
   font-family: "Source Sans 3", Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -41,13 +41,16 @@ button { font-family: inherit; }
 
 /* ---------- Announcement ---------- */
 .announce {
-  background: var(--footer);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #333333;
   color: var(--gray);
-  font-size: 15px;
-  letter-spacing: 0.18em;
+  font-size: 13px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   text-align: center;
-  padding: 10px 16px;
+  padding: 11px 16px 10px;
   line-height: 1.3;
 }
 .announce a { color: var(--gray); }
@@ -58,7 +61,7 @@ button { font-family: inherit; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--black);
+  background: #000;
   color: var(--gray);
   overflow: visible;
 }
@@ -71,6 +74,8 @@ button { font-family: inherit; }
   padding: 0 20px;
   min-height: var(--nav-h);
   gap: 16px;
+  position: relative;
+  width: 100%;
 }
 .brand {
   display: flex;
@@ -80,30 +85,30 @@ button { font-family: inherit; }
   flex-shrink: 0;
 }
 .brand-sigil {
-  width: 86px;
-  height: 86px;
+  width: 92px;
+  height: 92px;
   object-fit: contain;
-  margin: 6px 0 -24px;
+  margin: 4px 0 -28px;
   position: relative;
   z-index: 2;
 }
-.brand-text { display: flex; flex-direction: column; line-height: 1.05; padding-top: 6px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.08; padding-top: 10px; }
 .brand-name {
   font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0.22em;
+  font-size: 17px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gray);
+  color: #f2f2f2;
 }
 .brand-sub {
-  font-family: "Source Serif 4", serif;
+  font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
-  font-size: 15px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 3px;
+  color: #f2f2f2;
+  margin-top: 4px;
 }
 .nav-links {
   display: flex;
@@ -156,10 +161,10 @@ button { font-family: inherit; }
 .eyebrow {
   font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0.26em;
+  font-size: 16px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #555;
   margin: 0;
 }
 .eyebrow.center { text-align: center; }
@@ -184,15 +189,25 @@ button { font-family: inherit; }
 }
 .title.center { text-align: center; }
 .title i, .title em { font-style: italic; }
+.title-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(24px, 6.4vw, 64px);
+  line-height: 1.15;
+  padding: 0 16px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
 .lede-green {
   font-family: "Source Serif 4", Georgia, serif;
   font-style: italic;
-  font-size: clamp(20px, 2.4vw, 28px);
-  line-height: 1.45;
+  font-size: clamp(22px, 2.5vw, 30px);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
   color: var(--green);
   text-align: center;
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
 }
 .lede-green b, .lede-green strong { font-weight: 600; font-style: italic; }
@@ -209,7 +224,7 @@ button { font-family: inherit; }
 .body-copy i, .body-copy em { font-style: italic; }
 
 .section {
-  padding: 64px 0;
+  padding: 56px 0 64px;
 }
 .section.gray { background: var(--gray); }
 .section.white { background: var(--white); }
@@ -250,13 +265,13 @@ button { font-family: inherit; }
 /* ---------- Hero slideshow ---------- */
 .hero {
   background: #fff;
-  padding: 0 0 8px;
+  padding: 0;
 }
 .hero-frame {
   position: relative;
   max-width: var(--max);
   margin: 0 auto;
-  height: 420px;
+  height: 448px;
 }
 .hero-slides {
   position: absolute;
@@ -292,24 +307,25 @@ button { font-family: inherit; }
 .hero-btn svg { width: 28px; height: 28px; fill: currentColor; }
 .hero-prev { left: 8px; }
 .hero-next { right: 8px; }
-.hero-next svg { transform: scaleX(-1); }
 .hero-btn:hover { color: var(--blue); }
 
 /* ---------- Home intro split ---------- */
 .split {
   display: grid;
-  grid-template-columns: minmax(260px, 390px) 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 56px;
   align-items: start;
   max-width: var(--content);
   margin: 0 auto;
 }
 .split img {
   width: 100%;
-  height: auto;
+  height: 400px;
   object-fit: cover;
+  object-position: center 58%;
 }
-.split-copy .title { font-size: clamp(32px, 4.2vw, 52px); letter-spacing: 0; }
+.split-copy { padding-top: 8px; }
+.split-copy .title { font-size: clamp(36px, 4.4vw, 54px); letter-spacing: 0; color: var(--blue); }
 
 /* ---------- Healing copy ---------- */
 .prose-center {
@@ -325,20 +341,20 @@ button { font-family: inherit; }
 
 /* ---------- Quote banner with sand ---------- */
 .quote-banner {
-  background: #d9c4a0 url("../assets/sands.jpg") center/cover no-repeat;
-  padding: 48px 24px;
+  background: #cbb48a url("../assets/sands.jpg") center 40%/cover no-repeat;
+  padding: 56px 24px 52px;
   text-align: center;
 }
 .quote-banner h2 {
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(26px, 3.2vw, 36px);
-  line-height: 1.25;
-  color: #111;
-  max-width: 920px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.28;
+  color: #1a1a1a;
+  max-width: 940px;
   margin: 0 auto;
-  text-shadow: 1px 1px 7px rgba(255,255,255,1);
-  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(255,255,255,0.95), 0 1px 0 rgba(255,255,255,0.8);
+  letter-spacing: 0.01em;
 }
 
 /* ---------- Work cards ---------- */
@@ -371,7 +387,7 @@ button { font-family: inherit; }
 .card-media {
   position: relative;
   overflow: hidden;
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px 8px 0 0;
   background: #ddd;
 }
 .card-media img {
@@ -380,14 +396,14 @@ button { font-family: inherit; }
   object-fit: cover;
 }
 .card-bar {
-  background: var(--gray);
-  padding: 14px 8px 12px;
+  background: #ececec;
+  padding: 16px 8px 14px;
   font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0.28em;
+  font-size: 16px;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #444;
-  border-radius: 0 0 10px 10px;
+  color: #555;
+  border-radius: 0 0 8px 8px;
 }
 .card-desc {
   font-size: 17px;
@@ -497,7 +513,7 @@ button { font-family: inherit; }
   align-items: start;
   margin-top: 28px;
 }
-.story-top img { width: 100%; border-radius: 8px; }
+.story-top img { width: 100%; border-radius: 10px; object-fit: cover; }
 .trio {
   display: grid;
   grid-template-columns: 1fr 280px 1fr;
@@ -536,9 +552,9 @@ button { font-family: inherit; }
 }
 .offer-row img {
   width: 100%;
-  height: 210px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 .offer-row h3 {
   font-family: "Source Sans 3", sans-serif;
@@ -568,45 +584,49 @@ button { font-family: inherit; }
 /* ---------- Astrology ---------- */
 .astro-hero {
   position: relative;
-  min-height: 560px;
-  background: #c9a882 url("../assets/astro-hero.jpg") center 20%/cover no-repeat;
+  max-width: var(--max);
+  margin: 0 auto;
+  min-height: 640px;
+  background: #c9a882 url("../assets/astro-hero.jpg") center 12%/cover no-repeat;
   display: flex;
   align-items: stretch;
 }
 .astro-hero-inner {
-  max-width: var(--max);
-  margin: 0 auto;
   width: 100%;
-  padding: 56px 48px 72px;
+  padding: 48px 56px 64px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 560px;
+  min-height: 600px;
 }
 .astro-kicker {
   font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.28em;
+  font-size: 15px;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #2a2a2a;
-  line-height: 1.6;
-  max-width: 280px;
+  line-height: 1.7;
+  max-width: 260px;
+  margin: 8px 0 0 12px;
 }
 .astro-hero h1 {
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(42px, 6vw, 72px);
+  font-size: clamp(44px, 5.4vw, 70px);
   line-height: 1.05;
   color: #fff;
-  margin: 0;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.25);
-  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 0 2px 22px rgba(0,0,0,0.28);
+  max-width: 920px;
 }
 .astro-hero .sub {
   font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(24px, 3vw, 34px);
+  font-size: clamp(24px, 2.8vw, 34px);
   color: #111;
-  margin-top: 10px;
+  margin: 12px auto 0;
+  text-align: center;
+  font-weight: 400;
 }
 .testimonials {
   background: #1a1a1a url("../assets/astrology-wheel.png") center/cover no-repeat;
@@ -653,14 +673,27 @@ button { font-family: inherit; }
 
 .astro-split {
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1.15fr 0.95fr;
   gap: 0;
   align-items: stretch;
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background: var(--gray);
 }
-.astro-split .copy { padding-right: 40px; }
-.astro-split img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.astro-split .copy {
+  padding: 48px 48px 56px clamp(24px, 8vw, 80px);
+  max-width: 720px;
+  margin-left: auto;
+}
+.astro-split img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
 .astro-split ul { margin: 0.8em 0 0; padding-left: 1.2em; }
 .astro-split li { margin-bottom: 0.55em; font-size: 17px; font-weight: 300; }
 
@@ -827,8 +860,8 @@ button { font-family: inherit; }
 }
 .cta-center { text-align: center; margin-top: 28px; }
 
-/* ---------- Mobile ---------- */
-@media (max-width: 860px) {
+/* ---------- Tablet: hamburger before the desktop nav clips ---------- */
+@media (max-width: 1100px) {
   .nav-toggle { display: flex; align-items: center; justify-content: center; }
   .nav-links {
     display: none;
@@ -837,26 +870,54 @@ button { font-family: inherit; }
     top: 100%;
     background: #000;
     flex-direction: column;
-    padding: 16px 0 28px;
-    gap: 16px;
+    align-items: center;
+    padding: 12px 0 24px;
+    gap: 0;
+    z-index: 20;
+  }
+  .nav-links a {
+    display: block;
+    padding: 14px 24px;
+    font-size: 15px;
   }
   .nav.is-open .nav-links { display: flex; }
-  .brand-sigil { width: 64px; height: 64px; margin-bottom: -12px; }
-  .brand-name { font-size: 13px; letter-spacing: 0.12em; }
-  .brand-sub { font-size: 12px; }
-  .hero-frame { height: 260px; }
-  .hero-slides { inset: 0 40px; }
+  .brand-name { font-size: 15px; letter-spacing: 0.18em; }
+  .brand-sub { font-size: 12px; letter-spacing: 0.16em; }
+}
+
+/* ---------- Phone / small tablet: stack columns ---------- */
+@media (max-width: 960px) {
+  .brand-sigil { width: 64px; height: 64px; margin: 4px 0 -12px; }
+  .hero-frame { height: 240px; }
+  .hero-slides { inset: 0 36px; }
   .split, .story-top, .trio, .offer-row, .astro-split, .cards-3, .blog-grid, .t-grid, .footer-grid, .subfoot-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .split img {
+    height: auto;
+    max-height: 420px;
+    object-position: center 55%;
   }
   .footer-col-mid { border: 0; border-top: 1px solid var(--green); border-bottom: 1px solid var(--green); padding: 24px 0; }
+  .footer-nav a { display: inline-block; padding: 10px 0; }
   .subfoot-grid .c, .subfoot-grid .r { text-align: left; }
-  .astro-hero-inner { padding: 32px 20px 40px; min-height: 420px; }
   .astro-hero { min-height: 420px; background-image: url("../assets/astro-hero-mobile.jpg"); background-position: center top; }
+  .astro-hero-inner { padding: 28px 20px 36px; min-height: 400px; }
+  .astro-hero h1 { font-size: clamp(32px, 10vw, 48px); }
+  .astro-hero .sub { font-size: clamp(18px, 5vw, 24px); }
+  .astro-split img { min-height: 0; height: 420px; }
+  .astro-split .copy { padding: 32px 20px 40px; max-width: none; }
   .reading-card { padding: 28px 20px; }
   .card-media img, .blog-card img, .offer-row img { height: 220px; }
-  .announce { font-size: 12px; letter-spacing: 0.12em; }
-  .section { padding: 44px 0; }
+  .announce { font-size: 11px; letter-spacing: 0.1em; padding: 10px 12px; }
+  .section { padding: 40px 0; }
+  .work-head { flex-wrap: wrap; gap: 10px 16px; }
+  .work-head .rule { max-width: 120px; }
+  .title-caps { letter-spacing: 0.03em; font-size: clamp(22px, 6.6vw, 36px); }
+  .lede-green { font-size: clamp(18px, 4.6vw, 24px); letter-spacing: 0.03em; padding: 0 12px; }
+  .quote-banner h2 { font-size: clamp(22px, 6vw, 32px); padding: 0 12px; }
+  .wrap { padding: 0 18px; }
 }
 
 .ml-embedded, .ml-embedded form { width: 100%; }
