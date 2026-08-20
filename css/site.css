@@ -41,7 +41,7 @@ button { font-family: inherit; }
 
 /* ---------- Announcement ---------- */
 .announce {
-  display: block;
+  display: none !important;
   width: 100%;
   box-sizing: border-box;
   background: #333333;
@@ -214,7 +214,7 @@ button { font-family: inherit; }
 
 .body-copy {
   font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.55;
   color: #222;
 }
@@ -508,21 +508,33 @@ button { font-family: inherit; }
 .story-hero-copy { max-width: 1000px; margin: 0 auto; }
 .story-top {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 36px;
+  grid-template-columns: 360px 1fr;
+  gap: 40px;
   align-items: start;
   margin-top: 28px;
 }
-.story-top img { width: 100%; border-radius: 10px; object-fit: cover; }
+.story-top img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center 20%;
+}
 .trio {
   display: grid;
-  grid-template-columns: 1fr 280px 1fr;
-  gap: 28px;
+  grid-template-columns: 1fr 300px 1fr;
+  gap: 32px;
   align-items: start;
   max-width: 1100px;
   margin: 0 auto;
 }
-.trio img { width: 100%; border-radius: 8px; object-fit: cover; }
+.trio img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center 30%;
+}
 .checklist {
   list-style: none;
   margin: 8px 0 0;
@@ -544,23 +556,23 @@ button { font-family: inherit; }
 /* ---------- Offerings rows ---------- */
 .offer-row {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 36px;
+  grid-template-columns: 400px 1fr;
+  gap: 40px;
   align-items: center;
-  max-width: 1000px;
-  margin: 0 auto 48px;
+  max-width: 1040px;
+  margin: 0 auto 52px;
 }
 .offer-row img {
   width: 100%;
-  height: 220px;
+  height: 230px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 .offer-row h3 {
   font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
-  font-size: 20px;
-  letter-spacing: 0.18em;
+  font-size: 18px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 4px;
@@ -574,7 +586,7 @@ button { font-family: inherit; }
   margin: 0 0 10px;
 }
 .offer-row p {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.5;
   margin: 0 0 16px;
@@ -584,20 +596,20 @@ button { font-family: inherit; }
 /* ---------- Astrology ---------- */
 .astro-hero {
   position: relative;
-  max-width: var(--max);
+  max-width: 1120px;
   margin: 0 auto;
-  min-height: 640px;
-  background: #c9a882 url("../assets/astro-hero.jpg") center 12%/cover no-repeat;
+  min-height: 560px;
+  background: #c9a882 url("../assets/astro-hero.jpg") center 22%/cover no-repeat;
   display: flex;
   align-items: stretch;
 }
 .astro-hero-inner {
   width: 100%;
-  padding: 48px 56px 64px;
+  padding: 40px 48px 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 600px;
+  min-height: 520px;
 }
 .astro-kicker {
   font-weight: 400;
@@ -612,13 +624,13 @@ button { font-family: inherit; }
 .astro-hero h1 {
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(44px, 5.4vw, 70px);
-  line-height: 1.05;
+  font-size: clamp(40px, 4.6vw, 62px);
+  line-height: 1.08;
   color: #fff;
   margin: 0 auto;
   text-align: center;
   text-shadow: 0 2px 22px rgba(0,0,0,0.28);
-  max-width: 920px;
+  max-width: 860px;
 }
 .astro-hero .sub {
   font-family: "Source Serif 4", Georgia, serif;
@@ -673,7 +685,7 @@ button { font-family: inherit; }
 
 .astro-split {
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 44%);
   gap: 0;
   align-items: stretch;
   width: 100%;
@@ -682,20 +694,31 @@ button { font-family: inherit; }
   background: var(--gray);
 }
 .astro-split .copy {
-  padding: 48px 48px 56px clamp(24px, 8vw, 80px);
-  max-width: 720px;
+  padding: 44px 40px 48px clamp(24px, 7vw, 72px);
+  max-width: 640px;
   margin-left: auto;
 }
-.astro-split img {
+.astro-split .copy .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  margin-bottom: 16px;
+}
+.astro-split .pic {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+.astro-split .pic img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 560px;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 18%;
   display: block;
 }
 .astro-split ul { margin: 0.8em 0 0; padding-left: 1.2em; }
-.astro-split li { margin-bottom: 0.55em; font-size: 17px; font-weight: 300; }
+.astro-split li { margin-bottom: 0.5em; font-size: 16px; font-weight: 300; line-height: 1.45; }
 
 .reading {
   position: relative;
@@ -906,7 +929,8 @@ button { font-family: inherit; }
   .astro-hero-inner { padding: 28px 20px 36px; min-height: 400px; }
   .astro-hero h1 { font-size: clamp(32px, 10vw, 48px); }
   .astro-hero .sub { font-size: clamp(18px, 5vw, 24px); }
-  .astro-split img { min-height: 0; height: 420px; }
+  .astro-split .pic { height: 420px; }
+  .astro-split .pic img { position: absolute; }
   .astro-split .copy { padding: 32px 20px 40px; max-width: none; }
   .reading-card { padding: 28px 20px; }
   .card-media img, .blog-card img, .offer-row img { height: 220px; }
