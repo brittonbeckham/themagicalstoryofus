@@ -6,16 +6,18 @@ This is a faithful front-end of what visitors actually see: home, our story, ast
 
 ## GitHub Pages
 
-This repo is intended to be published from the `main` branch, site root `/` (not `/docs`).
+Published from `main`, site root `/`. Preview URL (no custom DNS yet):
 
-Because the site uses a **custom domain**, root-relative paths (`/our-story/`, `/css/site.css`) are correct for both `themagicalstoryofus.com` and a user/org Pages site. If you preview as a *project* site without the custom domain (`username.github.io/themagicalstoryofus/`), those root paths will 404 until DNS is pointed here.
+https://brittonbeckham.github.io/themagicalstoryofus/
+
+Paths are relative, so this also works later at `themagicalstoryofus.com` once DNS is pointed at GitHub Pages.
 
 ### Enable Pages
 
 1. Push this folder to `brittonbeckham/themagicalstoryofus`.
 2. GitHub → Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)`.
-3. Custom domain: `themagicalstoryofus.com` (the `CNAME` file in this repo already contains that hostname).
-4. Check **Enforce HTTPS** once the certificate is ready.
+3. Leave custom domain empty until you are ready to cut over `themagicalstoryofus.com`.
+4. Check **Enforce HTTPS**.
 
 ### DNS cutover (drop Showit)
 
