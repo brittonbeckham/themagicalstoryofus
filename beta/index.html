@@ -42,7 +42,7 @@
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
       <ul class="nav-links">
         <li><a href="./" aria-current="page">Home</a></li>
-        <li><a href="our-story/">Our Story</a></li>
+        <li><a href="#story">Our Story</a></li>
         <li><a href="../astrology/">Astrology</a></li>
         <li><a href="../offerings/">Offerings</a></li>
         <li><a href="https://themagicalstoryofus.podbean.com/" target="_blank" rel="noopener">Podcast</a></li>
@@ -52,25 +52,117 @@
   </header>
 
   <main>
-    <section class="hero" aria-label="Welcome">
-      <div class="hero-media">
-        <img src="../assets/hero-cliffs-036.jpg" alt="Britton and Carolee sitting together on a cliff overlooking the sea">
+    <section class="hero" aria-label="Welcome" data-hero>
+      <div class="hero-slides">
+        <figure class="hero-slide hero-slide--cliffs is-active">
+          <img src="../assets/hero-cliffs-036.jpg" alt="Britton and Carolee sitting together on a cliff overlooking the sea">
+        </figure>
+        <figure class="hero-slide hero-slide--cloaks">
+          <img src="../assets/story-cloaks.jpg" alt="Britton and Carolee in cloaks at the Cliffs of Moher">
+        </figure>
+        <figure class="hero-slide hero-slide--vow">
+          <img src="../assets/hero-vow-utah.jpg" alt="Britton and Carolee at a vow renewal in the Utah mountains">
+        </figure>
+        <figure class="hero-slide hero-slide--sahara">
+          <img src="../assets/sahara-kiss.jpg" alt="Britton and Carolee kissing in the Sahara">
+        </figure>
       </div>
       <div class="hero-copy">
         <p class="hero-line">There is a magical story in everyone.</p>
-        <a class="btn btn-ghost" href="our-story/">Our Story</a>
+        <a class="btn btn-ghost" href="#story">Begin the story</a>
+      </div>
+      <div class="hero-ui">
+        <button class="hero-btn hero-prev" type="button" data-hero-prev aria-label="Previous photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" aria-hidden="true"><path d="M31.4,44.4c-0.4,0-0.8-0.1-1.1-0.4L12.4,26.1c-0.6-0.6-0.6-1.5,0-2.1L30.4,6c0.6-0.6,1.5-0.6,2.1,0c0.6,0.6,0.6,1.5,0,2.1L15.6,25l16.9,16.9c0.6,0.6,0.6,1.5,0,2.1C32.2,44.3,31.8,44.4,31.4,44.4z"></path></svg>
+        </button>
+        <div class="hero-dots" data-hero-dots role="tablist" aria-label="Hero photos"></div>
+        <button class="hero-btn hero-next" type="button" data-hero-next aria-label="Next photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" aria-hidden="true"><path d="M18.6,44.4c-0.4,0-0.8-0.1-1.1-0.4c-0.6-0.6-0.6-1.5,0-2.1L34.4,25L17.5,8.1c-0.6-0.6-0.6-1.5,0-2.1c0.6-0.6,1.5-0.6,2.1,0l17.9,17.9c0.6,0.6,0.6,1.5,0,2.1L19.6,44C19.4,44.3,19,44.4,18.6,44.4z"></path></svg>
+        </button>
+      </div>
+      <a class="hero-cue" href="#story">
+        <span>Scroll</span>
+        <span class="hero-cue-arrow" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <nav class="chapter-rail" aria-label="Story chapters">
+      <div class="chapter-rail-inner">
+        <a href="#then">Then</a>
+        <a href="#the-work">The Work</a>
+        <a href="#now">Now</a>
+        <a href="#work">Work with us</a>
+      </div>
+    </nav>
+
+    <section class="mission" id="story">
+      <div class="wrap-read mission-band">
+        <p class="eyebrow">The Magical Story of Us</p>
+        <h2>Our journey is our message, and we’re here to guide you to unlocking your magical life.</h2>
+        <p class="lede">We were born sixth-generation Mormons, raised inside a high-demand religion and married inside that same paradigm. Infidelity threatened our family and became the catalyst that changed everything. The church process failed to heal us, so we left — and spent five years rebuilding our marriage, our spirituality, and our lives from the ground up. We emerged as an embodied, awakened couple with a message to share.</p>
+        <p class="more-link"><a href="our-story/">Read the longer telling</a></p>
       </div>
     </section>
 
-    <section class="mission">
-      <div class="wrap mission-grid">
-        <div class="mission-copy">
-          <p class="eyebrow">The work</p>
-          <h2>Our journey is our message, and we’re here to guide you to unlocking your magical life.</h2>
-        </div>
-        <figure class="mission-photo">
-          <img src="../assets/home-cliffs-arms.jpg" alt="Britton standing on a cliff with arms open to the sea">
+    <section class="chapter" id="then">
+      <div class="wrap chapter-grid">
+        <figure class="chapter-media chapter-media--then">
+          <img src="../assets/story-2017.jpg" alt="Britton and Carolee in 2017">
         </figure>
+        <div class="chapter-copy">
+          <p class="chapter-label">Then</p>
+          <h2>A life we inherited, not one we chose.</h2>
+          <p>2017 looks like a past life now. We were living the promised dream of our upbringing — without knowing another possibility existed, and without knowing how to leave.</p>
+          <ul class="facts">
+            <li>Emotional disconnection</li>
+            <li>The church could not heal us</li>
+            <li>Betrayal</li>
+            <li>No magic</li>
+          </ul>
+          <p class="chapter-cta"><a class="btn btn-solid" href="#the-work">Continue</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pull pull-dark">
+      <blockquote>
+        <p>“To experience the magic of life, we must be willing to make room.”</p>
+      </blockquote>
+    </section>
+
+    <section class="chapter chapter-alt" id="the-work">
+      <div class="wrap chapter-grid chapter-flip">
+        <figure class="chapter-media chapter-media--vow">
+          <img src="../assets/hero-vow-utah.jpg" alt="Britton and Carolee at a vow renewal in the Utah mountains">
+        </figure>
+        <div class="chapter-copy">
+          <p class="chapter-label">The Work</p>
+          <h2>We chose to heal — for the marriage, and for ourselves.</h2>
+          <p>Once we felt the potential of change, we gave up everything we knew and followed the inner work all the way through. The ride was a magical journey. We did it together, and we did it with four children.</p>
+          <ul class="timeline">
+            <li>Left the church</li>
+            <li>Rebuilt the marriage</li>
+            <li>Sold everything</li>
+            <li>Eighteen months on the road</li>
+            <li>Four children the whole time</li>
+          </ul>
+          <p class="chapter-cta"><a class="btn btn-solid" href="#now">Continue</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="now">
+      <div class="wrap chapter-grid">
+        <figure class="chapter-media chapter-media--egypt">
+          <img src="../assets/story-egypt.jpg" alt="Britton and Carolee in front of the Sphinx and pyramids">
+        </figure>
+        <div class="chapter-copy">
+          <p class="chapter-label">Now</p>
+          <h2>The life we only dreamed was possible.</h2>
+          <p>Our relationship is rebuilt, and we have completely reimagined our life together. We live our truth out loud.</p>
+          <p class="guide-line">Now we guide others into the freedom that called to us.</p>
+          <p class="chapter-cta"><a class="btn btn-solid" href="#work">Work with us</a></p>
+        </div>
       </div>
     </section>
 
@@ -93,13 +185,38 @@
             <p>Life matches the presence you bring.</p>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="body-visual">
-          <img src="../assets/moon.jpg" alt="A full moon in a night sky">
-          <div>
-            <p>If you are ready to walk this path, we will meet you there.</p>
-            <a class="btn btn-solid" href="../offerings/">Work with us</a>
-          </div>
+    <section class="paths" id="work">
+      <div class="wrap">
+        <p class="eyebrow">Work with us</p>
+        <h2 class="paths-title">If you are ready to walk this path, we will meet you there.</h2>
+        <div class="path-grid">
+          <article class="path-card">
+            <figure class="path-media path-media--carolee">
+              <img src="../assets/carolee-astrologer.jpg" alt="Carolee Beckham, astrologer">
+            </figure>
+            <h3>Astrology by Carolee</h3>
+            <p>Come learn about your blueprint and awaken to the cosmic rhythm that has been guiding you all along.</p>
+            <a class="btn btn-solid" href="../astrology/">Astrology</a>
+          </article>
+          <article class="path-card">
+            <figure class="path-media path-media--candle">
+              <img src="../assets/candle.jpg" alt="A candle burning in a dish">
+            </figure>
+            <h3>Offerings</h3>
+            <p>We work with individuals and couples to heal, awaken, manifest, and live out their destiny.</p>
+            <a class="btn btn-solid" href="../offerings/">Offerings</a>
+          </article>
+          <article class="path-card">
+            <figure class="path-media path-media--moon">
+              <img src="../assets/moon.jpg" alt="A full moon in a night sky">
+            </figure>
+            <h3>Listen</h3>
+            <p>We want to yell from housetops that there is a magical story awaiting each one of us.</p>
+            <a class="btn btn-solid" href="https://themagicalstoryofus.podbean.com/" target="_blank" rel="noopener">Podcast</a>
+          </article>
         </div>
       </div>
     </section>
