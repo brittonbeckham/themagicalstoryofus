@@ -796,6 +796,39 @@ h1, h2, h3 {
   color: #f4f4f4;
 }
 
+.sand-fixed {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 88px 28px;
+  background-color: #cbb48a;
+  background-image: url("../../assets/sands.jpg");
+  background-position: center 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.sand-fixed--tall {
+  min-height: 88vh;
+}
+
+.sand-fixed blockquote {
+  max-width: 880px;
+  color: #1a1a1a;
+  text-shadow: 0 0 14px rgba(255,255,255,0.95), 0 1px 0 rgba(255,255,255,0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sand-fixed { background-attachment: scroll; }
+}
+
+/* iOS treats background-attachment:fixed as a jump; keep a tall cover instead */
+@supports (-webkit-touch-callout: none) {
+  .sand-fixed { background-attachment: scroll; }
+}
+
 /* ---------- Path cards ---------- */
 .paths {
   padding: 40px 0 104px;
@@ -1061,6 +1094,12 @@ h1, h2, h3 {
   .lede-block { padding: 48px 0 24px; }
   .pull { padding: 56px 20px; }
   .pull-dark { min-height: 38vh; }
+  .sand-fixed,
+  .sand-fixed--tall {
+    min-height: 56vh;
+    background-attachment: scroll;
+    padding: 64px 20px;
+  }
 
   .paths { padding: 24px 0 80px; }
   .path-card h3,
