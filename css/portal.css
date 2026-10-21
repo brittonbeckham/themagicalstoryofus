@@ -236,3 +236,95 @@
   .portal .p-step-num { width: 46px; height: 46px; font-size: 16px; }
   .portal .p-hero .eyebrow { font-size: 13px; letter-spacing: 0.2em; }
 }
+
+/* =====================================================================
+   DARK VARIANT: add class "portal--dark" to <main class="portal">.
+   Same structure and site fonts; site accents lifted for dark grounds.
+   ===================================================================== */
+.portal--dark {
+  --d-bg: #0c0c0e;           /* replaces .section.white */
+  --d-bg-alt: #0e1622;       /* replaces .section.gray (deep midnight blue) */
+  --d-card: #151e2b;
+  --d-text: #e6e3dc;
+  --d-muted: #b9b5ac;
+  --d-gold: #E2C08D;
+  --d-gold-soft: #f0d9b3;
+  --d-blue: #8fc1ec;         /* lighter tint of site blue #2972AE */
+  --d-green: #a9c98a;        /* lighter tint of site green #395F1C */
+  background: var(--d-bg);
+  color: var(--d-text);
+}
+.portal--dark .section.white { background: var(--d-bg); }
+.portal--dark .section.gray { background: var(--d-bg-alt); }
+
+.portal--dark .eyebrow,
+.portal--dark .story-kicker { color: var(--d-gold); }
+.portal--dark .rule { background: var(--d-gold); opacity: 0.7; }
+.portal--dark .title { color: var(--d-blue); }
+.portal--dark .lede-green,
+.portal--dark .p-hero .lede-green { color: var(--d-green); text-shadow: none; }
+.portal--dark .p-hero-copy { background: radial-gradient(ellipse at center, rgba(12,12,14,0.78) 0%, rgba(12,12,14,0.5) 55%, rgba(12,12,14,0) 75%); padding: 24px 24px; }
+.portal--dark .body-copy { color: var(--d-text); font-weight: 300; }
+.portal--dark .body-copy strong,
+.portal--dark strong { color: #fff; }
+.portal--dark em { color: var(--d-gold-soft); }
+.portal--dark h3 { color: #fff; }
+
+/* Graphics: gold glow on the rose, faint mandalas */
+.portal--dark .p-gold { filter: url(#p-tint-gold) drop-shadow(0 0 10px rgba(226,192,141,0.45)); }
+.portal--dark .p-hero-rose img { opacity: 0.45; }
+.portal--dark .p-green { filter: url(#p-tint-green); }
+.portal--dark .p-mandala { opacity: 0.2; }
+.portal--dark .p-green { filter: url(#p-tint-gold); }
+.portal--dark .p-blue { filter: url(#p-tint-blue); }
+.portal--dark .p-hero { background: radial-gradient(ellipse at 50% 50%, #1a1712 0%, var(--d-bg) 62%); }
+
+/* Lists */
+.portal--dark .p-stars li::before,
+.portal--dark .p-includes li::before { color: var(--d-gold); }
+
+/* Photos: soft frame so they sit on dark grounds (never cropped) */
+.portal--dark .p-split-media img,
+.portal--dark .p-offer-media img { box-shadow: 0 24px 60px rgba(0,0,0,0.6); }
+
+/* Gifts */
+.portal--dark .p-gift { background: var(--d-card); border: 1px solid rgba(226,192,141,0.18); }
+.portal--dark .p-gift p { color: var(--d-muted); }
+
+/* Steps */
+.portal--dark .p-step-num { background: transparent; border-color: var(--d-gold); color: var(--d-gold); }
+
+/* Pricing card */
+.portal--dark .reading-card.p-offer-card {
+  background: var(--d-card);
+  border: 1px solid rgba(226,192,141,0.35);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(226,192,141,0.06);
+}
+.portal--dark .p-offer-rose { opacity: 0.16; }
+.portal--dark .reading-card h2 { color: #fff; }
+.portal--dark .reading-card .tag { color: var(--d-muted); }
+.portal--dark .reading-card .price { color: var(--d-gold); }
+.portal--dark .reading-card .mins { color: var(--d-text); }
+.portal--dark .p-offer-card .p-includes { color: var(--d-text); }
+.portal--dark .p-venmo { color: var(--d-muted); }
+
+/* Buttons: site .btn adapted for dark */
+.portal--dark .btn-solid { background: var(--d-gold); color: #111; }
+.portal--dark .btn-solid:hover { background: var(--d-gold-soft); color: #111; }
+.portal--dark .btn-outline { background: transparent; color: var(--d-text); border-color: rgba(230,227,220,0.8); }
+.portal--dark .btn-outline:hover { background: var(--d-blue); color: #0c0c0e; border-color: transparent; }
+
+/* Form */
+.portal--dark .p-field label { color: var(--d-text); }
+.portal--dark .p-field label span { color: var(--d-muted); }
+.portal--dark .p-field input {
+  background: #0a0f17;
+  color: #fff;
+  border-color: rgba(230,227,220,0.28);
+  color-scheme: dark;
+}
+.portal--dark .p-field input:focus { border-color: var(--d-gold); box-shadow: 0 0 0 3px rgba(226,192,141,0.25); }
+.portal--dark .p-form-status { color: var(--d-green); }
+
+/* Back link */
+.portal--dark .p-back { border-top: 1px solid rgba(255,255,255,0.08); }
