@@ -481,3 +481,6 @@
 .portal--dark .p-callout { background: rgba(226, 192, 141, 0.08); border-left-color: var(--d-gold); }
 .portal--dark .p-callout .p-callout-label { color: var(--d-gold); }
 .portal--dark .p-urgency { color: var(--d-gold-soft); }
+@media (max-width: 560px) {
+  .portal--dark .p-hero-copy { padding-left: 12px; padding-right: 12px; }
+}
