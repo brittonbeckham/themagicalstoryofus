@@ -593,3 +593,103 @@
 }
 .portal--dark.portal--alt .p-field input { background: rgba(0, 0, 0, 0.35); border-color: rgba(var(--a-accent-rgb), 0.28); }
 .portal .p-back { padding-left: 20px; padding-right: 20px; }
+
+/* =====================================================================
+   CALMER HERO (all themes): no eyebrow/rule, softer rose, no glow,
+   more breathing room, quieter reminder line.
+   ===================================================================== */
+.portal .p-hero { padding-top: 120px; padding-bottom: 120px; }
+.portal .p-hero-copy { background: none !important; padding: 0 24px; }
+.portal .p-hero-rose img { opacity: 0.38; }
+.portal .p-hero .p-name { margin-bottom: 0.7em; }
+.portal .p-hero .p-name-sub { margin-top: 1.1em; }
+.portal .p-hero .lede-green { max-width: 620px; font-size: clamp(19px, 2vw, 24px); line-height: 1.6; text-shadow: none; }
+.portal .p-hero-cta { margin-top: 44px; }
+.portal .p-urgency--hero { font-size: 15px; letter-spacing: 0.02em; opacity: 0.75; margin-top: 20px; }
+.portal--dark .p-hero-rose img { opacity: 0.28; }
+.portal--dark .p-hero .p-gold { filter: url(#p-tint-gold); }
+.portal--dark.portal--alt .p-hero .p-gold { filter: var(--a-tint-plain); }
+.portal--dark.portal--alt .p-hero .title { color: var(--a-hero-title, var(--a-title)); }
+@media (max-width: 960px) {
+  .portal .p-hero { padding-top: 64px; padding-bottom: 56px; min-height: 0; }
+  .portal .p-hero-cta { margin-top: 34px; }
+}
+
+/* Plain (no-glow) rose tints for hero, per existing palette */
+.portal--dark.portal--rose-champagne { --a-tint-plain: url(#p-tint-champagne); }
+.portal--dark.portal--mauve-moonlight { --a-tint-plain: url(#p-tint-rosegold); }
+.portal--dark.portal--deep-scorpio { --a-tint-plain: url(#p-tint-rosegold-deep); --a-hero-title: #f6ece8; }
+
+/* =====================================================================
+   SCORPIO FAMILY: all keep Deep Scorpio's rose-gold rose (#D9A28E)
+   ===================================================================== */
+.portal--dark.portal--scorpio-pearl,
+.portal--dark.portal--scorpio-wine,
+.portal--dark.portal--scorpio-garnet,
+.portal--dark.portal--scorpio-light {
+  --a-tint: url(#p-tint-rosegold-deep) drop-shadow(0 0 8px rgba(217, 162, 142, 0.3));
+  --a-tint-plain: url(#p-tint-rosegold-deep);
+}
+/* Pearl & Rose Gold: no pink; ivory titles, rose-gold accents */
+.portal--dark.portal--scorpio-pearl {
+  --d-bg: #120a10; --d-bg-alt: #1b0f17; --d-card: #24151f;
+  --d-text: #f2e8e4; --d-muted: #c6b3b0;
+  --a-hero-title: #f7efe8; --a-title: #ecd6ca;
+  --a-accent: #d9a28e; --a-accent-rgb: 217, 162, 142;
+  --a-lede: #e3c7ba;
+  --a-btn: #d9a28e; --a-btn-hover: #e8bba9; --a-btn-text: #2a1219;
+  --a-outline-hover: #ecd6ca; --a-glow: #22121c;
+}
+/* Wine & Blush: ivory titles, wine-rose section titles, muted dusty-blush accents */
+.portal--dark.portal--scorpio-wine {
+  --d-bg: #140a0f; --d-bg-alt: #1f0e17; --d-card: #2a1520;
+  --d-text: #f3e7e6; --d-muted: #c9b2b3;
+  --a-hero-title: #f8eeea; --a-title: #d9a6b0;
+  --a-accent: #d4aeab; --a-accent-rgb: 212, 174, 171;
+  --a-lede: #e7cfcb;
+  --a-btn: #c58f97; --a-btn-hover: #d6a7ad; --a-btn-text: #22080f;
+  --a-outline-hover: #e7cfcb; --a-glow: #26101b;
+}
+/* Garnet & Champagne: pearl titles, champagne accents, garnet buttons */
+.portal--dark.portal--scorpio-garnet {
+  --d-bg: #0f0a0c; --d-bg-alt: #1a0d12; --d-card: #23121a;
+  --d-text: #f2ebe3; --d-muted: #c3b5ab;
+  --a-hero-title: #f5eee3; --a-title: #e4d0a8;
+  --a-accent: #e4d0a8; --a-accent-rgb: 228, 208, 168;
+  --a-lede: #e9dbc0;
+  --a-btn: #8e2a40; --a-btn-hover: #a3364f; --a-btn-text: #f7efe6;
+  --a-outline-hover: #e4d0a8; --a-glow: #1f0e15;
+}
+.portal--dark.portal--scorpio-garnet .btn-outline:hover { color: #1a0d12; }
+
+/* Scorpio Light: warm ivory / blush-cream with wine, plum and rose gold */
+.portal--dark.portal--scorpio-light {
+  --d-bg: #fbf5ef; --d-bg-alt: #f5e7e2; --d-card: #ffffff;
+  --d-text: #3b2530; --d-muted: #6f5661;
+  --a-hero-title: #7a2e4d; --a-title: #7a2e4d;
+  --a-accent: #9c5c49; --a-accent-rgb: 156, 92, 73;
+  --a-lede: #874462;
+  --a-btn: #7a2e4d; --a-btn-hover: #8f3a5c; --a-btn-text: #fbf5ef;
+  --a-outline-hover: #7a2e4d; --a-glow: #f7e9e3;
+  color: var(--d-text);
+}
+.portal--dark.portal--scorpio-light h3,
+.portal--dark.portal--scorpio-light strong,
+.portal--dark.portal--scorpio-light .body-copy strong,
+.portal--dark.portal--scorpio-light .reading-card h2 { color: #4a2236; }
+.portal--dark.portal--scorpio-light .btn-outline { color: #7a2e4d; border-color: #7a2e4d; }
+.portal--dark.portal--scorpio-light .btn-outline:hover { color: #fbf5ef; }
+.portal--dark.portal--scorpio-light .p-field input { background: #fff; color: #3b2530; border-color: rgba(122, 46, 77, 0.25); color-scheme: light; }
+.portal--dark.portal--scorpio-light .p-back { border-top-color: rgba(122, 46, 77, 0.12); }
+.portal--dark.portal--scorpio-light .reading-card.p-offer-card { box-shadow: 0 24px 60px rgba(90, 40, 60, 0.12); }
+.portal--dark.portal--scorpio-light .p-split-media img,
+.portal--dark.portal--scorpio-light .p-offer-media img { box-shadow: 0 20px 50px rgba(60, 20, 40, 0.18); }
+.portal--dark.portal--scorpio-light .p-hero-rose img { opacity: 0.5; }
+.portal--dark.portal--scorpio-light .p-rose-only { opacity: 0.35; }
+.portal--dark.portal--scorpio-light .p-offer-rose { opacity: 0.35; }
+.portal--dark.portal--scorpio-light .p-mandala { opacity: 0.25; }
+.portal--dark.portal--scorpio-light .p-callout { background: rgba(156, 92, 73, 0.08); }
+.portal--dark.portal--scorpio-pearl .p-hero .p-name-sub,
+.portal--dark.portal--scorpio-wine .p-hero .p-name-sub,
+.portal--dark.portal--scorpio-garnet .p-hero .p-name-sub,
+.portal--dark.portal--scorpio-light .p-hero .p-name-sub { color: var(--a-accent); }
