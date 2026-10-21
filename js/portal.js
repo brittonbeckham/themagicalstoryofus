@@ -1,5 +1,5 @@
 // Portal page: birth-details form.
-// Posts to the MailerLite form set in data-ml-action (double opt-in is on).
+// Posts to the MailerLite form set in data-ml-action.
 (function () {
   var form = document.querySelector("[data-portal-form]");
   if (!form) return;
@@ -19,7 +19,7 @@
     fetch(action, { method: "POST", body: new FormData(form), mode: "no-cors" })
       .then(function () {
         form.reset();
-        status.textContent = "Thank you, your birth details are on their way to me. Please check your inbox for a quick confirmation email. ✦";
+        status.textContent = "Thank you, your birth details are on their way to me. ✦";
       })
       .catch(function () {
         status.textContent = "Something went wrong. Please email your birth details to themagicalstoryofus@gmail.com.";
