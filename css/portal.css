@@ -700,3 +700,24 @@
 .portal--dark .p-price-note { color: var(--d-muted); }
 .portal--dark.portal--scorpio-light .p-price-note { color: #6f5661; }
 @media (max-width: 560px) { .portal .p-price-note { font-size: 15px; } }
+
+/* Thank-you message (shown only with ?paid=1) */
+.portal .p-thanks[hidden] { display: none; }
+.portal .p-thanks { padding: 88px 0 72px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08); scroll-margin-top: 80px; }
+.portal .p-thanks-wrap { max-width: 680px; }
+.portal .p-thanks-mark { margin: 0 0 14px; font-size: 22px; color: #b8975a; }
+.portal .p-thanks .title { margin-bottom: 18px; }
+.portal .p-thanks .body-copy { margin: 0 auto 18px; }
+.portal .p-thanks-note { margin: 0; font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 16px; color: #6b6b6b; }
+.portal--dark .p-thanks { border-bottom-color: rgba(255,255,255,0.08); }
+.portal--dark .p-thanks-mark { color: var(--d-gold); }
+.portal--dark.portal--alt .p-thanks-mark { color: var(--a-accent); }
+.portal--dark .p-thanks-note { color: var(--d-muted); }
+.portal--dark.portal--scorpio-light .p-thanks { border-bottom-color: rgba(122,46,77,0.12); }
+.portal--dark.portal--scorpio-light .p-thanks-note { color: #6f5661; }
+@media (max-width: 560px) { .portal .p-thanks { padding: 56px 0 48px; } }
+
+/* Stripe note under the button */
+.portal .p-pay-note { margin: -4px 0 6px; font-size: 13.5px; line-height: 1.5; color: #6b6b6b; text-align: center; }
+.portal--dark .p-pay-note { color: var(--d-muted); }
+.portal--dark.portal--scorpio-light .p-pay-note { color: #6f5661; }

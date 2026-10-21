@@ -71,6 +71,15 @@
     </svg>
 
     <!-- HERO -->
+    <section class="section white p-thanks" id="thank-you" hidden aria-live="polite">
+      <div class="wrap p-thanks-wrap">
+        <p class="p-thanks-mark" aria-hidden="true">&#10022;</p>
+        <h2 class="title center">Thank you, your reading is reserved.</h2>
+        <p class="body-copy center">I&rsquo;m so glad you&rsquo;re stepping through this portal with me. I&rsquo;ll be in touch by email with your teaching and your personal voice reading. Your birth details were received with your payment, so there is nothing more you need to&nbsp;do.</p>
+        <p class="p-thanks-note">Paid with Venmo instead? Please share your birth details in the <a href="#birth-details">form below</a>.</p>
+      </div>
+    </section>
+
     <section class="section white p-hero">
       <div class="p-hero-rose" aria-hidden="true">
         <img class="p-spin p-gold" src="../assets/portal/rose-moons.png" alt="" width="1200" height="1201">
@@ -162,8 +171,8 @@
           <p class="mins">Open through Wednesday, October&nbsp;28 <span style="white-space:nowrap">&middot; 11:59&nbsp;PM&nbsp;MT</span></p>
           <p class="p-urgency p-urgency--card">Reserve before Friday&rsquo;s Venus cazimi, October&nbsp;23</p>
           <div class="p-pay">
-            <!-- TODO: replace #stripe-payment-link with the Stripe Payment Link URL -->
-            <a class="btn btn-solid" href="#stripe-payment-link">Pay with Stripe</a>
+            <a class="btn btn-solid" href="https://buy.stripe.com/7sY5kD6xv4uE5XEfOc2Ji07">Pay with Stripe</a>
+            <p class="p-pay-note">Stripe checkout gathers your birth details as you pay, so there is nothing more to&nbsp;fill&nbsp;in.</p>
             <a class="btn btn-outline" href="https://venmo.com/u/carolee-beckham" target="_blank" rel="noopener">Pay with Venmo</a>
             <p class="p-venmo">Venmo: <strong>@carolee-beckham</strong><br>Please send an amount between $66 and&nbsp;$88, and include your name and &ldquo;Retrograde Revelations&rdquo; in the payment note, then fill in the <a href="#birth-details">birth-details form below</a>.</p>
           </div>
@@ -175,11 +184,11 @@
     <section class="section white p-intake" id="birth-details">
       <div class="wrap p-form-wrap">
         <div class="section-head">
-          <p class="eyebrow center">After you pay</p>
+          <p class="eyebrow center">Paying with Venmo?</p>
           <hr class="rule short center">
           <h2 class="title center">Share your birth details</h2>
         </div>
-        <p class="body-copy center p-form-intro">The more exact your birth time, the more precise your reading. If you are unsure, share your best estimate and I'll work with it.</p>
+        <p class="body-copy center p-form-intro">If you paid with Venmo, please share your birth details here. (If you paid with Stripe, you already shared them at checkout.) The more exact your birth time, the more precise your reading. If you are unsure, share your best estimate and I'll work with&nbsp;it.</p>
         <!--
           TODO (MailerLite, account 994210): create a new embedded form + group for this offer with
           custom fields birth_date, birth_time, birth_place. Then set data-ml-action to

@@ -28,3 +28,13 @@
       });
   });
 })();
+
+// Portal page: thank-you message after Stripe checkout (redirects to ?paid=1#thank-you).
+(function () {
+  var box = document.getElementById("thank-you");
+  if (!box) return;
+  var paid = new URLSearchParams(window.location.search).get("paid");
+  if (paid !== "1") return;
+  box.hidden = false;
+  requestAnimationFrame(function () { box.scrollIntoView({ block: "start" }); });
+})();
