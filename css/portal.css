@@ -450,3 +450,34 @@
 @media (max-width: 560px) {
   .portal .p-how .p-step .p-step-num { width: 52px; height: 52px; font-size: 17px; }
 }
+
+/* ---------- Venus cazimi callout + urgency line ---------- */
+.portal .p-callout {
+  margin: 0 0 1.2em;
+  padding: 20px 22px 18px;
+  border-left: 3px solid var(--gold);
+  background: rgba(226, 192, 141, 0.14);
+  border-radius: 0 10px 10px 0;
+}
+.portal .p-callout p { margin: 0; }
+.portal .p-callout .p-callout-label {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a6a35;
+  margin-bottom: 8px;
+}
+.portal .p-urgency {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  text-align: center;
+  color: #555;
+  margin: 18px 0 0;
+}
+.portal .p-urgency--card { margin: -14px 0 22px; font-size: 16px; }
+.portal--dark .p-callout { background: rgba(226, 192, 141, 0.08); border-left-color: var(--d-gold); }
+.portal--dark .p-callout .p-callout-label { color: var(--d-gold); }
+.portal--dark .p-urgency { color: var(--d-gold-soft); }
