@@ -13,11 +13,11 @@
   <meta property="og:description" content="Venus retrograde, Mercury retrograde, and the Full Moon in Taurus. A recorded teaching, your personal voice reading, and a window for questions.">
   <meta property="og:image" content="https://themagicalstoryofus.com/assets/portal/og-portal.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#4E342E">
+  <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Bonheur+Royale&family=Zalando+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="../css/portal.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNWGR4YDGB"></script>
@@ -57,46 +57,59 @@
     </nav>
   </header>
   <main class="portal" id="top">
+    <!-- Tints for the line-art graphics (originals are light grey on transparent; never cropped) -->
+    <svg class="p-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <filter id="p-tint-gold" color-interpolation-filters="sRGB"><feFlood flood-color="#E2C08D" result="c"/><feComposite in="c" in2="SourceAlpha" operator="in"/></filter>
+      <filter id="p-tint-green" color-interpolation-filters="sRGB"><feFlood flood-color="#395F1C" result="c"/><feComposite in="c" in2="SourceAlpha" operator="in"/></filter>
+      <filter id="p-tint-blue" color-interpolation-filters="sRGB"><feFlood flood-color="#2972AE" result="c"/><feComposite in="c" in2="SourceAlpha" operator="in"/></filter>
+    </svg>
 
     <!-- HERO -->
-    <section class="p-hero">
+    <section class="section white p-hero">
       <div class="p-hero-rose" aria-hidden="true">
-        <img class="p-spin" src="../assets/portal/rose-moons.png" alt="" width="1200" height="1201">
+        <img class="p-spin p-gold" src="../assets/portal/rose-moons.png" alt="" width="1200" height="1201">
       </div>
-      <div class="p-hero-copy">
-        <p class="p-label">A limited transit reading &middot; [SALES CLOSE DATE]</p>
-        <h1 class="p-script">[OFFER NAME]</h1>
-        <p class="p-hero-line">Venus turns inward. Mercury slows its step. The Taurus Moon swells toward fullness. This is a portal, and I would love to walk through it with you.</p>
-        <a class="p-cta" href="#offer">Receive your reading</a>
+      <div class="wrap p-hero-copy">
+        <p class="eyebrow center">A limited transit reading &middot; open until [SALES CLOSE DATE]</p>
+        <hr class="rule short center">
+        <h1 class="title center">[OFFER NAME]</h1>
+        <p class="lede-green">Venus turns inward. Mercury slows its step. The Taurus Moon swells toward fullness. This is a portal, and I would love to walk through it with you.</p>
+        <p class="p-hero-cta"><a class="btn btn-solid" href="#offer">Receive your reading</a></p>
       </div>
     </section>
 
     <!-- THE PORTAL -->
-    <section class="p-section p-portal">
-      <img class="p-mandala p-mandala--left p-spin" src="../assets/portal/stars.png" alt="" aria-hidden="true">
-      <div class="p-split">
+    <section class="section gray p-portal">
+      <img class="p-mandala p-mandala--left p-spin p-green" src="../assets/portal/stars.png" alt="" aria-hidden="true">
+      <div class="wrap p-split">
         <div class="p-split-media">
           <img src="../assets/moon.jpg" alt="The full moon glowing through soft clouds" width="800" height="1029" loading="lazy">
         </div>
         <div class="p-split-copy">
-          <p class="p-label">The portal</p>
-          <h2 class="p-title">A season of sacred return</h2>
-          <p>Retrogrades are not something to fear. They are an invitation to slow down, look back, and remember what is truly ours.</p>
-          <ul class="p-stars">
-            <li><strong>Venus retrograde</strong> asks what we love, what we value, and what our hearts are ready to reclaim.</li>
-            <li><strong>Mercury retrograde</strong> and its shadow call us to revisit, re-listen, and speak from a deeper truth.</li>
-            <li><strong>The Full Moon in Taurus</strong> brings it all into the body, illuminating what we are ready to ground and to release.</li>
-          </ul>
-          <p>I want to show you exactly how this portal is moving through <em>your</em> chart, so you can meet it with grace instead of resistance.</p>
+          <p class="eyebrow">The portal</p>
+          <hr class="rule short">
+          <h2 class="title">A season of sacred return</h2>
+          <div class="body-copy">
+            <p>Retrogrades are not something to fear. They are an invitation to slow down, look back, and remember what is truly ours.</p>
+            <ul class="p-stars">
+              <li><strong>Venus retrograde</strong> asks what we love, what we value, and what our hearts are ready to reclaim.</li>
+              <li><strong>Mercury retrograde</strong> and its shadow call us to revisit, re-listen, and speak from a deeper truth.</li>
+              <li><strong>The Full Moon in Taurus</strong> brings it all into the body, illuminating what we are ready to ground and to release.</li>
+            </ul>
+            <p>I want to show you exactly how this portal is moving through <em>your</em> chart, so you can meet it with grace instead of resistance.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- WHAT YOU RECEIVE -->
-    <section class="p-section p-receive">
-      <div class="p-narrow">
-        <p class="p-label center">What you receive</p>
-        <h2 class="p-title center">Three gifts for this portal</h2>
+    <section class="section white p-receive">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow center">What you receive</p>
+          <hr class="rule short center">
+          <h2 class="title center">Three gifts for this portal</h2>
+        </div>
         <div class="p-gifts">
           <article class="p-gift">
             <span class="p-gift-star" aria-hidden="true">&#10022;</span>
@@ -118,12 +131,15 @@
     </section>
 
     <!-- HOW IT WORKS -->
-    <section class="p-section p-how">
-      <img class="p-mandala p-mandala--right p-spin" src="../assets/portal/orbit.png" alt="" aria-hidden="true">
-      <div class="p-narrow">
-        <p class="p-label center">How it works</p>
-        <h2 class="p-title center">Simple, sacred, and personal</h2>
-        <ol class="p-steps">
+    <section class="section gray p-how">
+      <img class="p-mandala p-mandala--right p-spin p-blue" src="../assets/portal/orbit.png" alt="" aria-hidden="true">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow center">How it works</p>
+          <hr class="rule short center">
+          <h2 class="title center">Simple, sacred, and personal</h2>
+        </div>
+        <ol class="p-steps body-copy">
           <li><span class="p-step-num">I</span><div><h3>Reserve your reading</h3><p>Pay with Stripe or Venmo, then share your birth details in the form below.</p></div></li>
           <li><span class="p-step-num">II</span><div><h3>Receive your teaching &amp; reading</h3><p>I'll send the retrograde teaching and your personal voice reading to your inbox.</p></div></li>
           <li><span class="p-step-num">III</span><div><h3>Ask your questions</h3><p>During your question window, send me anything that stirs. I'll answer with care.</p></div></li>
@@ -132,40 +148,45 @@
     </section>
 
     <!-- OFFER / PRICING -->
-    <section class="p-section p-offer" id="offer">
-      <div class="p-offer-grid">
+    <section class="section white p-offer" id="offer">
+      <div class="wrap p-offer-grid">
         <div class="p-offer-media">
           <img src="../assets/portal/carolee-priestess.jpg" alt="Carolee in a red gown, hands resting over her heart" width="932" height="1161" loading="lazy">
         </div>
-        <div class="p-offer-card">
-          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="p-tint-earth" color-interpolation-filters="sRGB"><feFlood flood-color="#4e342e" result="c"/><feComposite in="c" in2="SourceAlpha" operator="in"/></filter></svg>
-          <img class="p-offer-rose p-spin" src="../assets/portal/rose-moons.png" alt="" aria-hidden="true">
-          <p class="p-label center">Limited offering</p>
-          <h2 class="p-offer-name">[OFFER NAME]</h2>
-          <p class="p-price">[PRICE]</p>
-          <div class="p-rule" aria-hidden="true"><span>&#10022;</span></div>
+        <div class="reading-card p-offer-card">
+          <img class="p-offer-rose p-spin p-gold" src="../assets/portal/rose-moons.png" alt="" aria-hidden="true">
+          <p class="eyebrow center">Limited offering</p>
+          <h2>[OFFER NAME]</h2>
+          <p class="tag">A transit reading for the Venus &amp; Mercury retrograde portal</p>
+          <p class="price">[PRICE]</p>
+          <hr class="rule short center">
           <ul class="p-includes">
             <li>The Retrograde Teaching (recorded)</li>
             <li>Your personal voice-message reading</li>
             <li>A ~3-day window for follow-up questions</li>
           </ul>
-          <p class="p-close">Open until [SALES CLOSE DATE]</p>
+          <p class="mins">Open until [SALES CLOSE DATE]</p>
           <div class="p-pay">
             <!-- TODO: replace #stripe-payment-link with the Stripe Payment Link URL -->
-            <a class="p-cta p-cta--full" href="#stripe-payment-link">Pay with Stripe</a>
-            <p class="p-venmo">or pay with Venmo: <strong>[VENMO HANDLE]</strong><br><span>Please include your email in the Venmo note.</span></p>
+            <a class="btn btn-solid" href="#stripe-payment-link">Pay with Stripe</a>
+            <!-- TODO: replace #venmo-link with Carolee's Venmo profile link -->
+            <a class="btn btn-outline" href="#venmo-link">Pay with Venmo</a>
+            <p class="p-venmo">Venmo: <strong>[VENMO HANDLE]</strong><br>Please include your email in the Venmo note.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- BIRTH DETAILS FORM -->
-    <section class="p-section p-intake" id="birth-details">
-      <img class="p-mandala p-mandala--center p-spin" src="../assets/portal/stars.png" alt="" aria-hidden="true">
-      <div class="p-form-wrap">
-        <p class="p-label center">After you pay</p>
-        <h2 class="p-title center">Share your birth details</h2>
-        <p class="center p-form-intro">The more exact your birth time, the more precise your reading. If you are unsure, share your best estimate and I'll work with it.</p>
+    <section class="section gray p-intake" id="birth-details">
+      <img class="p-mandala p-mandala--center p-spin p-green" src="../assets/portal/stars.png" alt="" aria-hidden="true">
+      <div class="wrap p-form-wrap">
+        <div class="section-head">
+          <p class="eyebrow center">After you pay</p>
+          <hr class="rule short center">
+          <h2 class="title center">Share your birth details</h2>
+        </div>
+        <p class="body-copy center p-form-intro">The more exact your birth time, the more precise your reading. If you are unsure, share your best estimate and I'll work with it.</p>
         <!--
           TODO (MailerLite, account 994210): create a new embedded form + group for this offer with
           custom fields birth_date, birth_time, birth_place. Then set data-ml-action to
@@ -197,14 +218,15 @@
           </div>
           <input type="hidden" name="ml-submit" value="1">
           <input type="hidden" name="anticsrf" value="true">
-          <button class="p-cta p-cta--full" type="submit">Send my birth details</button>
+          <button class="btn btn-solid p-submit" type="submit">Send my birth details</button>
           <p class="p-form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <section class="p-back">
-      <p>Looking for a full session? <a href="../astrology/">Explore all of my Astrological Readings &rarr;</a></p>
+    <section class="section white tight p-back">
+      <p class="story-kicker">Looking for a full session?</p>
+      <p class="center"><a class="btn btn-outline" href="../astrology/">Explore all Astrological Readings</a></p>
     </section>
 
   </main>
