@@ -179,6 +179,7 @@
 .portal .p-pay { display: grid; gap: 14px; max-width: 360px; margin: 0 auto; }
 .portal .p-pay .btn { display: block; width: 100%; }
 .portal .p-venmo { margin: 6px 0 0; font-size: 15px; font-weight: 300; color: #333; line-height: 1.5; }
+.portal .p-venmo a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---------- Form ---------- */
 .portal .p-intake { padding: 88px 0 96px; }
@@ -307,6 +308,7 @@
 .portal--dark .reading-card .mins { color: var(--d-text); }
 .portal--dark .p-offer-card .p-includes { color: var(--d-text); }
 .portal--dark .p-venmo { color: var(--d-muted); }
+.portal--dark .p-venmo a { color: var(--d-gold); }
 
 /* Buttons: site .btn adapted for dark */
 .portal--dark .btn-solid { background: var(--d-gold); color: #111; }
