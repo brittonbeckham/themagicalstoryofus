@@ -945,3 +945,58 @@ button { font-family: inherit; }
 }
 
 .ml-embedded, .ml-embedded form { width: 100%; }
+
+/* ---------- Portal offer banner (astrology page) ---------- */
+.portal-banner {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  text-align: center;
+  padding: 64px 24px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.portal-banner-rose {
+  position: absolute;
+  width: 640px;
+  max-width: none;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  opacity: 0.6;
+  pointer-events: none;
+  filter: url(#portal-banner-gold);
+  animation: portal-banner-spin 180s linear infinite;
+}
+@keyframes portal-banner-spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .portal-banner-rose { animation: none; } }
+.portal-banner-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.portal-banner .eyebrow { margin-bottom: 4px; }
+.portal-banner .title { font-size: clamp(32px, 4vw, 48px); margin: 0 0 20px; }
+.portal-banner .lede-green { font-size: clamp(18px, 2vw, 22px); margin-bottom: 26px; text-shadow: 0 0 14px #fff, 0 0 4px #fff; }
+.portal-banner-main { display: block; }
+.portal-banner-sub {
+  display: block;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.4vw, 17px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #333;
+  margin-top: 0.8em;
+}
+
+/* Portal banner: Scorpio Garnet & Champagne, to match the portal page */
+.portal-banner {
+  background: radial-gradient(ellipse at 50% 45%, #2a121c 0%, #1a0d12 55%, #0f0a0c 100%);
+  border-bottom: 0;
+  padding: 80px 24px;
+}
+.portal-banner-rose { opacity: 0.3; }
+.portal-banner .eyebrow { color: #e4d0a8; }
+.portal-banner .rule { border-color: rgba(228, 208, 168, 0.45); background: rgba(228, 208, 168, 0.45); }
+.portal-banner .title, .portal-banner-main { color: #f5eee3; }
+.portal-banner-sub { color: #e4d0a8; }
+.portal-banner .lede-green { color: #e9dbc0; text-shadow: 0 1px 12px rgba(15, 10, 12, 0.9); }
+.portal-banner .btn-solid { background: #8e2a40; border-color: #8e2a40; color: #f7efe6; }
+.portal-banner .btn-solid:hover, .portal-banner .btn-solid:focus-visible { background: #a3364f; border-color: #a3364f; color: #fff; }
+@media (max-width: 560px) { .portal-banner { padding: 60px 20px; } .portal-banner-rose { width: 520px; } .portal-banner .eyebrow { font-size: 13px; letter-spacing: 0.22em; } }
