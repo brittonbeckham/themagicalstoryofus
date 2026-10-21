@@ -330,3 +330,26 @@
 
 /* Back link */
 .portal--dark .p-back { border-top: 1px solid rgba(255,255,255,0.08); }
+
+/* ---------- Offer name: title + subtitle ---------- */
+.portal .p-name-main { display: block; }
+.portal .p-name-sub {
+  display: block;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(15px, 1.6vw, 20px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: #333;
+  margin-top: 0.9em;
+}
+.portal .p-hero .p-name { margin-bottom: 0.55em; line-height: 1.08; }
+.portal .reading-card .p-name { line-height: 1.25; }
+.portal .reading-card .p-name-sub { font-size: 14px; letter-spacing: 0.22em; color: #555; margin-top: 0.7em; }
+@media (max-width: 560px) {
+  .portal .p-name-sub { font-size: 13px; letter-spacing: 0.18em; }
+}
+.portal--dark .p-name-sub,
+.portal--dark .reading-card .p-name-sub { color: var(--d-gold-soft); }
