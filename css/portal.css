@@ -484,3 +484,29 @@
 @media (max-width: 560px) {
   .portal--dark .p-hero-copy { padding-left: 12px; padding-right: 12px; }
 }
+
+/* ---------- Portal section, desktop: tall moon photo matching the text column ---------- */
+@media (min-width: 961px) {
+  .portal .p-portal .p-split { grid-template-rows: auto auto; align-items: stretch; }
+  .portal .p-portal .p-split-media {
+    grid-row: 1 / 3;
+    align-self: stretch;
+    position: relative;
+    min-height: 460px;
+  }
+  .portal .p-portal .p-split-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 50% 45%;
+  }
+  .portal .p-portal .p-split-head { grid-row: 1; align-self: end; }
+  .portal .p-portal .p-split-copy { grid-row: 2; }
+}
+/* Tablet: taller frame so the moon isn't clipped at the top */
+@media (min-width: 561px) and (max-width: 960px) {
+  .portal .p-portal .p-split-media img { height: min(100vw, 680px); object-position: 50% 62%; }
+}
