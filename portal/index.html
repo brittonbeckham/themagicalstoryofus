@@ -189,13 +189,8 @@
           <h2 class="title center">Share your birth details</h2>
         </div>
         <p class="body-copy center p-form-intro">If you paid with Venmo, please share your birth details here. (If you paid with Stripe, you already shared them at checkout.) The more exact your birth time, the more precise your reading. If you are unsure, share your best estimate and I'll work with&nbsp;it.</p>
-        <!--
-          TODO (MailerLite, account 994210): create a new embedded form + group for this offer with
-          custom fields birth_date, birth_time, birth_place. Then set data-ml-action to
-          https://assets.mailerlite.com/jsonp/994210/forms/<FORM_ID>/subscribe
-          and confirm the field keys match. Until then js/portal.js blocks submission.
-        -->
-        <form class="p-form" data-portal-form data-ml-action="" method="post" novalidate>
+        <!-- MailerLite form "Retrograde Revelations – Birth Details" (zhAbf3), group Retrograde Revelations -->
+        <form class="p-form" data-portal-form data-ml-action="https://assets.mailerlite.com/jsonp/994210/forms/201967548572370250/subscribe" method="post" novalidate>
           <div class="p-field">
             <label for="pf-name">Full name</label>
             <input id="pf-name" type="text" name="fields[name]" autocomplete="name" required>
