@@ -1,0 +1,359 @@
+/* Portal transit-reading page. Venus Robe / Anahata Collection palette.
+   All rules are scoped to .portal (the <main>) so the shared header/footer keep site.css styling. */
+.portal-page {
+  --p-earth: #4E342E;
+  --p-soil: #785447;
+  --p-sand: #A1887F;
+  --p-rose: #D4A59A;
+  --p-limestone: #F2E8DC;
+  --p-sacred-red: #A84448;
+  --p-red: #A40F0C;
+  --p-serif: "Source Serif 4", Georgia, serif;
+  --p-script: "Bonheur Royale", cursive;
+  --p-sans: "Zalando Sans", "Source Sans 3", sans-serif;
+  background: var(--p-earth);
+}
+
+.portal {
+  background: var(--p-earth);
+  color: rgba(242, 232, 220, 0.85);
+  font-family: var(--p-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.65;
+  overflow: hidden;
+}
+.portal p { margin: 0 0 1em; }
+.portal strong { color: var(--p-limestone); font-weight: 600; }
+.portal em { font-style: italic; color: var(--p-limestone); }
+.portal .center { text-align: center; }
+
+/* ---------- Slow spin, same as shopanahata.com ---------- */
+.portal .p-spin { animation: p-slow-rotate 180s linear infinite; }
+@keyframes p-slow-rotate {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal .p-spin { animation: none; }
+}
+
+/* ---------- Type ---------- */
+.portal .p-label {
+  font-family: var(--p-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--p-rose);
+  margin: 0 0 18px;
+}
+.portal .p-title {
+  font-family: var(--p-serif);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  color: var(--p-limestone);
+  margin: 0 0 28px;
+  letter-spacing: 0.01em;
+}
+.portal h3 {
+  font-family: var(--p-serif);
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.25;
+  color: var(--p-limestone);
+  margin: 0 0 10px;
+}
+.portal .p-script {
+  font-family: var(--p-script);
+  font-weight: 400;
+  font-size: clamp(76px, 11vw, 150px);
+  line-height: 0.9;
+  color: #fff;
+  margin: 0 0 24px;
+  filter: drop-shadow(2px 3px 2px rgba(1, 1, 1, 0.4));
+}
+
+/* ---------- Buttons ---------- */
+.portal .p-cta {
+  display: inline-block;
+  background: var(--p-red);
+  color: #fff;
+  font-family: var(--p-sans);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 18px 40px;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.portal .p-cta:hover { background: var(--p-sacred-red); transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); }
+.portal .p-cta--full { display: block; width: 100%; }
+
+/* ---------- Sections ---------- */
+.portal .p-section { position: relative; padding: 120px 24px; }
+.portal .p-section > *:not(.p-mandala) { position: relative; z-index: 2; }
+.portal .p-narrow { max-width: 1080px; margin: 0 auto; }
+.portal .p-mandala {
+  position: absolute;
+  z-index: 1;
+  width: 760px;
+  height: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  filter: brightness(0) invert(1);
+}
+.portal .p-mandala--left { left: 0; top: 50%; translate: -50% -50%; }
+.portal .p-mandala--right { right: 0; top: 50%; translate: 50% -50%; }
+.portal .p-mandala--center { left: 50%; top: 0; translate: -50% -40%; opacity: 0.06; }
+
+/* ---------- Hero ---------- */
+.portal .p-hero {
+  position: relative;
+  min-height: min(92vh, 860px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 120px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 45%, var(--p-soil) 0%, var(--p-earth) 68%);
+}
+.portal .p-hero-rose {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(900px, 120vw);
+  translate: -50% -50%;
+  z-index: 1;
+  pointer-events: none;
+}
+.portal .p-hero-rose img {
+  width: 100%;
+  height: auto;
+  opacity: 0.32;
+  filter: sepia(1) saturate(1.6) hue-rotate(-20deg) brightness(1.05);
+}
+.portal .p-hero-copy { position: relative; z-index: 2; max-width: 760px; }
+.portal .p-hero-line {
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.6;
+  color: var(--p-limestone);
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+
+/* ---------- Split (portal) ---------- */
+.portal .p-portal { background: var(--p-earth); }
+.portal .p-split {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 72px;
+  align-items: center;
+}
+.portal .p-split-media img,
+.portal .p-offer-media img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ✦ list */
+.portal .p-stars,
+.portal .p-includes { list-style: none; margin: 0 0 1.4em; padding: 0; }
+.portal .p-stars li,
+.portal .p-includes li { position: relative; padding-left: 2em; margin-bottom: 1em; }
+.portal .p-stars li::before,
+.portal .p-includes li::before {
+  content: "\2726";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--p-rose);
+}
+
+/* ---------- Gifts ---------- */
+.portal .p-receive { background: var(--p-soil); }
+.portal .p-gifts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+.portal .p-gift {
+  text-align: center;
+  padding: 44px 32px 36px;
+  border: 1px solid rgba(242, 232, 220, 0.22);
+  border-radius: 6px;
+  background: rgba(78, 52, 46, 0.35);
+}
+.portal .p-gift p { font-size: 17px; margin: 0; }
+.portal .p-gift-star { display: block; color: var(--p-rose); font-size: 30px; line-height: 1; margin-bottom: 18px; }
+
+/* ---------- Steps ---------- */
+.portal .p-how { background: var(--p-earth); }
+.portal .p-steps {
+  list-style: none;
+  margin: 56px auto 0;
+  padding: 0;
+  max-width: 760px;
+  display: grid;
+  gap: 36px;
+}
+.portal .p-steps li { display: grid; grid-template-columns: 72px 1fr; gap: 24px; align-items: start; }
+.portal .p-steps p { margin: 0; }
+.portal .p-step-num {
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--p-rose);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--p-serif);
+  font-size: 20px;
+  color: var(--p-rose);
+}
+
+/* ---------- Offer ---------- */
+.portal .p-offer {
+  background: linear-gradient(180deg, var(--p-earth) 0%, var(--p-soil) 100%);
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+.portal .p-offer-grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.portal .p-offer-card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: var(--p-limestone);
+  color: var(--p-earth);
+  padding: 80px 56px 64px;
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+.portal .p-offer-card > *:not(.p-offer-rose) { position: relative; z-index: 2; }
+.portal .p-offer-rose {
+  position: absolute;
+  z-index: 1;
+  width: 720px;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  bottom: 0;
+  translate: -50% 50%;
+  opacity: 0.12;
+  filter: url(#p-tint-earth);
+  pointer-events: none;
+}
+.portal .p-offer-card .p-label { color: var(--p-sacred-red); }
+.portal .p-offer-name {
+  font-family: var(--p-script);
+  font-weight: 400;
+  font-size: clamp(54px, 6vw, 80px);
+  line-height: 1;
+  color: var(--p-earth);
+  margin: 0 0 18px;
+}
+.portal .p-price {
+  font-family: var(--p-serif);
+  font-size: clamp(44px, 5vw, 60px);
+  font-weight: 300;
+  color: var(--p-earth);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+.portal .p-rule { display: flex; align-items: center; gap: 16px; margin: 32px auto; max-width: 320px; color: var(--p-sacred-red); }
+.portal .p-rule::before,
+.portal .p-rule::after { content: ""; flex: 1; height: 1px; background: rgba(78, 52, 46, 0.3); }
+.portal .p-includes { display: inline-block; text-align: left; margin-bottom: 28px; }
+.portal .p-includes li::before { color: var(--p-sacred-red); }
+.portal .p-offer-card strong { color: var(--p-earth); }
+.portal .p-close {
+  font-family: var(--p-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--p-soil);
+  margin-bottom: 32px;
+}
+.portal .p-pay { max-width: 380px; margin: 0 auto; }
+.portal .p-venmo { margin: 22px 0 0; font-size: 17px; }
+.portal .p-venmo span { font-size: 14px; color: var(--p-soil); }
+
+/* ---------- Form ---------- */
+.portal .p-intake { background: var(--p-soil); }
+.portal .p-form-wrap { max-width: 640px; margin: 0 auto; }
+.portal .p-form-intro { margin-bottom: 40px; }
+.portal .p-form { display: grid; gap: 22px; }
+.portal .p-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.portal .p-field label {
+  display: block;
+  font-family: var(--p-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--p-limestone);
+  margin-bottom: 8px;
+}
+.portal .p-field label span { text-transform: none; letter-spacing: 0.02em; font-weight: 400; color: rgba(242, 232, 220, 0.7); }
+.portal .p-field input {
+  width: 100%;
+  font: inherit;
+  font-size: 17px;
+  color: var(--p-earth);
+  background: var(--p-limestone);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 14px 16px;
+  min-height: 52px;
+}
+.portal .p-field input:focus { outline: none; border-color: var(--p-rose); box-shadow: 0 0 0 3px rgba(212, 165, 154, 0.45); }
+.portal .p-form .p-cta { margin-top: 10px; }
+.portal .p-form-status { margin: 0; text-align: center; color: var(--p-limestone); min-height: 1.6em; }
+
+/* ---------- Back link ---------- */
+.portal .p-back { background: var(--p-earth); text-align: center; padding: 56px 24px; border-top: 1px solid rgba(242, 232, 220, 0.12); }
+.portal .p-back p { margin: 0; }
+.portal .p-back a { color: var(--p-rose); border-bottom: 1px solid rgba(212, 165, 154, 0.5); }
+.portal .p-back a:hover { color: var(--p-limestone); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .portal { font-size: 17px; }
+  .portal .p-section { padding: 80px 20px; }
+  .portal .p-split,
+  .portal .p-offer-grid { grid-template-columns: 1fr; gap: 48px; }
+  .portal .p-split-media,
+  .portal .p-offer-media { max-width: 520px; margin: 0 auto; }
+  .portal .p-gifts { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
+  .portal .p-offer { padding-top: 90px; padding-bottom: 90px; }
+  .portal .p-offer-card { padding: 60px 26px 48px; }
+  .portal .p-mandala { width: 520px; }
+}
+@media (max-width: 560px) {
+  .portal .p-hero { min-height: 78vh; padding: 72px 18px 90px; }
+  .portal .p-label { letter-spacing: 0.28em; font-size: 12px; }
+  .portal .p-cta { padding: 16px 26px; letter-spacing: 0.18em; }
+  .portal .p-field-row { grid-template-columns: 1fr; }
+  .portal .p-steps li { grid-template-columns: 52px 1fr; gap: 16px; }
+  .portal .p-step-num { width: 48px; height: 48px; font-size: 16px; }
+}

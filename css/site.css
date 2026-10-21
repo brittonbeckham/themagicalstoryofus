@@ -945,3 +945,45 @@ button { font-family: inherit; }
 }
 
 .ml-embedded, .ml-embedded form { width: 100%; }
+
+/* ---------- Portal offer banner (astrology page) ---------- */
+.portal-banner {
+  position: relative;
+  overflow: hidden;
+  background: #4E342E;
+  color: #F2E8DC;
+  text-align: center;
+  padding: 56px 24px;
+}
+.portal-banner-rose {
+  position: absolute;
+  width: 620px;
+  max-width: none;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  opacity: 0.14;
+  pointer-events: none;
+  animation: portal-banner-spin 180s linear infinite;
+}
+@keyframes portal-banner-spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .portal-banner-rose { animation: none; } }
+.portal-banner-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.portal-banner-label {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #D4A59A;
+  margin: 0 0 12px;
+}
+.portal-banner h2 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 44px);
+  margin: 0 0 10px;
+  color: #fff;
+}
+.portal-banner p { margin: 0 0 24px; font-size: 18px; }
+.portal-banner-btn { background: #A40F0C; color: #fff; }
+.portal-banner-btn:hover { background: #A84448; color: #fff; }
