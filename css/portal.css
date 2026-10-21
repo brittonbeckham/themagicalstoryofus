@@ -692,3 +692,11 @@
 .portal--dark.portal--scorpio-wine .p-hero .p-name-sub,
 .portal--dark.portal--scorpio-garnet .p-hero .p-name-sub,
 .portal--dark.portal--scorpio-light .p-hero .p-name-sub { color: var(--a-accent); }
+
+/* Sliding-scale price */
+.portal .p-offer-card .p-price { margin: 18px 0 8px; line-height: 1; letter-spacing: 0.01em; }
+.portal .p-price-dash { display: inline-block; margin: 0 0.05em; font-weight: 300; opacity: 0.7; transform: translateY(-0.04em); }
+.portal .p-price-note { margin: 0 0 22px; font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.5; color: #6b6b6b; }
+.portal--dark .p-price-note { color: var(--d-muted); }
+.portal--dark.portal--scorpio-light .p-price-note { color: #6f5661; }
+@media (max-width: 560px) { .portal .p-price-note { font-size: 15px; } }
