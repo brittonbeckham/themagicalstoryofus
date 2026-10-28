@@ -56,6 +56,59 @@
   }
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var silkRibbons = [
+    { cy: 165, amp: 34, spread: 0.1, lines: 12, opacity: 0.2, duration: 150, filter: "far" },
+    { cy: 160, amp: 50, spread: 0.06, lines: 18, opacity: 0.3, duration: 105, filter: "mid", reverse: true },
+    { cy: 150, amp: 64, spread: 0.075, lines: 26, opacity: 0.6, duration: 70, filter: "glow", motes: true }
+  ];
+  document.querySelectorAll("[data-silk]").forEach(buildSilk);
+
+  function buildSilk(host, index) {
+    var styles = getComputedStyle(host);
+    var colorA = styles.getPropertyValue("--silk-a").trim();
+    var colorB = styles.getPropertyValue("--silk-b").trim();
+    var id = "silk" + index;
+    var markup = "<defs>"
+      + "<linearGradient id='" + id + "-g' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='600' y2='0' spreadMethod='repeat'>"
+      + "<stop offset='0' stop-color='" + colorA + "'/><stop offset='0.5' stop-color='" + colorB + "'/><stop offset='1' stop-color='" + colorA + "'/></linearGradient>"
+      + "<filter id='" + id + "-far' x='-5%' y='-60%' width='110%' height='220%'><feGaussianBlur stdDeviation='3'/></filter>"
+      + "<filter id='" + id + "-mid' x='-5%' y='-60%' width='110%' height='220%'><feGaussianBlur stdDeviation='1.2'/></filter>"
+      + "<filter id='" + id + "-glow' x='-5%' y='-60%' width='110%' height='220%'><feGaussianBlur stdDeviation='2.5' result='b'/><feMerge><feMergeNode in='b'/><feMergeNode in='SourceGraphic'/></feMerge></filter>"
+      + "</defs>";
+
+    silkRibbons.forEach(function (r) {
+      markup += "<g class='silk-ribbon" + (r.reverse ? " silk-ribbon--reverse" : "") + "' style='animation-duration:" + r.duration + "s' filter='url(#" + id + "-" + r.filter + ")'>";
+      for (var i = 0; i < r.lines; i++) {
+        var t = r.lines > 1 ? i / (r.lines - 1) : 0.5;
+        var d = "";
+        for (var x = 0; x <= 2400; x += 12) d += (x ? "L" : "M") + x + " " + silkY(r, t, i, x).toFixed(1);
+        var alpha = r.opacity * (0.25 + 0.75 * Math.sin(Math.PI * t));
+        markup += "<path d='" + d + "' stroke='url(#" + id + "-g)' stroke-opacity='" + alpha.toFixed(3) + "' stroke-width='" + (Math.abs(t - 0.5) < 0.15 ? 1.1 : 0.7) + "'/>";
+      }
+      if (r.motes) {
+        for (var m = 0; m < 8; m++) {
+          var mx = 150 + m * 300;
+          markup += "<circle class='silk-mote' cx='" + mx + "' cy='" + silkY(r, 0.5, r.lines / 2, mx).toFixed(1) + "' r='1.8'/>";
+        }
+      }
+      markup += "</g>";
+    });
+
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 1200 300");
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML = markup;
+    host.appendChild(svg);
+  }
+
+  function silkY(r, t, i, x) {
+    var k = (x / 600) * Math.PI * 2;
+    var phase = i * r.spread;
+    var envelope = 0.55 + 0.45 * Math.sin((x / 1200) * Math.PI * 2 + 0.8);
+    return r.cy + r.amp * Math.sin(k + phase) * envelope + (t - 0.5) * 16 * Math.cos(k / 2 + phase);
+  }
   var magic = Array.prototype.slice.call(document.querySelectorAll(".magic"));
   var starfields = [];
 
