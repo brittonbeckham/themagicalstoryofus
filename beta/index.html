@@ -265,16 +265,33 @@
       <div class="container join-grid">
         <div class="book reveal" aria-hidden="true">
           <div class="book-cover">
-            <img src="../assets/sigil-200.png" width="60" height="60" alt="">
-            <p class="book-title">Ritual<br>Shadow<br>Work</p>
+            <div class="book-moon"></div>
+            <p class="book-title">Ritual<br>Shadow Work</p>
+            <p class="book-sub">An astrologically guided path to the inner work</p>
             <p class="book-authors">Britton &amp; Carolee Beckham</p>
           </div>
         </div>
         <div class="reveal" style="--d: 1">
-          <p class="eyebrow">The book &middot; Coming soon</p>
+          <p class="eyebrow">The book &middot; Join the waitlist</p>
           <h2 class="h2" id="book-title">Ritual <em>Shadow Work</em></h2>
-          <p class="lede">The approach we developed through our own healing, written down for you. Join our list and be the first to know when the book drops, along with new offerings, retreats, and healing experiences.</p>
-          <div class="ml-wrap"><div class="ml-embedded" data-form="jIKAvz"></div></div>
+          <p class="lede">An astrologically guided path to the inner work. We tie shadow work to the cycles of the moon, so you can move through the layers of your shadow with the support of the cosmos, on your own or with a partner.</p>
+          <ul class="moon-phases">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>New moon</span>Begin and plant intentions</li>
+            <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg><span>Full moon</span>Release and let go</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="1.2"/></svg><span>Dark moon</span>Listen for insight</li>
+          </ul>
+          <form class="waitlist" data-ml-form data-ml-action="" novalidate>
+            <div class="waitlist-fields">
+              <label class="visually-hidden" for="wl-name">First name</label>
+              <input id="wl-name" type="text" name="fields[name]" placeholder="First name" autocomplete="given-name">
+              <label class="visually-hidden" for="wl-email">Email</label>
+              <input id="wl-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required>
+              <input type="hidden" name="ml-submit" value="1">
+              <input type="hidden" name="anticsrf" value="true">
+              <button class="btn btn-light" type="submit">Join the waitlist</button>
+            </div>
+            <p class="waitlist-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>

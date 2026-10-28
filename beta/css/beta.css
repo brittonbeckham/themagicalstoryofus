@@ -756,7 +756,7 @@ body.menu-open .mobile-menu {
   justify-content: space-between;
   width: min(290px, 68vw);
   aspect-ratio: 2 / 3;
-  padding: 14% 10% 12%;
+  padding: 16% 10% 12%;
   border-radius: 3px 8px 8px 3px;
   background: radial-gradient(120% 80% at 50% 0%, #262626 0%, var(--night) 70%);
   color: var(--gold-soft);
@@ -774,13 +774,90 @@ body.menu-open .mobile-menu {
   pointer-events: none;
 }
 .book:hover .book-cover { transform: rotateY(-4deg); }
-.book-cover img { width: 60px; height: 60px; border-radius: 50%; opacity: 0.9; }
+.book-moon {
+  width: 64%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 63% 37%, rgba(80, 76, 70, 0.14) 0 6%, transparent 10%),
+    radial-gradient(circle at 38% 63%, rgba(80, 76, 70, 0.12) 0 9%, transparent 14%),
+    radial-gradient(circle at 71% 67%, rgba(80, 76, 70, 0.1) 0 4%, transparent 8%),
+    radial-gradient(ellipse at 34% 36%, rgba(80, 76, 70, 0.1) 0 12%, transparent 24%),
+    radial-gradient(circle at 56% 52%, rgba(80, 76, 70, 0.08) 0 16%, transparent 32%),
+    radial-gradient(circle at 38% 32%, #fbfbfa 0%, #e2e1df 40%, #b6b4b0 75%, #8a8884 100%);
+  box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.16), 0 0 80px 20px rgba(255, 255, 255, 0.07), inset -12px -10px 24px rgba(0, 0, 0, 0.35);
+  animation: moon-glow 8s ease-in-out infinite;
+}
+@keyframes moon-glow {
+  50% { box-shadow: 0 0 42px 10px rgba(255, 255, 255, 0.26), 0 0 110px 30px rgba(255, 255, 255, 0.1), inset -12px -10px 24px rgba(0, 0, 0, 0.35); }
+}
 .book-title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(2.1rem, 1.7rem + 1.6vw, 2.9rem);
-  line-height: 0.98;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.book-sub {
+  margin: -0.4em 0 0;
+  max-width: 20ch;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--gold-soft);
+}
+
+.moon-phases {
+  display: grid;
+  gap: 14px;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.moon-phases li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 2px 12px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(242, 242, 242, 0.8);
+}
+.moon-phases svg { grid-row: span 2; width: 22px; height: 22px; margin-top: 1px; color: var(--gold-soft); }
+.moon-phases span {
+  font: 600 0.68rem/1.6 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.waitlist { max-width: 600px; margin-top: 2rem; }
+.waitlist-fields { display: grid; gap: 10px; }
+.waitlist input {
+  min-height: 48px;
+  width: 100%;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font: 400 0.95rem var(--sans);
+}
+.waitlist input::placeholder { color: rgba(255, 255, 255, 0.6); }
+.waitlist input:focus { outline: none; border-color: var(--gold-soft); box-shadow: 0 0 0 3px rgba(214, 173, 50, 0.3); }
+.waitlist-status { min-height: 1.5em; margin: 12px 0 0; font-size: 0.92rem; color: var(--gold-soft); }
+
+@media (min-width: 560px) {
+  .moon-phases { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 680px) {
+  .waitlist-fields { grid-template-columns: 1fr 1.3fr auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-moon { animation: none; }
 }
 .book-authors {
   margin: 0;

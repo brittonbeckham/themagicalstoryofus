@@ -154,6 +154,31 @@
     });
   }
 
+  document.querySelectorAll("[data-ml-form]").forEach(function (form) {
+    var status = form.querySelector(".waitlist-status");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      var action = form.getAttribute("data-ml-action");
+      if (!action) {
+        status.textContent = "The waitlist opens soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
+        return;
+      }
+      status.textContent = "Adding you to the list…";
+      fetch(action, { method: "POST", body: new FormData(form), mode: "no-cors" })
+        .then(function () {
+          form.reset();
+          status.textContent = "You’re on the waitlist. We’ll let you know the moment the book is out.";
+        })
+        .catch(function () {
+          status.textContent = "Something went wrong. Please email us at themagicalstoryofus@gmail.com.";
+        });
+    });
+  });
+
   var chapterNav = document.querySelector(".chapter-nav");
   if (chapterNav && "IntersectionObserver" in window) {
     var links = Array.prototype.slice.call(chapterNav.querySelectorAll("a[href^='#']"));
