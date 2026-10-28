@@ -775,21 +775,13 @@ body.menu-open .mobile-menu {
 }
 .book:hover .book-cover { transform: rotateY(-4deg); }
 .book-moon {
-  width: 64%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 63% 37%, rgba(80, 76, 70, 0.14) 0 6%, transparent 10%),
-    radial-gradient(circle at 38% 63%, rgba(80, 76, 70, 0.12) 0 9%, transparent 14%),
-    radial-gradient(circle at 71% 67%, rgba(80, 76, 70, 0.1) 0 4%, transparent 8%),
-    radial-gradient(ellipse at 34% 36%, rgba(80, 76, 70, 0.1) 0 12%, transparent 24%),
-    radial-gradient(circle at 56% 52%, rgba(80, 76, 70, 0.08) 0 16%, transparent 32%),
-    radial-gradient(circle at 38% 32%, #fbfbfa 0%, #e2e1df 40%, #b6b4b0 75%, #8a8884 100%);
-  box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.16), 0 0 80px 20px rgba(255, 255, 255, 0.07), inset -12px -10px 24px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  margin: -16% 0 -18%;
+  mix-blend-mode: screen;
   animation: moon-glow 8s ease-in-out infinite;
 }
 @keyframes moon-glow {
-  50% { box-shadow: 0 0 42px 10px rgba(255, 255, 255, 0.26), 0 0 110px 30px rgba(255, 255, 255, 0.1), inset -12px -10px 24px rgba(0, 0, 0, 0.35); }
+  50% { filter: brightness(1.12); }
 }
 .book-title {
   margin: 0;
@@ -834,7 +826,7 @@ body.menu-open .mobile-menu {
   color: #fff;
 }
 
-.waitlist { max-width: 600px; margin-top: 2rem; }
+.waitlist { max-width: 520px; margin-top: 2rem; }
 .waitlist-fields { display: grid; gap: 10px; }
 .waitlist input {
   min-height: 48px;
@@ -854,7 +846,7 @@ body.menu-open .mobile-menu {
   .moon-phases { grid-template-columns: repeat(3, 1fr); }
 }
 @media (min-width: 680px) {
-  .waitlist-fields { grid-template-columns: 1fr 1.3fr auto; }
+  .waitlist-fields { grid-template-columns: 1fr auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .book-moon { animation: none; }
