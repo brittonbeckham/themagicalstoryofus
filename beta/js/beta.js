@@ -118,7 +118,7 @@
       stars.forEach(function (s) {
         var a = reduceMotion ? s.base : s.base + Math.sin(t * s.speed + s.phase) * s.base * 0.8;
         ctx.globalAlpha = Math.max(0, a);
-        ctx.fillStyle = "#f3e2c2";
+        ctx.fillStyle = "#ffffff";
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();

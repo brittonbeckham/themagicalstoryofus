@@ -9,10 +9,10 @@
   --muted: #6e6e6e;
   --line: rgba(0, 0, 0, 0.12);
 
-  --accent: #96723e;
+  --accent: #9d7b12;
   --garnet: #561d24;
-  --gold: #c9a467;
-  --gold-soft: #e2c08d;
+  --gold: #c39a1f;
+  --gold-soft: #d6ad32;
 
   --night: #0a0a0a;
   --night-2: #141414;
@@ -145,21 +145,19 @@ h1 em, h2 em, h3 em, .display em, .statement em {
   font: 600 0.72rem/1.4 var(--sans);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink-soft);
 }
 .eyebrow::before {
   content: "";
   width: 28px;
   height: 1px;
-  background: currentColor;
-  opacity: 0.6;
+  background: var(--gold);
 }
 .center .eyebrow::after {
   content: "";
   width: 28px;
   height: 1px;
-  background: currentColor;
-  opacity: 0.6;
+  background: var(--gold);
 }
 .bg-night .eyebrow, .bg-garnet .eyebrow { color: var(--gold-soft); }
 
@@ -214,8 +212,8 @@ h1 em, h2 em, h3 em, .display em, .statement em {
 .btn-primary { background: var(--ink); color: #fff; }
 .btn-primary:hover { background: #333; }
 
-.btn-gold { background: var(--gold-soft); color: var(--ink); }
-.btn-gold:hover { background: #f1dcb6; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: var(--gold-soft); }
 
 .btn-outline { background: transparent; color: inherit; border-color: currentColor; }
 .btn-outline:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
@@ -258,7 +256,7 @@ a:hover .link-arrow::after { transform: translateX(4px); }
   box-shadow: 0 1px 0 var(--line);
 }
 .hero-dark .site-header:not(.is-scrolled) { color: var(--night-text); }
-.hero-dark .site-header:not(.is-scrolled) .nav-cta { background: var(--gold-soft); color: var(--ink); }
+.hero-dark .site-header:not(.is-scrolled) .nav-cta { background: #fff; color: var(--ink); }
 
 .nav {
   height: 100%;
@@ -1002,7 +1000,7 @@ body.menu-open .beta-pill { display: none; }
     position: relative;
     display: block;
     height: 1px;
-    background: linear-gradient(90deg, rgba(226, 192, 141, 0.15), var(--gold-soft));
+    background: linear-gradient(90deg, rgba(214, 173, 50, 0.15), var(--gold-soft));
     transform-origin: left;
   }
   .change-line::after {
@@ -1014,7 +1012,7 @@ body.menu-open .beta-pill { display: none; }
     height: 7px;
     border-radius: 50%;
     background: var(--gold-soft);
-    box-shadow: 0 0 8px rgba(226, 192, 141, 0.8);
+    box-shadow: 0 0 8px rgba(214, 173, 50, 0.8);
   }
   .js .reveal .change-line { transform: scaleX(0); transition: transform 1.2s var(--ease); }
   .js .reveal.is-in .change-line { transform: scaleX(1); }
@@ -1064,7 +1062,7 @@ body.menu-open .beta-pill { display: none; }
   align-items: center;
   overflow: hidden;
   padding: clamp(28px, 4vw, 52px);
-  border: 1px solid rgba(226, 192, 141, 0.35);
+  border: 1px solid rgba(214, 173, 50, 0.35);
   border-radius: var(--radius);
   background: var(--night);
   color: var(--night-text);
@@ -1244,7 +1242,7 @@ body.menu-open .beta-pill { display: none; }
 
 .orbits { transform-box: view-box; transform-origin: 50% 50%; animation: orbit-turn 140s linear infinite; }
 .orbits ellipse { fill: none; stroke: var(--gold-soft); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.orbit-star { fill: var(--gold-soft); filter: drop-shadow(0 0 4px rgba(226, 192, 141, 0.9)); }
+.orbit-star { fill: var(--gold-soft); filter: drop-shadow(0 0 4px rgba(214, 173, 50, 0.9)); }
 @keyframes orbit-turn { to { transform: rotate(360deg); } }
 
 .constellation-line {
@@ -1266,20 +1264,20 @@ body.menu-open .beta-pill { display: none; }
 
 .infinity-base,
 .infinity-light { fill: none; vector-effect: non-scaling-stroke; }
-.infinity-base { stroke: rgba(226, 192, 141, 0.18); stroke-width: 1; }
+.infinity-base { stroke: rgba(214, 173, 50, 0.18); stroke-width: 1; }
 .infinity-light {
   stroke: var(--gold-soft);
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-dasharray: 0.08 0.92;
-  filter: drop-shadow(0 0 6px rgba(226, 192, 141, 0.8));
+  filter: drop-shadow(0 0 6px rgba(214, 173, 50, 0.8));
   animation: infinity-run 9s linear infinite;
 }
 @keyframes infinity-run { to { stroke-dashoffset: -1; } }
 
 .shimmer em,
 em.shimmer {
-  background: linear-gradient(100deg, var(--gold-soft) 42%, #fff7e6 50%, var(--gold-soft) 58%) 0 0 / 300% 100%;
+  background: linear-gradient(100deg, var(--gold-soft) 42%, #fff6d0 50%, var(--gold-soft) 58%) 0 0 / 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1309,7 +1307,7 @@ em.shimmer {
   width: 640px;
   height: 640px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(226, 192, 141, 0.13) 0%, rgba(226, 192, 141, 0) 65%);
+  background: radial-gradient(circle, rgba(214, 173, 50, 0.13) 0%, rgba(214, 173, 50, 0) 65%);
   transform: translate(-50%, -50%);
   transition: left 0.6s var(--ease), top 0.6s var(--ease);
   pointer-events: none;
