@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Magic demos | The Magical Story of Us</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/beta.css">
+  <style>
+    .demo-label { margin-bottom: 1.5rem; }
+    .demo-note { max-width: 56ch; margin: 1.75rem auto 0; font-size: 0.92rem; color: var(--night-muted); text-align: center; }
+    .bg-sand .demo-note { color: var(--muted); }
+    .demo-band { min-height: 420px; display: flex; align-items: center; }
+    .demo-band > .container { width: 100%; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../">
+        <img src="../../assets/sigil-200.png" width="40" height="40" alt="">
+        <span class="brand-text">
+          <span class="brand-name">The Magical Story of Us</span>
+          <span class="brand-sub">Magic demos</span>
+        </span>
+      </a>
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-sm" href="../">Back to beta</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-intro">
+      <div class="container">
+        <p class="eyebrow">Demos</p>
+        <h1 class="display">A little <em>magic.</em></h1>
+        <p class="lede">Eight subtle effects to choose from. Each band shows one effect on its own. Pick the ones you like, and say where you’d want them.</p>
+      </div>
+    </section>
+
+    <!-- 1. Drifting threads -->
+    <section class="section quote-band bg-night magic demo-band">
+      <svg class="magic-layer threads" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+        <g class="thread" style="opacity: 0.35"><path d="M0 100 C150 40 450 160 600 100 S1050 160 1200 100 S1650 160 1800 100 S2250 160 2400 100"/></g>
+        <g class="thread" style="opacity: 0.22"><path transform="translate(0 40) scale(1 0.6)" d="M0 100 C100 60 300 140 400 100 S700 140 800 100 S1100 140 1200 100 S1500 140 1600 100 S1900 140 2000 100 S2300 140 2400 100"/></g>
+        <g class="thread" style="opacity: 0.16"><path transform="translate(0 -30) scale(1 1.3)" d="M0 100 C150 40 450 160 600 100 S1050 160 1200 100 S1650 160 1800 100 S2250 160 2400 100"/></g>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">01 &middot; Drifting threads</p>
+        <blockquote>To experience the magic of life, we must be willing to make room.</blockquote>
+        <p class="demo-note">Three fine gold lines flowing slowly sideways at different speeds. My pick for the Our Story quote bands.</p>
+      </div>
+    </section>
+
+    <!-- 2. Orbits -->
+    <section class="section quote-band bg-night magic demo-band">
+      <svg class="magic-layer" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="orbits">
+          <ellipse cx="600" cy="200" rx="560" ry="120" style="opacity: 0.22"/>
+          <ellipse cx="600" cy="200" rx="420" ry="150" transform="rotate(-14 600 200)" style="opacity: 0.16"/>
+          <ellipse cx="600" cy="200" rx="300" ry="90" transform="rotate(10 600 200)" style="opacity: 0.12"/>
+          <circle class="orbit-star" r="2.6">
+            <animateMotion dur="34s" repeatCount="indefinite" path="M40 200 a560 120 0 1 0 1120 0 a560 120 0 1 0 -1120 0"/>
+          </circle>
+        </g>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">02 &middot; Orbits</p>
+        <blockquote>Life was calling us in a new direction, and we went all in.</blockquote>
+        <p class="demo-note">Faint orbit rings turning very slowly, with one star travelling along the outer ring. A good fit for the astrology page.</p>
+      </div>
+    </section>
+
+    <!-- 3. Constellation -->
+    <section class="section quote-band bg-night magic demo-band">
+      <svg class="magic-layer" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <polyline class="constellation-line" pathLength="1" points="80,300 260,180 420,240 560,90 760,150 920,60 1120,200"/>
+        <circle class="constellation-star" cx="80" cy="300" r="2.5"/>
+        <circle class="constellation-star" cx="260" cy="180" r="2"/>
+        <circle class="constellation-star" cx="420" cy="240" r="2.5"/>
+        <circle class="constellation-star" cx="560" cy="90" r="3"/>
+        <circle class="constellation-star" cx="760" cy="150" r="2"/>
+        <circle class="constellation-star" cx="920" cy="60" r="2.5"/>
+        <circle class="constellation-star" cx="1120" cy="200" r="2"/>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">03 &middot; Constellation</p>
+        <blockquote>Your destiny is written in the stars.</blockquote>
+        <p class="demo-note">A gold line draws itself between star points once, when the band scrolls into view, then the stars keep twinkling. Scroll away and back to see it again after a refresh.</p>
+      </div>
+    </section>
+
+    <!-- 4. Starfield -->
+    <section class="section quote-band bg-night magic demo-band">
+      <canvas class="magic-layer stars" aria-hidden="true"></canvas>
+      <div class="container">
+        <p class="eyebrow demo-label">04 &middot; Starfield</p>
+        <blockquote>There is a magical story in everyone.</blockquote>
+        <p class="demo-note">Sparse, barely visible stars twinkling at random. Could sit behind any black section, or the footer.</p>
+      </div>
+    </section>
+
+    <!-- 5. Infinity trace -->
+    <section class="section quote-band bg-garnet magic demo-band">
+      <svg class="magic-layer" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="infinity-base" pathLength="1" d="M600 200 C680 90 880 90 880 200 C880 310 680 310 600 200 C520 90 320 90 320 200 C320 310 520 310 600 200 Z"/>
+        <path class="infinity-light" pathLength="1" d="M600 200 C680 90 880 90 880 200 C880 310 680 310 600 200 C520 90 320 90 320 200 C320 310 520 310 600 200 Z"/>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">05 &middot; Infinity trace</p>
+        <blockquote>The path of healing is the path of awakening.</blockquote>
+        <p class="demo-note">A point of light travelling a figure-eight loop, echoing the infinity in your sigil. Shown on the maroon band, where it could sit behind the book.</p>
+      </div>
+    </section>
+
+    <!-- 6. Shimmer -->
+    <section class="section quote-band bg-night magic demo-band">
+      <div class="container">
+        <p class="eyebrow demo-label">06 &middot; Gold shimmer</p>
+        <h2 class="display shimmer">Awaken to your <em>cosmic blueprint</em></h2>
+        <p class="demo-note">A slow sweep of light across the gold italic words in headings, every few seconds. Works on any dark section.</p>
+      </div>
+    </section>
+
+    <!-- 7. Grain -->
+    <section class="section quote-band bg-night magic grain demo-band">
+      <div class="container">
+        <p class="eyebrow demo-label">07 &middot; Grain texture</p>
+        <blockquote>Healing is where the magic is.</blockquote>
+        <p class="demo-note">A still film-grain texture so the black reads as rich and photographic, not flat. No movement. Subtle on purpose, so look closely.</p>
+      </div>
+    </section>
+
+    <!-- 8. Cursor glow -->
+    <section class="section quote-band bg-night magic glow demo-band">
+      <div class="container">
+        <p class="eyebrow demo-label">08 &middot; Cursor glow</p>
+        <blockquote>We awakened together.</blockquote>
+        <p class="demo-note">Move your mouse over this band. A soft gold glow follows it. Desktop only, for the dark heroes on Home and Astrology.</p>
+      </div>
+    </section>
+
+    <!-- Light variant -->
+    <section class="section quote-band bg-sand magic demo-band">
+      <svg class="magic-layer threads" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+        <g class="thread" style="opacity: 0.4"><path d="M0 100 C150 40 450 160 600 100 S1050 160 1200 100 S1650 160 1800 100 S2250 160 2400 100"/></g>
+        <g class="thread" style="opacity: 0.25"><path transform="translate(0 40) scale(1 0.6)" d="M0 100 C100 60 300 140 400 100 S700 140 800 100 S1100 140 1200 100 S1500 140 1600 100 S1900 140 2000 100 S2300 140 2400 100"/></g>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">On light &middot; Drifting threads</p>
+        <blockquote>We want to yell from housetops that there is a magical story awaiting each one of us.</blockquote>
+        <p class="demo-note">The same threads in deep gold on a light section, to show they work on either background.</p>
+      </div>
+    </section>
+
+    <!-- Combined -->
+    <section class="section quote-band bg-night magic grain glow demo-band">
+      <canvas class="magic-layer stars" aria-hidden="true"></canvas>
+      <svg class="magic-layer threads" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+        <g class="thread" style="opacity: 0.28"><path d="M0 100 C150 40 450 160 600 100 S1050 160 1200 100 S1650 160 1800 100 S2250 160 2400 100"/></g>
+        <g class="thread" style="opacity: 0.16"><path transform="translate(0 40) scale(1 0.6)" d="M0 100 C100 60 300 140 400 100 S700 140 800 100 S1100 140 1200 100 S1500 140 1600 100 S1900 140 2000 100 S2300 140 2400 100"/></g>
+      </svg>
+      <div class="container">
+        <p class="eyebrow demo-label">Layered &middot; Stars, threads, grain, and glow</p>
+        <h2 class="display shimmer">A story of <em>love and soul</em></h2>
+        <p class="demo-note">Several effects together, to show the upper limit. I’d use one or two per section, not all of them.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/beta.js"></script>
+</body>
+</html>
