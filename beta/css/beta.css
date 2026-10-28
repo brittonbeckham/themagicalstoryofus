@@ -758,7 +758,17 @@ body.menu-open .mobile-menu {
   aspect-ratio: 2 / 3;
   padding: 16% 10% 12%;
   border-radius: 3px 8px 8px 3px;
-  background: radial-gradient(120% 80% at 50% 0%, #262626 0%, var(--night) 70%);
+  background:
+    radial-gradient(1px 1px at 18px 24px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 71px 88px, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 44px 140px, rgba(255, 235, 190, 0.45), transparent),
+    radial-gradient(1px 1px at 96px 39px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 132px 112px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 9px 161px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 58px 57px, rgba(255, 235, 190, 0.35), transparent),
+    radial-gradient(1px 1px at 151px 18px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(120% 80% at 50% 0%, #1c1c1c 0%, var(--night) 70%);
+  background-size: 173px 181px, 173px 181px, 173px 181px, 113px 127px, 113px 127px, 211px 197px, 211px 197px, 211px 197px, 100% 100%;
   color: var(--gold-soft);
   text-align: center;
   box-shadow: inset 7px 0 10px rgba(0, 0, 0, 0.45), 30px 40px 60px rgba(0, 0, 0, 0.4);
@@ -778,6 +788,8 @@ body.menu-open .mobile-menu {
   width: 100%;
   margin: -16% 0 -18%;
   mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 62%, transparent 92%);
+  mask-image: radial-gradient(circle closest-side, #000 62%, transparent 92%);
   animation: moon-glow 8s ease-in-out infinite;
 }
 @keyframes moon-glow {
