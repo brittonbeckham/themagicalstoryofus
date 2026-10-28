@@ -41,6 +41,108 @@
     if (!isNaN(until) && Date.now() > until) el.remove();
   });
 
+  var offerSlots = document.querySelectorAll("[data-limited-offer]");
+  if (offerSlots.length) {
+    var DAY = 86400000;
+    var offers = window.LIMITED_OFFERINGS || [];
+    var previewDate = new URLSearchParams(window.location.search).get("preview-date");
+    var now = previewDate ? Date.parse(previewDate + "T12:00:00-06:00") : Date.now();
+    if (isNaN(now)) now = Date.now();
+
+    var esc = function (text) {
+      return String(text).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    };
+    var shortDate = function (iso) {
+      return new Date(iso).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "America/Denver" });
+    };
+    var denverDay = function (ms) {
+      return Date.parse(new Date(ms).toLocaleDateString("en-CA", { timeZone: "America/Denver" }));
+    };
+    var timeLeft = function (closes) {
+      var closeMs = Date.parse(closes);
+      if (closeMs - now < 6 * 3600000) return "Closing in a few hours";
+      var days = Math.round((denverDay(closeMs) - denverDay(now)) / DAY);
+      if (days === 0) return "Last day";
+      if (days === 1) return "Closes tomorrow";
+      return days <= 7 ? days + " days left" : "";
+    };
+    var byDate = function (key) {
+      return function (a, b) { return Date.parse(a[key]) - Date.parse(b[key]); };
+    };
+
+    var open = offers.filter(function (o) {
+      return Date.parse(o.opens) <= now && now < Date.parse(o.closes);
+    }).sort(byDate("closes"))[0];
+    var soon = open ? null : offers.filter(function (o) {
+      var opens = Date.parse(o.opens);
+      return now < opens && opens - now <= (o.announceDays || 21) * DAY;
+    }).sort(byDate("opens"))[0];
+
+    var notifyForm = function (label) {
+      return '<form class="waitlist portal-notify" data-ml-form data-ml-action="" data-success="You’re on the list. We’ll email you the moment the next portal opens." novalidate>' +
+        '<div class="waitlist-fields">' +
+        '<label class="visually-hidden" for="portal-email">Email</label>' +
+        '<input id="portal-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required>' +
+        '<button class="btn btn-light" type="submit">' + esc(label) + "</button>" +
+        "</div>" +
+        '<p class="waitlist-status" role="status" aria-live="polite"></p>' +
+        "</form>";
+    };
+
+    var offerCard = function (o, state) {
+      var left = state === "open" ? timeLeft(o.closes) : "";
+      var status = state === "open"
+        ? "Open now · Closes " + shortDate(o.closes)
+        : "Opening soon · " + shortDate(o.opens);
+      var aside = '<p class="portal-price">' + esc(o.price) + "</p>" +
+        (o.priceNote ? '<p class="portal-price-note">' + esc(o.priceNote) + "</p>" : "") +
+        '<ul class="portal-includes">' + o.includes.map(function (item) { return "<li>" + esc(item) + "</li>"; }).join("") + "</ul>" +
+        (state === "open"
+          ? (left ? '<p class="portal-left">' + esc(left) + "</p>" : "") +
+            '<a class="btn btn-light portal-cta" href="' + esc(o.url) + '">' + esc(o.cta || "Reserve your reading") + "</a>"
+          : notifyForm("Notify me"));
+      return '<div class="portal-card reveal" data-state="' + state + '">' +
+        '<span class="portal-sigil" aria-hidden="true" style="--art: url(\'' + esc(o.art || "/assets/portal/rose-moons.png") + '\')"></span>' +
+        '<div class="portal-main">' +
+        '<p class="portal-status"><span class="portal-dot" aria-hidden="true"></span>' + esc(status) + "</p>" +
+        '<p class="eyebrow">' + esc(o.kind || "Limited reading") + "</p>" +
+        '<h2 class="portal-title">' + esc(o.name) + (o.subtitle ? "<span>" + esc(o.subtitle) + "</span>" : "") + "</h2>" +
+        '<p class="portal-summary">' + esc(o.summary) + "</p>" +
+        (o.transits ? '<ul class="portal-transits">' + o.transits.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "") +
+        "</div>" +
+        '<div class="portal-aside">' + aside + "</div>" +
+        "</div>";
+    };
+
+    var nextPortalCard = function () {
+      return '<div class="portal-card portal-card--quiet reveal" data-state="none">' +
+        '<span class="portal-sigil" aria-hidden="true" style="--art: url(\'/assets/portal/rose-moons.png\')"></span>' +
+        '<div class="portal-main">' +
+        '<p class="eyebrow">Portal readings</p>' +
+        '<h2 class="portal-title">When the sky opens a portal, <em>Carolee opens a reading.</em></h2>' +
+        '<p class="portal-summary">A few times a year, around an eclipse, a retrograde, or a powerful full moon, Carolee offers a short reading tuned to that exact transit and how it moves through your chart. Each one is open for a week or two, then it closes.</p>' +
+        "</div>" +
+        '<div class="portal-aside">' +
+        '<p class="portal-aside-label">Hear about the next one first</p>' +
+        notifyForm("Tell me") +
+        "</div>" +
+        "</div>";
+    };
+
+    offerSlots.forEach(function (slot) {
+      var html = open ? offerCard(open, "open") : soon ? offerCard(soon, "soon") : slot.getAttribute("data-limited-offer") === "notify" ? nextPortalCard() : "";
+      if (!html) {
+        slot.remove();
+        return;
+      }
+      var target = slot.querySelector("[data-offer-target]") || slot;
+      target.innerHTML = html;
+      slot.hidden = false;
+    });
+  }
+
   var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -253,14 +355,14 @@
       }
       var action = form.getAttribute("data-ml-action");
       if (!action) {
-        status.textContent = "The waitlist opens soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
+        status.textContent = "Sign-ups open soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
         return;
       }
       status.textContent = "Adding you to the list…";
       fetch(action, { method: "POST", body: new FormData(form), mode: "no-cors" })
         .then(function () {
           form.reset();
-          status.textContent = "You’re on the waitlist. We’ll let you know the moment the book is out.";
+          status.textContent = form.getAttribute("data-success") || "You’re on the list. Thank you.";
         })
         .catch(function () {
           status.textContent = "Something went wrong. Please email us at themagicalstoryofus@gmail.com.";

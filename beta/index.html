@@ -118,6 +118,10 @@
       </div>
     </section>
 
+    <section class="section--tight portal-slot" data-limited-offer="hide" aria-label="Limited reading" hidden>
+      <div class="container" data-offer-target></div>
+    </section>
+
     <section class="section" aria-labelledby="paths-title">
       <div class="container">
         <div class="section-head reveal">
@@ -304,7 +308,7 @@
             <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg><span>Full moon</span>Release and let go</li>
             <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="1.2"/></svg><span>Dark moon</span>Listen for insight</li>
           </ul>
-          <form class="waitlist" data-ml-form data-ml-action="" novalidate>
+          <form class="waitlist" data-ml-form data-ml-action="" data-success="You’re on the waitlist. We’ll let you know the moment the book is out." novalidate>
             <div class="waitlist-fields">
               <label class="visually-hidden" for="wl-email">Email</label>
               <input id="wl-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required>
@@ -361,6 +365,7 @@
 
   <div class="beta-pill">Beta preview <a href="../">Live site &rarr;</a></div>
 
+  <script src="js/limited-offerings.js"></script>
   <script src="js/beta.js"></script>
 </body>
 </html>

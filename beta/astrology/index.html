@@ -103,18 +103,8 @@
       </div>
     </section>
 
-    <section class="section--tight" data-until="2026-10-29T06:00:00Z" aria-label="Limited offering">
-      <div class="container">
-        <div class="feature reveal">
-          <img class="feature-art" src="../../assets/portal/rose-moons.png" width="1200" height="1201" alt="">
-          <div>
-            <p class="eyebrow">Limited offering &middot; Closes Wednesday, October&nbsp;28</p>
-            <h2>Retrograde Revelations <span>Your Underworld Portal Reading</span></h2>
-            <p>A transit reading for the Venus &amp; Mercury retrograde portal and the Full Moon in Taurus.</p>
-          </div>
-          <a class="btn btn-light" href="../../portal/">Step into the portal</a>
-        </div>
-      </div>
+    <section class="section--tight portal-slot" id="portal" data-limited-offer="notify" aria-label="Limited reading" hidden>
+      <div class="container" data-offer-target></div>
     </section>
 
     <section class="section" id="carolee" aria-labelledby="carolee-title">
@@ -336,6 +326,7 @@
 
   <div class="beta-pill">Beta preview <a href="../../astrology/">Live site &rarr;</a></div>
 
+  <script src="../js/limited-offerings.js"></script>
   <script src="../js/beta.js"></script>
 </body>
 </html>
