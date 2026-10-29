@@ -109,6 +109,15 @@
     window.matchMedia("(min-width: 1080px)").addEventListener("change", function (mq) {
       if (mq.matches) setMenu(false);
     });
+    window.addEventListener("pageshow", function (event) {
+      if (!event.persisted) return;
+      menu.style.transition = "none";
+      menu.classList.remove("is-choosing");
+      menu.querySelectorAll(".is-chosen").forEach(function (o) { o.classList.remove("is-chosen"); });
+      setMenu(false);
+      void menu.offsetWidth;
+      menu.style.transition = "";
+    });
   }
 
   document.querySelectorAll("[data-until]").forEach(function (el) {
@@ -309,16 +318,19 @@
           startSlides();
         }, 4100);
       };
-      if ("IntersectionObserver" in window) {
+      var watchDoors = function () {
+        if (!("IntersectionObserver" in window)) {
+          openDoors();
+          return;
+        }
         var doorWatch = new IntersectionObserver(function (entries) {
           if (!entries[0].isIntersecting) return;
           doorWatch.disconnect();
           openDoors();
         }, { threshold: 0.45 });
         doorWatch.observe(doorway);
-      } else {
-        openDoors();
-      }
+      };
+      (window.betaTransitionDone || Promise.resolve()).then(watchDoors);
     }
   }
 
