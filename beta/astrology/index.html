@@ -77,9 +77,14 @@
   </div>
 
   <main id="main">
-    <section class="hero bg-night">
-      <div class="container hero-grid">
-        <div class="hero-copy">
+    <section class="cover-hero">
+      <picture class="cover-media">
+        <source media="(max-width: 759px)" srcset="../../assets/astro-hero-mobile.jpg" width="800" height="1200">
+        <img src="../../assets/astro-hero.jpg" width="1067" height="670" alt="Carolee in the desert at sunset, hair lifting in the wind" fetchpriority="high" style="object-position: center 22%">
+      </picture>
+      <span class="astro-rose" aria-hidden="true"></span>
+      <div class="container">
+        <div class="cover-copy">
           <p class="eyebrow">Star Magic with Carolee</p>
           <h1 class="display">Awaken to your <em>cosmic blueprint</em></h1>
           <p class="lede">Through intuitive astrology and ritual wisdom.</p>
@@ -93,15 +98,6 @@
             <li>Moon magic</li>
             <li>Sacred mirror</li>
           </ul>
-        </div>
-        <div class="hero-media">
-          <span class="astro-rose" aria-hidden="true"></span>
-          <figure class="arch">
-            <img src="../../assets/astro-hero-mobile.jpg" width="800" height="1200" alt="Carolee in the desert at sunset, hair lifting in the wind" fetchpriority="high" style="object-position: center 20%">
-          </figure>
-          <figure class="hero-inset">
-            <img src="../../assets/astro-wheel-1.jpg" width="1200" height="788" alt="An engraved astrological wheel">
-          </figure>
         </div>
       </div>
     </section>

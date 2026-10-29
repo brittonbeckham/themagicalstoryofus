@@ -689,6 +689,68 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   .hero > .container { width: 100%; }
 }
 
+/* ---------- Cover hero (full-bleed image with text on it) ---------- */
+
+.cover-hero {
+  --cover-shade: 10, 10, 10;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(88svh, 880px);
+  padding: calc(var(--header-h) + 48px) 0 clamp(48px, 8vw, 104px);
+  overflow: hidden;
+  background: var(--night);
+  color: #fff;
+}
+.cover-hero > .container { width: 100%; }
+.cover-media { position: absolute; inset: 0; z-index: -2; }
+.cover-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: cover-settle 18s ease-out both;
+}
+@keyframes cover-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+.cover-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(var(--cover-shade), 0.6) 0%, rgba(var(--cover-shade), 0) 26%),
+    linear-gradient(0deg, rgba(var(--cover-shade), 0.92) 0%, rgba(var(--cover-shade), 0.45) 42%, rgba(var(--cover-shade), 0) 70%),
+    linear-gradient(90deg, rgba(var(--cover-shade), 0.6) 0%, rgba(var(--cover-shade), 0) 62%);
+}
+.cover-copy { max-width: 660px; }
+.cover-copy .display { margin-bottom: 0.35em; }
+.cover-copy .lede { max-width: 40ch; color: rgba(255, 255, 255, 0.88); }
+.cover-hero .eyebrow,
+.cover-hero .display em { color: var(--gold-soft); }
+.cover-hero .hero-meta { border-top-color: rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.75); }
+.cover-hero .btn-outline { color: #fff; }
+
+@media (max-width: 759px) {
+  .cover-hero { min-height: calc(100svh - 40px); padding-bottom: 44px; }
+  .cover-hero::before {
+    background:
+      linear-gradient(180deg, rgba(var(--cover-shade), 0.55) 0%, rgba(var(--cover-shade), 0) 22%),
+      linear-gradient(0deg, rgba(var(--cover-shade), 0.95) 0%, rgba(var(--cover-shade), 0.6) 38%, rgba(var(--cover-shade), 0) 68%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover-media img { animation: none; }
+}
+
+.cover-hero .astro-rose {
+  left: auto;
+  right: -12%;
+  top: 40%;
+  width: min(70vw, 760px);
+  translate: 0 -50%;
+  opacity: 0.15;
+}
+
 /* ---------- Doorway + story slides ---------- */
 
 .doorway { position: relative; perspective: 1600px; }
@@ -2185,3 +2247,4 @@ body.theme-carolee .beta-pill {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
 }
 .theme-carolee .portal-card { border-radius: var(--radius); border-color: rgba(217, 162, 142, 0.4); }
+.theme-carolee .cover-hero { --cover-shade: 15, 10, 12; }
