@@ -374,6 +374,7 @@
           video.addEventListener("error", function () { videoWatch.unobserve(video); }, { once: true });
           video.src = video.getAttribute("data-src");
         }
+        if (video.ended) return;
         var playing = video.play();
         if (playing) playing.catch(function () {});
       });
