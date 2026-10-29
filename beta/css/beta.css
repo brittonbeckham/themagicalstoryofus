@@ -824,12 +824,9 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   position: absolute;
   inset: 0;
   z-index: -2;
-  transition: transform 1.2s var(--ease);
-  will-change: transform;
 }
 .path-media img,
-.path-media video,
-.path-media canvas {
+.path-media video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -843,13 +840,11 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   z-index: -1;
   background: linear-gradient(180deg, rgba(10, 10, 10, 0) 30%, rgba(10, 10, 10, 0.85) 100%);
 }
-.path-card:hover .path-media { transform: scale(1.05); }
-.path-video { opacity: 0; }
-.path-canvas {
+.path-video {
   opacity: 0;
   transition: opacity 0.9s ease;
 }
-.path-canvas.is-ready { opacity: 1; }
+.path-video.is-ready { opacity: 1; }
 .path-body { padding: clamp(24px, 3vw, 36px); }
 .path-kicker {
   margin-bottom: 0.75rem;
@@ -2016,7 +2011,7 @@ em.shimmer {
 @media (prefers-reduced-motion: reduce) {
   html, html.smooth-scroll { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .path-media, .reading-media img, .book-cover { transition: none; }
+  .reading-media img, .book-cover { transition: none; }
 }
 
 /* ---------- Page transitions ----------
