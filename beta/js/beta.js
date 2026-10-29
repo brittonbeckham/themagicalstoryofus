@@ -355,10 +355,10 @@
       }
       var action = form.getAttribute("data-ml-action");
       if (!action) {
-        status.textContent = "Sign-ups open soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
+        status.textContent = form.getAttribute("data-fallback") || "Sign-ups open soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
         return;
       }
-      status.textContent = "Adding you to the list…";
+      status.textContent = form.getAttribute("data-pending") || "Adding you to the list…";
       fetch(action, { method: "POST", body: new FormData(form), mode: "no-cors" })
         .then(function () {
           form.reset();
