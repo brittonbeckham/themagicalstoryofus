@@ -18,12 +18,87 @@
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   }
 
+  var brandLink = document.querySelector(".brand");
+  if (menu && brandLink) {
+    var siteRoot = new URL(brandLink.getAttribute("href"), window.location.href);
+    var spotify = "https://open.spotify.com/show/7aiuVvWeplDXFJOmTFpwqc";
+    var icons = {
+      home: '<path d="M6 15L16 6l10 9"/><path d="M8.5 13v13h15V13"/><path d="M13 26v-6a3 3 0 0 1 6 0v6"/>',
+      story: '<circle cx="12.5" cy="16" r="6.5"/><circle cx="19.5" cy="16" r="6.5"/><path class="fill" d="M16 5.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"/>',
+      astrology: '<circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="6.5"/><path d="M16 5v4.5M16 22.5V27M5 16h4.5M22.5 16H27M8.2 8.2l3.2 3.2M20.6 20.6l3.2 3.2M23.8 8.2l-3.2 3.2M11.4 20.6l-3.2 3.2"/>',
+      offerings: '<path d="M16 24c-3-3-4.5-6.5-4.5-10S13.5 7.5 16 5c2.5 2.5 4.5 5.5 4.5 9S19 21 16 24z"/><path d="M16 24c-4.5 0-8.5-2.5-10-7 3.5-.5 6.5.5 8.5 2.5"/><path d="M16 24c4.5 0 8.5-2.5 10-7-3.5-.5-6.5.5-8.5 2.5"/><path d="M8 27h16"/>',
+      podcast: '<rect x="12" y="4.5" width="8" height="14" rx="4"/><path d="M8 15a8 8 0 0 0 16 0"/><path d="M16 23v4.5M12 27.5h8"/>',
+      contact: '<rect x="4.5" y="8" width="23" height="16" rx="2"/><path d="M5.5 9.5L16 17.5l10.5-8"/>'
+    };
+    var pages = [
+      { label: "Home", href: "", icon: "home" },
+      { label: "Our Story", href: "our-story/", icon: "story" },
+      { label: "Astrology", href: "astrology/", icon: "astrology" },
+      { label: "Offerings", href: "offerings/", icon: "offerings" },
+      { label: "Podcast", href: spotify, icon: "podcast", external: true },
+      { label: "Contact", href: "contact/", icon: "contact" }
+    ];
+    var socials = [
+      { label: "Instagram", href: "https://www.instagram.com/themagicalstoryofus/", svg: '<path d="M7.5 2.5h9a5 5 0 0 1 5 5v9a5 5 0 0 1-5 5h-9a5 5 0 0 1-5-5v-9a5 5 0 0 1 5-5Zm0 1.8a3.2 3.2 0 0 0-3.2 3.2v9a3.2 3.2 0 0 0 3.2 3.2h9a3.2 3.2 0 0 0 3.2-3.2v-9a3.2 3.2 0 0 0-3.2-3.2h-9ZM12 7.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-2.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/>' },
+      { label: "Spotify", href: spotify, svg: '<path d="M12 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Zm4.82 15.14a.66.66 0 0 1-.9.22c-2.47-1.51-5.58-1.85-9.24-1.02a.66.66 0 1 1-.29-1.28c4.01-.92 7.44-.52 10.21 1.17.31.19.41.6.22.91Zm1.29-2.86a.82.82 0 0 1-1.13.27c-2.83-1.74-7.14-2.24-10.48-1.23a.82.82 0 1 1-.48-1.57c3.82-1.16 8.57-.6 11.82 1.4.39.24.51.74.27 1.13Zm.11-2.98C14.82 8.79 9.2 8.6 5.95 9.59a.98.98 0 1 1-.57-1.88c3.730-1.13 9.94-.91 13.85 1.41a.98.98 0 0 1-1.01 1.68Z"/>' },
+      { label: "TikTok", href: "https://www.tiktok.com/@themagicalstoryofus", svg: '<path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.3 6.3 0 1 0 5.4 6.3V8.7a7.6 7.6 0 0 0 4.4 1.4V6.7a4.3 4.3 0 0 1-4.4-4.7Z"/>' }
+    ];
+    var here = window.location.pathname.replace(/index\.html$/, "");
+
+    var orbs = pages.map(function (page, i) {
+      var href = page.external ? page.href : new URL(page.href, siteRoot).pathname;
+      var current = !page.external && href === here ? ' aria-current="page"' : "";
+      var target = page.external ? ' target="_blank" rel="noopener"' : "";
+      return '<li class="nc-slot" style="--a: ' + (i * 60 - 90) + "deg; --i: " + i + '">' +
+        '<div class="nc-arm"><div class="nc-upright"><div class="nc-counter">' +
+        '<a class="nc-orb" href="' + href + '"' + current + target + ">" +
+        '<span class="nc-icon"><svg viewBox="0 0 32 32" aria-hidden="true">' + icons[page.icon] + "</svg></span>" +
+        '<span class="nc-label">' + page.label + "</span></a>" +
+        "</div></div></div></li>";
+    }).join("");
+
+    menu.classList.add("is-circle");
+    menu.innerHTML =
+      '<div class="nc-stars" aria-hidden="true"></div>' +
+      '<nav class="nc-stage" aria-label="Mobile"><div class="nc-hub">' +
+      '<svg class="nc-rings" viewBox="0 0 380 380" aria-hidden="true">' +
+      '<circle class="nc-ring-outer" cx="190" cy="190" r="178"/><circle class="nc-ring-main" cx="190" cy="190" r="132"/><circle class="nc-ring-inner" cx="190" cy="190" r="80"/>' +
+      '<g class="nc-ring-stars"><circle cx="190" cy="12" r="1.8"/><circle cx="344" cy="101" r="1.2"/><circle cx="344" cy="279" r="1.6"/><circle cx="190" cy="368" r="1.2"/><circle cx="36" cy="279" r="1.8"/><circle cx="36" cy="101" r="1.2"/></g>' +
+      "</svg>" +
+      '<span class="nc-glow" aria-hidden="true"></span><span class="nc-sigil" aria-hidden="true"></span>' +
+      '<ul class="nc-orbit">' + orbs + "</ul>" +
+      "</div></nav>" +
+      '<div class="nc-foot">' +
+      '<a class="btn btn-light" href="' + new URL("astrology/", siteRoot).pathname + '#readings">Book a reading</a>' +
+      '<div class="nc-social">' + socials.map(function (s) {
+        return '<a href="' + s.href + '" target="_blank" rel="noopener" aria-label="' + s.label + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + s.svg + "</svg></a>";
+      }).join("") + "</div>" +
+      "</div>";
+
+    menu.querySelectorAll(".nc-orb:not([target])").forEach(function (orb) {
+      orb.addEventListener("click", function (event) {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || orb.getAttribute("aria-current")) return;
+        event.preventDefault();
+        menu.querySelectorAll(".nc-orb").forEach(function (o) { o.classList.toggle("is-chosen", o === orb); });
+        menu.classList.add("is-choosing");
+        window.setTimeout(function () { window.location.href = orb.href; }, reduceMotion ? 0 : 520);
+      });
+    });
+  }
+
   if (toggle && menu) {
     toggle.addEventListener("click", function () {
       setMenu(!document.body.classList.contains("menu-open"));
     });
     menu.querySelectorAll("a").forEach(function (link) {
+      if (link.matches(".nc-orb:not([target])")) return;
       link.addEventListener("click", function () { setMenu(false); });
+    });
+    menu.querySelectorAll(".nc-orb[aria-current]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        setMenu(false);
+      });
     });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && document.body.classList.contains("menu-open")) {
