@@ -295,42 +295,16 @@
     var envelope = 0.55 + 0.45 * Math.sin((x / 1200) * Math.PI * 2 + 0.8);
     return r.cy + r.amp * Math.sin(k + phase) * envelope + (t - 0.5) * 16 * Math.cos(k / 2 + phase);
   }
-  var doorway = document.querySelector("[data-doorway]");
-  if (doorway) {
-    var slides = Array.prototype.slice.call(doorway.querySelectorAll(".story-slide"));
+  var slideshow = document.querySelector("[data-slides]");
+  if (slideshow) {
+    var slides = Array.prototype.slice.call(slideshow.querySelectorAll(".story-slide"));
     var current = 0;
-    var startSlides = function () {
-      if (slides.length < 2) return;
+    if (slides.length > 1) {
       window.setInterval(function () {
         slides[current].classList.remove("is-active");
         current = (current + 1) % slides.length;
         slides[current].classList.add("is-active");
       }, 6500);
-    };
-    if (reduceMotion) {
-      doorway.classList.add("is-done");
-      startSlides();
-    } else {
-      var openDoors = function () {
-        window.setTimeout(function () { doorway.classList.add("is-open"); }, 500);
-        window.setTimeout(function () {
-          doorway.classList.add("is-done");
-          startSlides();
-        }, 4100);
-      };
-      var watchDoors = function () {
-        if (!("IntersectionObserver" in window)) {
-          openDoors();
-          return;
-        }
-        var doorWatch = new IntersectionObserver(function (entries) {
-          if (!entries[0].isIntersecting) return;
-          doorWatch.disconnect();
-          openDoors();
-        }, { threshold: 0.45 });
-        doorWatch.observe(doorway);
-      };
-      (window.betaTransitionDone || Promise.resolve()).then(watchDoors);
     }
   }
 

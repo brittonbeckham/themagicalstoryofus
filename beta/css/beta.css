@@ -751,21 +751,8 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   opacity: 0.15;
 }
 
-/* ---------- Doorway + story slides ---------- */
+/* ---------- Story slides (home hero) ---------- */
 
-.doorway { position: relative; perspective: 1600px; }
-.doorway::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  border: 1.5px solid rgba(214, 173, 50, 0.85);
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.35), inset 0 0 0 6px rgba(214, 173, 50, 0.3);
-  pointer-events: none;
-}
-
-.story-slides { position: absolute; inset: 0; z-index: 1; }
 .story-slide {
   position: absolute;
   inset: 0;
@@ -782,88 +769,15 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
 @keyframes drift-out { from { transform: scale(1.02); } to { transform: scale(1.12) translate(1.5%, -1%); } }
 @keyframes drift-pan { from { transform: scale(1.1) translateX(2%); } to { transform: scale(1.1) translateX(-2%); } }
 
-.door-light {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(255, 228, 160, 0.85), rgba(214, 173, 50, 0.35) 45%, rgba(10, 10, 10, 0) 75%);
-  opacity: 0;
-  pointer-events: none;
+@media (min-width: 900px) {
+  .cover-hero .story-slides {
+    left: 34%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 32%);
+    mask-image: linear-gradient(90deg, transparent, #000 32%);
+  }
 }
-
-.door {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 3;
-  width: 50%;
-  overflow: hidden;
-  background:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 9px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 23px),
-    linear-gradient(90deg, #160f0a, #2a1c12 45%, #1c130c);
-  box-shadow: inset 0 0 0 6px #0e0906, inset 0 0 0 7.5px rgba(214, 173, 50, 0.75), inset 0 0 40px rgba(0, 0, 0, 0.6);
-  backface-visibility: hidden;
-  transition: transform 3.4s cubic-bezier(0.6, 0.02, 0.2, 1), opacity 0.9s ease 2.6s;
-}
-.door--left { left: 0; transform-origin: left center; }
-.door--right { right: 0; transform-origin: right center; }
-
-.door-panel {
-  position: absolute;
-  left: 16%;
-  right: 16%;
-  display: grid;
-  place-items: center;
-  border: 1.5px solid rgba(214, 173, 50, 0.8);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.03));
-  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.7), 0 0 0 4px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(214, 173, 50, 0.25);
-}
-.door-panel--top { top: 16%; height: 30%; border-radius: 999px 999px 4px 4px; }
-.door-panel--bottom { top: 62%; bottom: 9%; border-radius: 4px; }
-.door-panel svg { width: 34%; max-width: 40px; fill: var(--gold); filter: drop-shadow(0 0 6px rgba(214, 173, 50, 0.5)); }
-.door-panel--bottom svg { width: 22%; max-width: 26px; }
-
-.door-emblem {
-  position: absolute;
-  top: 48%;
-  width: 22%;
-  aspect-ratio: 1;
-  min-width: 56px;
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-  background: url("../../assets/moon-gold.jpg") center / 150% no-repeat, #000;
-  box-shadow: 0 0 18px rgba(214, 173, 50, 0.45);
-  transform: translateY(-50%);
-}
-.door--left .door-emblem { right: 0; translate: 50% 0; }
-.door--right .door-emblem { left: 0; translate: -50% 0; }
-
-.door-ring {
-  position: absolute;
-  top: 56%;
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-.door--left .door-ring { right: 10%; }
-.door--right .door-ring { left: 10%; }
-
-.doorway.is-open .door--left { transform: rotateY(-96deg); opacity: 0; }
-.doorway.is-open .door--right { transform: rotateY(96deg); opacity: 0; }
-.doorway.is-open .door-light { animation: door-light 3.6s ease-out forwards; }
-@keyframes door-light {
-  0% { opacity: 0; }
-  30% { opacity: 1; }
-  100% { opacity: 0; }
-}
-.doorway.is-done .door,
-.doorway.is-done .door-light { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .door, .door-light { display: none; }
   .story-slide.is-active { animation: none; }
 }
 
