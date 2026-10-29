@@ -377,7 +377,7 @@
         if (!video.getAttribute("src")) {
           video.muted = true;
           video.preload = "auto";
-          video.addEventListener("playing", function () { video.classList.add("is-playing"); }, { once: true });
+          video.addEventListener("loadeddata", function () { video.classList.add("is-ready"); }, { once: true });
           video.addEventListener("error", function () { videoWatch.unobserve(video); }, { once: true });
           video.src = video.getAttribute("data-src");
         }
