@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page transitions prototype | The Magical Story of Us</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../../../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="transitions.css">
+</head>
+<body>
+  <header class="demo-head">
+    <p class="eyebrow">Prototype &middot; Page transitions</p>
+    <h1>How should one page <em>become</em> the next?</h1>
+    <p class="demo-intro">Pick an option to watch it play, then try the links inside the mock site yourself (the Astrology and Home links are wired up). <strong>Book a reading</strong> and <strong>Explore the readings</strong> land on the Readings section further down the Astrology page, so you can see how arriving at a section feels. “Today” at the bottom of the list shows the current behavior for comparison.</p>
+  </header>
+
+  <div class="demo">
+    <aside class="panel" aria-label="Transition options">
+      <div class="options" role="radiogroup" aria-label="Transition" data-options></div>
+    </aside>
+
+    <section class="stage-col" aria-label="Preview">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Screen size">
+          <button type="button" data-frame="phone" aria-pressed="true">Phone</button>
+          <button type="button" data-frame="desktop" aria-pressed="false">Desktop</button>
+        </div>
+        <div class="seg" role="group" aria-label="Speed">
+          <button type="button" data-speed="1" aria-pressed="true">1&times;</button>
+          <button type="button" data-speed="0.25" aria-pressed="false">0.25&times; slow</button>
+        </div>
+        <button class="tool-btn tool-btn--gold" type="button" data-replay>Replay</button>
+        <button class="tool-btn" type="button" data-reset>Back to Home</button>
+        <label class="check"><input type="checkbox" data-reduced> Reduced motion</label>
+      </div>
+
+      <div class="stage" data-stage>
+        <div class="holder" data-holder>
+          <div class="frame phone" data-frame-el>
+            <div class="browser-bar" aria-hidden="true">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="url" data-url>themagicalstoryofus.com/</span>
+            </div>
+            <div class="screen" data-screen>
+
+              <!-- ============ PAGE A: Home ============ -->
+              <div class="page is-visible is-front" data-page="A" data-tone="dark">
+                <div class="page-scroll">
+                  <div class="mock">
+                    <header class="m-header">
+                      <a class="m-brand" href="../../" data-go="A">
+                        <img src="../../../assets/sigil-200.png" width="34" height="34" alt="">
+                        <span><b>The Magical Story of Us</b><small>Britton &amp; Carolee</small></span>
+                      </a>
+                      <nav class="m-nav" aria-label="Mock primary">
+                        <a aria-disabled="true">Our Story</a>
+                        <a href="../../astrology/" data-go="B">Astrology</a>
+                        <a aria-disabled="true">Offerings</a>
+                        <a aria-disabled="true">Podcast</a>
+                      </nav>
+                      <a class="m-btn m-btn-light m-btn-sm m-cta" href="../../astrology/#readings" data-go="B" data-hash="readings">Book a reading</a>
+                      <span class="m-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+                    </header>
+
+                    <section class="m-hero m-night">
+                      <div class="m-wrap m-hero-grid">
+                        <div>
+                          <p class="m-eyebrow">Britton &amp; Carolee Beckham</p>
+                          <h1 class="m-display">There is a magical story <em>in everyone.</em></h1>
+                          <p class="m-lede">Our journey is our message, and we’re here to guide you to unlocking your magical life.</p>
+                          <div class="m-btns">
+                            <a class="m-btn m-btn-light" href="../../astrology/" data-go="B">Explore astrology</a>
+                            <a class="m-btn m-btn-outline" href="../../astrology/#readings" data-go="B" data-hash="readings">Book a reading</a>
+                          </div>
+                          <ul class="m-meta"><li>Astrology</li><li>Ritual shadow work</li><li>Divine union</li></ul>
+                        </div>
+                        <div class="m-arch"><img src="../../../assets/story-cloaks.jpg" width="1067" height="1600" alt="Britton and Carolee in cloaks at the Cliffs of Moher" style="object-position: center 30%"></div>
+                      </div>
+                    </section>
+
+                    <section class="m-section">
+                      <div class="m-wrap">
+                        <p class="m-eyebrow">Begin here</p>
+                        <h2 class="m-h2">Where would you like to <em>begin?</em></h2>
+                        <div class="m-paths">
+                          <a class="m-card" href="../../astrology/" data-go="B">
+                            <img src="../../../assets/astro-hero-mobile.jpg" width="800" height="1200" alt="" style="object-position: center 22%">
+                            <div class="m-card-body"><p class="m-kicker">Star Magic with Carolee</p><h3>Astrology</h3><p>Learn your blueprint and awaken to the cosmic rhythm guiding you.</p><span class="m-arrow">Explore readings</span></div>
+                          </a>
+                          <a class="m-card" aria-disabled="true">
+                            <img src="../../../assets/temple-kneeling.jpg" width="800" height="602" alt="">
+                            <div class="m-card-body"><p class="m-kicker">Work with us</p><h3>Offerings</h3><p>Healing for individuals and couples.</p><span class="m-arrow">See offerings</span></div>
+                          </a>
+                          <a class="m-card" aria-disabled="true">
+                            <img src="../../../assets/hero-cliffs-036.jpg" width="1200" height="700" alt="" style="object-position: 44% center">
+                            <div class="m-card-body"><p class="m-kicker">Love, sovereignty &amp; soul</p><h3>Our Story</h3><p>Five years of rebuilding from the ground up.</p><span class="m-arrow">Read our story</span></div>
+                          </a>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="m-section m-night">
+                      <div class="m-wrap m-split">
+                        <img class="m-moon" src="../../../assets/moon-gold.jpg" width="1024" height="1024" alt="">
+                        <div>
+                          <p class="m-eyebrow">Star Magic with Carolee</p>
+                          <h2 class="m-h2">Awaken to your <em>cosmic blueprint</em></h2>
+                          <p class="m-lede">Astrology is the ancient language of the Universe, the original compass of the soul.</p>
+                          <ul class="m-list">
+                            <li><b>Natal Blueprint</b>See yourself with cosmic clarity.</li>
+                            <li><b>Solar Return</b>A map for your next trip around the Sun.</li>
+                            <li><b>Moon Magic</b>Instant cosmic guidance from the moon.</li>
+                          </ul>
+                          <div class="m-btns">
+                            <a class="m-btn m-btn-light" href="../../astrology/#readings" data-go="B" data-hash="readings">Explore the readings</a>
+                            <a class="m-btn m-btn-outline" href="../../astrology/#carolee" data-go="B" data-hash="carolee">Meet Carolee</a>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <footer class="m-footer m-night">
+                      <img src="../../../assets/sigil-200.png" width="48" height="48" alt="">
+                      <p class="m-footer-name">The Magical Story of Us</p>
+                      <p>Healing, ritual shadow work, and astrology with Britton &amp; Carolee Beckham.</p>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============ PAGE B: Astrology ============ -->
+              <div class="page" data-page="B" data-tone="light">
+                <div class="page-scroll">
+                  <div class="mock">
+                    <header class="m-header">
+                      <a class="m-brand" href="../../" data-go="A">
+                        <img src="../../../assets/sigil-200.png" width="34" height="34" alt="">
+                        <span><b>The Magical Story of Us</b><small>Britton &amp; Carolee</small></span>
+                      </a>
+                      <nav class="m-nav" aria-label="Mock primary">
+                        <a href="../../" data-go="A">Home</a>
+                        <a aria-disabled="true">Our Story</a>
+                        <a aria-current="page">Astrology</a>
+                        <a aria-disabled="true">Offerings</a>
+                      </nav>
+                      <a class="m-btn m-btn-light m-btn-sm m-cta" href="../../" data-go="A">Back home</a>
+                      <span class="m-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+                    </header>
+
+                    <section class="m-hero-light">
+                      <div class="m-wrap m-hero-grid">
+                        <div>
+                          <p class="m-eyebrow">Star Magic with Carolee</p>
+                          <h1 class="m-display">Awaken to your <em>cosmic blueprint</em></h1>
+                          <p class="m-lede">Your chart is a map of who you came here to be. Carolee reads it with you, gently and precisely.</p>
+                          <div class="m-btns">
+                            <a class="m-btn m-btn-dark" href="../../" data-go="A">Back to home</a>
+                          </div>
+                        </div>
+                        <div class="m-arch m-arch--light"><img src="../../../assets/astro-hero-mobile.jpg" width="800" height="1200" alt="Carolee in the desert at sunset" style="object-position: center 20%"></div>
+                      </div>
+                    </section>
+
+                    <section class="m-section m-line" id="carolee">
+                      <div class="m-wrap m-split m-split--rev">
+                        <img class="m-tall" src="../../../assets/carolee-astrologer.jpg" width="1027" height="1280" alt="Carolee Beckham, astrologer">
+                        <div>
+                          <p class="m-eyebrow">Meet Carolee</p>
+                          <h2 class="m-h2">Your destiny is <em>written in the stars.</em></h2>
+                          <p class="m-lede">Carolee has spent years learning the language of the sky so she can translate it into something you can live by.</p>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="m-section m-line">
+                      <div class="m-wrap">
+                        <p class="m-eyebrow">What’s in astrology, anyway?</p>
+                        <h2 class="m-h2">As above, <em>so below.</em></h2>
+                        <div class="m-three">
+                          <div><b>The Sun</b><p>Your core self and the life force you came to express.</p></div>
+                          <div><b>The Moon</b><p>Your emotional body, your needs, how you find safety.</p></div>
+                          <div><b>The Rising</b><p>The doorway you walk through to meet the world.</p></div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="m-section m-night" id="readings">
+                      <div class="m-wrap">
+                        <p class="m-eyebrow">Readings</p>
+                        <h2 class="m-h2">Choose your <em>reading</em></h2>
+                        <div class="m-readings">
+                          <article class="m-reading"><img src="../../../assets/astro-wheel-1.jpg" width="1200" height="788" alt=""><div><h3>Natal Blueprint</h3><p>See yourself with cosmic clarity and remember why you came here.</p></div></article>
+                          <article class="m-reading"><img src="../../../assets/solar-return-bg.jpg" width="1200" height="596" alt=""><div><h3>Solar Return</h3><p>Navigate your next trip around the Sun.</p></div></article>
+                          <article class="m-reading"><img src="../../../assets/moon-phases.jpg" width="1200" height="857" alt=""><div><h3>Moon Magic</h3><p>Instant cosmic guidance from the moon.</p></div></article>
+                          <article class="m-reading"><img src="../../../assets/sacred-flame.jpg" width="1024" height="1024" alt=""><div><h3>Sacred Mirror</h3><p>The soul agreements shaping your connection.</p></div></article>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="m-section m-center">
+                      <div class="m-wrap">
+                        <p class="m-eyebrow">Not ready yet?</p>
+                        <h2 class="m-h2">Return to the <em>beginning</em></h2>
+                        <div class="m-btns"><a class="m-btn m-btn-dark" href="../../" data-go="A">Back to home</a></div>
+                      </div>
+                    </section>
+
+                    <footer class="m-footer m-night">
+                      <img src="../../../assets/sigil-200.png" width="48" height="48" alt="">
+                      <p class="m-footer-name">The Magical Story of Us</p>
+                      <p>Healing, ritual shadow work, and astrology with Britton &amp; Carolee Beckham.</p>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fx-layer fx-under" data-under></div>
+              <div class="fx-layer fx-over" data-over></div>
+              <canvas class="fx-canvas" data-canvas aria-hidden="true"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h2>What the visitor sees</h2>
+          <p data-note-see></p>
+          <h2>How it would be built</h2>
+          <p data-note-build></p>
+        </article>
+        <article class="note">
+          <h2>Arriving at a section</h2>
+          <p>Every option except “Today” moves the new page to the Readings section <em>before</em> revealing it, so the page appears already in place, and the section’s gold hairline draws in once it settles.</p>
+          <p>On the real site the visible scroll comes from smooth scrolling being switched on for the whole page, which also smooths the browser’s jump to the section on arrival. The fix is to keep scrolling instant while the page loads and switch smooth scrolling on afterward (for clicks within the same page). With the browser’s built-in page transitions, the new page is captured after that instant jump, so the reveal starts already in place.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <p class="rm-banner" data-rm-banner hidden>Your device asks for reduced motion, so every option plays as a quick crossfade. Untick “Reduced motion” to preview the full effects.</p>
+
+  <script src="transitions.js"></script>
+</body>
+</html>
