@@ -363,7 +363,7 @@
   if (cardVideos.length && !reduceMotion && "IntersectionObserver" in window) {
     var hoverPlay = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     var playVideo = function (video) {
-      if (!video.getAttribute("src") || video.ended) return;
+      if (!video.getAttribute("src")) return;
       var playing = video.play();
       if (playing) playing.catch(function () {});
     };

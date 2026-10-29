@@ -842,9 +842,12 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   z-index: -1;
   background: linear-gradient(180deg, rgba(10, 10, 10, 0) 30%, rgba(10, 10, 10, 0.85) 100%);
 }
-.path-card:hover .path-media { transform: scale(1.05); }
+.path-media { transform: scale(1) translateZ(0); backface-visibility: hidden; }
+.path-card:hover .path-media { transform: scale(1.05) translateZ(0); }
 .path-video {
   opacity: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: opacity 0.9s ease;
 }
 .path-video.is-ready { opacity: 1; }
