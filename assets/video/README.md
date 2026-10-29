@@ -1,0 +1,1 @@
+Looping background videos for the home page cards. Drop in our-story.mp4, astrology.mp4 and offerings.mp4 (6 seconds, muted, H.264 MP4, under about 3 MB each). Until a file exists, the card shows its photo.
