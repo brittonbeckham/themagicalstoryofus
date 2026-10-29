@@ -367,6 +367,44 @@
       var playing = video.play();
       if (playing) playing.catch(function () {});
     };
+    // Chrome snaps <video> layers to whole pixels while a parent transform animates,
+    // so frames are painted onto a software canvas that zooms as smoothly as the photo.
+    var paintVideo = function (video) {
+      var canvas = document.createElement("canvas");
+      canvas.className = "path-canvas";
+      canvas.setAttribute("aria-hidden", "true");
+      video.parentNode.insertBefore(canvas, video.nextSibling);
+      var ctx = canvas.getContext("2d", { willReadFrequently: true });
+      var pos = (getComputedStyle(video).objectPosition || "50% 50%").split(" ").map(function (part) {
+        var value = parseFloat(part);
+        return /%$/.test(part) && !isNaN(value) ? value / 100 : 0.5;
+      });
+      var draw = function () {
+        if (!video.videoWidth || !canvas.width) return;
+        var scale = Math.max(canvas.width / video.videoWidth, canvas.height / video.videoHeight);
+        var w = video.videoWidth * scale;
+        var h = video.videoHeight * scale;
+        ctx.drawImage(video, (canvas.width - w) * pos[0], (canvas.height - h) * (pos[1] === undefined ? 0.5 : pos[1]), w, h);
+      };
+      var size = function () {
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(canvas.offsetWidth * ratio);
+        canvas.height = Math.round(canvas.offsetHeight * ratio);
+        draw();
+      };
+      var loop = function () {
+        draw();
+        if (!video.paused) window.requestAnimationFrame(loop);
+      };
+      video.addEventListener("loadeddata", function () {
+        size();
+        canvas.classList.add("is-ready");
+      }, { once: true });
+      video.addEventListener("play", function () { window.requestAnimationFrame(loop); });
+      video.addEventListener("pause", draw);
+      if ("ResizeObserver" in window) new ResizeObserver(size).observe(canvas);
+      else window.addEventListener("resize", size);
+    };
     var videoWatch = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var video = entry.target;
@@ -377,7 +415,7 @@
         if (!video.getAttribute("src")) {
           video.muted = true;
           video.preload = "auto";
-          video.addEventListener("loadeddata", function () { video.classList.add("is-ready"); }, { once: true });
+          paintVideo(video);
           video.addEventListener("error", function () { videoWatch.unobserve(video); }, { once: true });
           video.src = video.getAttribute("data-src");
         }
