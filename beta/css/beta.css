@@ -1623,13 +1623,16 @@ body.menu-open .beta-pill { display: none; }
   border: 1px solid var(--line);
 }
 .highlight { padding: clamp(28px, 3vw, 40px); background: var(--paper-2); }
-.highlight-num {
+.highlight-glyph {
   display: block;
-  margin-bottom: 1rem;
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  line-height: 1;
-  color: var(--gold);
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.1rem;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .highlight h3 { font-size: 1.6rem; }
 .highlight p { margin: 0; font-size: 1rem; color: var(--ink-soft); }
@@ -2085,3 +2088,100 @@ html.vt-run[data-vt="moon"] .vt-rim {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+/* ---------- Carolee theme (Astrology page) ---------- */
+/* Wine-dark palette from her portal page; header, footer and menus keep the main brand. */
+
+.astro-rose {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: 150%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: var(--gold);
+  -webkit-mask: url("../../assets/portal/rose-moons.png") center / contain no-repeat;
+  mask: url("../../assets/portal/rose-moons.png") center / contain no-repeat;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: portal-turn 240s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .astro-rose { animation: none; }
+}
+
+body.theme-carolee {
+  --paper: #140b10;
+  --paper-2: #1b0f16;
+  --card: #23121a;
+  --ink: #f4ece6;
+  --ink-soft: #d8c8c2;
+  --muted: #b3a19b;
+  --line: rgba(228, 208, 168, 0.16);
+  --accent: #e4d0a8;
+  --gold: #d9a28e;
+  --gold-soft: #e4d0a8;
+  --night: #0f0a0c;
+  --night-2: #1a0d12;
+  --night-card: #23121a;
+  --night-text: #f4ece6;
+  --night-muted: #c3b5ab;
+  --night-line: rgba(228, 208, 168, 0.14);
+  --garnet: #4a1520;
+  --radius: 16px;
+  --rose: #8e2a40;
+  --rose-hover: #a3364f;
+}
+
+body.theme-carolee .site-header,
+body.theme-carolee .site-footer,
+body.theme-carolee .mobile-menu,
+body.theme-carolee .beta-pill {
+  --paper: #ffffff;
+  --ink: #0b0b0b;
+  --line: rgba(0, 0, 0, 0.12);
+  --accent: #9d7b12;
+  --gold: #c39a1f;
+  --gold-soft: #d6ad32;
+  --night: #0a0a0a;
+  --night-2: #141414;
+  --night-card: #161616;
+  --night-text: #f2f2f2;
+  --night-muted: #a8a8a8;
+  --night-line: rgba(255, 255, 255, 0.14);
+  --radius: 4px;
+}
+
+.theme-carolee .hero { background: radial-gradient(ellipse 70% 80% at 72% 45%, #2a1220 0%, var(--night) 62%); }
+.theme-carolee h2 em,
+.theme-carolee .display em { color: var(--accent); }
+.theme-carolee .bg-sand { background: var(--paper-2); }
+
+.theme-carolee .btn-light,
+.theme-carolee .btn-primary { background: var(--rose); border-color: var(--rose); color: #f7efe6; }
+.theme-carolee .btn-light:hover,
+.theme-carolee .btn-primary:hover { background: var(--rose-hover); border-color: var(--rose-hover); color: #fff; }
+.theme-carolee .btn-outline { border-color: rgba(228, 208, 168, 0.6); color: var(--ink); }
+.theme-carolee .btn-outline:hover { background: var(--accent); border-color: var(--accent); color: #1a0d12; }
+
+.theme-carolee .hero-inset {
+  width: 46%;
+  aspect-ratio: 1;
+  border: 2px solid rgba(217, 162, 142, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--night), 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.theme-carolee .split-media .tall { border-radius: 999px 999px var(--radius) var(--radius); }
+
+.theme-carolee .highlights { overflow: hidden; border-radius: var(--radius); }
+.theme-carolee .highlight { background: var(--card); }
+
+.theme-carolee .quote-card {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+.theme-carolee .portal-card { border-radius: var(--radius); border-color: rgba(217, 162, 142, 0.4); }
