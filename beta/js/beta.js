@@ -340,7 +340,10 @@
       var max = track.scrollWidth - track.clientWidth;
       nav.hidden = max < 4;
       var index = Math.round(track.scrollLeft / step());
-      dots.forEach(function (dot, i) { dot.setAttribute("aria-current", i === index ? "true" : "false"); });
+      dots.forEach(function (dot, i) {
+        if (i === index) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
       prev.disabled = track.scrollLeft < 4;
       next.disabled = track.scrollLeft > max - 4;
     };
