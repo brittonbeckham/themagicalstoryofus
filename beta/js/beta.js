@@ -295,6 +295,67 @@
     var envelope = 0.55 + 0.45 * Math.sin((x / 1200) * Math.PI * 2 + 0.8);
     return r.cy + r.amp * Math.sin(k + phase) * envelope + (t - 0.5) * 16 * Math.cos(k / 2 + phase);
   }
+  document.querySelectorAll(".quote-card").forEach(function (card) {
+    var quote = card.querySelector("blockquote");
+    if (!quote) return;
+    card.classList.add("is-clamped");
+    if (quote.scrollHeight <= quote.clientHeight + 2) {
+      card.classList.remove("is-clamped");
+      return;
+    }
+    var more = document.createElement("button");
+    more.type = "button";
+    more.className = "quote-more";
+    more.textContent = "Read more";
+    more.setAttribute("aria-expanded", "false");
+    quote.after(more);
+    more.addEventListener("click", function () {
+      var open = card.classList.toggle("is-clamped") === false;
+      more.textContent = open ? "Show less" : "Read more";
+      more.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
+  document.querySelectorAll(".quotes").forEach(function (track) {
+    var cards = Array.prototype.slice.call(track.children);
+    if (cards.length < 2) return;
+    var arrow = function (dir, label) {
+      return '<button class="quotes-arrow" type="button" data-dir="' + dir + '" aria-label="' + label + '">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (dir < 0 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7") + '"/></svg></button>';
+    };
+    var nav = document.createElement("div");
+    nav.className = "quotes-nav";
+    nav.innerHTML = arrow(-1, "Previous testimonial") +
+      '<div class="quotes-dots">' + cards.map(function (_, i) {
+        return '<button type="button" aria-label="Testimonial ' + (i + 1) + '"></button>';
+      }).join("") + "</div>" +
+      arrow(1, "Next testimonial");
+    track.after(nav);
+    var dots = Array.prototype.slice.call(nav.querySelectorAll(".quotes-dots button"));
+    var prev = nav.querySelector('[data-dir="-1"]');
+    var next = nav.querySelector('[data-dir="1"]');
+
+    var step = function () { return cards[1].offsetLeft - cards[0].offsetLeft; };
+    var update = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      nav.hidden = max < 4;
+      var index = Math.round(track.scrollLeft / step());
+      dots.forEach(function (dot, i) { dot.setAttribute("aria-current", i === index ? "true" : "false"); });
+      prev.disabled = track.scrollLeft < 4;
+      next.disabled = track.scrollLeft > max - 4;
+    };
+    nav.addEventListener("click", function (event) {
+      var button = event.target.closest("button");
+      if (!button) return;
+      var dir = Number(button.getAttribute("data-dir"));
+      var left = dir ? track.scrollLeft + dir * step() : dots.indexOf(button) * step();
+      track.scrollTo({ left: left, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+
   var slideshow = document.querySelector("[data-slides]");
   if (slideshow) {
     var slides = Array.prototype.slice.call(slideshow.querySelectorAll(".story-slide"));
