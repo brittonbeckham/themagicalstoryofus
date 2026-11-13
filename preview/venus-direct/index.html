@@ -25,10 +25,60 @@
   <link rel="stylesheet" href="../../css/site.css">
   <link rel="stylesheet" href="../../css/portal.css">
   <style>
-    .portal .p-story { padding: 8px 0 80px; }
+    .portal .p-story { padding: 8px 0 48px; }
     .portal .p-story-copy { max-width: 680px; margin: 0 auto; }
+    .portal .p-words { padding: 32px 0 120px; }
+    .portal .p-words-list {
+      max-width: 680px;
+      margin: 48px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .portal .p-words-item {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      text-align: center;
+    }
+    .portal .p-words-item::before {
+      content: "\201C";
+      display: block;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--a-accent);
+      opacity: 0.75;
+      margin: 0 0 10px;
+    }
+    .portal .p-words-item p {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.65;
+      color: var(--d-text);
+      margin: 0 0 22px;
+    }
+    .portal .p-words-item footer,
+    .portal .p-words-item cite {
+      font-family: "Source Sans 3", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--a-accent);
+    }
+    .portal .p-words-item footer { margin: 0; }
+    .portal .p-words-item cite::before { content: "\2014\00a0"; letter-spacing: 0; }
     @media (max-width: 960px) {
-      .portal .p-story { padding: 4px 0 56px; }
+      .portal .p-story { padding: 4px 0 32px; }
+      .portal .p-words { padding: 16px 0 88px; }
+      .portal .p-words-list { margin-top: 36px; gap: 48px; }
+      .portal .p-words-item p { font-size: 18px; }
     }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNWGR4YDGB"></script>
@@ -110,6 +160,30 @@
         <div class="body-copy center p-story-copy">
           <p>This date has a much older meaning than the superstition we inherited. Before the Patriarchy took away from the feminine its inherent power, Friday the 13th was a day deeply connected to honoring the Goddess, connecting to lunar cycles and deepening into feminine mysteries.</p>
           <p>Today both Venus and Mercury go direct! And with Venus in Libra, a sign she rules, there&rsquo;s a lot of awakening power that we can now access. This Venus Direct Transmission is a personal reading for that moment, to help you receive the message it holds for you, and to find balance between what was revealed during the retrograde portal and what you&rsquo;re now ready to bring into the world.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section white p-words" id="words">
+      <div class="wrap">
+        <div class="section-head">
+          <hr class="rule short center">
+          <h2 class="title center">In their words</h2>
+        </div>
+        <div class="p-words-list">
+          <blockquote class="p-words-item">
+            <p>This was my first astrology reading and it was so supportive to receive especially as I was navigating so many complicated feelings. This reading exceeded my expectations&hellip; The reading gave me words to use to fill the void of expression as I was fully in the underworld&hellip; This was truly supportive to my experience and gave me some ease.</p>
+            <footer><cite>Coy</cite></footer>
+          </blockquote>
+          <blockquote class="p-words-item">
+            <p>Carolee explains astrology where you are&hellip; she knows I am still a beginner but also that I am learning and she encourages me through her transmissions to continue looking things over and finding what works best for me.</p>
+            <footer><cite>Sharee</cite></footer>
+          </blockquote>
+          <blockquote class="p-words-item">
+            <p>It feels good to be seen from a larger lens that feels like it&rsquo;s holding me through my trials and celebrations.</p>
+            <footer><cite>Erin</cite></footer>
+          </blockquote>
         </div>
       </div>
     </section>
