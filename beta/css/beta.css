@@ -199,7 +199,7 @@ h1 em, h2 em, h3 em, .display em, .statement em {
   min-height: 48px;
   padding: 0.85em 1.75em;
   border: 1px solid transparent;
-  border-radius: 20px;
+  border-radius: 8px;
   font: 600 0.76rem/1.2 var(--sans);
   letter-spacing: 0.16em;
   text-transform: uppercase;
