@@ -854,10 +854,10 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   font: 600 0.68rem/1.4 var(--sans);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold-soft);
+  color: #fff;
 }
 .path-card h3 { font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem); margin-bottom: 0.3em; }
-.path-card p { max-width: 32ch; margin-bottom: 1.25rem; font-size: 0.98rem; color: rgba(255, 255, 255, 0.86); }
+.path-card p { max-width: 32ch; margin-bottom: 1.25rem; font-size: 0.98rem; color: #fff; }
 .path-card .link-arrow { border-color: rgba(255, 255, 255, 0.5); }
 
 @media (min-width: 960px) {
