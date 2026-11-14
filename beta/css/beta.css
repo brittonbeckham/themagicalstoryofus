@@ -1656,6 +1656,9 @@ body.menu-open .beta-pill { display: none; }
 .portal-aside-label { margin: 0 0 1rem; font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; color: #fff; }
 .portal-aside-label + .portal-aside-note { margin: -0.5rem 0 1.25rem; }
 .portal-notify { margin-top: 0; }
+.portal-notify .waitlist-fields { grid-template-columns: 1fr; gap: 12px; }
+.portal-notify input { min-height: 52px; }
+.portal-notify .btn { width: 100%; }
 
 @media (min-width: 900px) {
   .portal-card { grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); }
