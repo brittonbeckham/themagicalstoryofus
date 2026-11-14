@@ -165,12 +165,14 @@
     }).sort(byDate("opens"))[0];
 
     var notifyForm = function (label) {
-      return '<form class="waitlist portal-notify" data-ml-form data-ml-action="" data-success="You’re on the list. We’ll email you the moment the next portal opens." novalidate>' +
+      return '<form class="waitlist portal-notify" data-ml-form data-ml-action="https://assets.mailerlite.com/jsonp/994210/forms/204154609105634706/subscribe" data-success="You’re on the list. We’ll email you the moment the next portal opens." novalidate>' +
         '<div class="waitlist-fields">' +
         '<label class="visually-hidden" for="portal-email">Email</label>' +
         '<input id="portal-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required>' +
         '<button class="btn btn-light" type="submit">' + esc(label) + "</button>" +
         "</div>" +
+        '<input type="hidden" name="ml-submit" value="1">' +
+        '<input type="hidden" name="anticsrf" value="true">' +
         '<p class="waitlist-status" role="status" aria-live="polite"></p>' +
         "</form>";
     };
