@@ -361,43 +361,44 @@
 
   var cardVideos = Array.prototype.slice.call(document.querySelectorAll("video[data-src]"));
   if (cardVideos.length && !reduceMotion && "IntersectionObserver" in window) {
-    var hoverPlay = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    // Matches the three-column card layout; narrower screens and touch screens play in view.
+    var hoverPlay = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 960px)");
     var playVideo = function (video) {
       if (!video.getAttribute("src")) return;
       var playing = video.play();
       if (playing) playing.catch(function () {});
     };
+    var sync = function (video) {
+      if (video.inView && (!hoverPlay.matches || video.matches(".path-card:hover video, .path-card:focus video"))) playVideo(video);
+      else if (video.currentSrc) video.pause();
+    };
     var videoWatch = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var video = entry.target;
-        if (!entry.isIntersecting) {
-          if (video.currentSrc) video.pause();
-          return;
-        }
-        if (!video.getAttribute("src")) {
+        video.inView = entry.isIntersecting;
+        if (video.inView && !video.getAttribute("src")) {
           video.muted = true;
           video.preload = "auto";
           video.addEventListener("loadeddata", function () { video.classList.add("is-ready"); }, { once: true });
           video.addEventListener("error", function () { videoWatch.unobserve(video); }, { once: true });
           video.src = video.getAttribute("data-src");
         }
-        if (hoverPlay) {
-          if (video.matches(".path-card:hover video")) playVideo(video);
-        } else {
-          playVideo(video);
-        }
+        sync(video);
       });
     }, { threshold: 0.25 });
     cardVideos.forEach(function (video) {
       videoWatch.observe(video);
       var card = video.closest(".path-card");
-      if (!hoverPlay || !card) return;
-      var pause = function () { video.pause(); };
-      card.addEventListener("mouseenter", function () { playVideo(video); });
-      card.addEventListener("mouseleave", pause);
-      card.addEventListener("focus", function () { playVideo(video); });
-      card.addEventListener("blur", pause);
+      if (!card) return;
+      var update = function () { sync(video); };
+      card.addEventListener("mouseenter", function () { if (hoverPlay.matches) playVideo(video); });
+      card.addEventListener("mouseleave", function () { if (hoverPlay.matches) video.pause(); });
+      card.addEventListener("focus", update);
+      card.addEventListener("blur", function () { if (hoverPlay.matches) video.pause(); });
     });
+    var resync = function () { cardVideos.forEach(sync); };
+    if (hoverPlay.addEventListener) hoverPlay.addEventListener("change", resync);
+    else if (hoverPlay.addListener) hoverPlay.addListener(resync);
   }
 
   var slideshow = document.querySelector("[data-slides]");
