@@ -233,8 +233,12 @@
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-in");
-        revealObserver.unobserve(entry.target);
+        var track = entry.target.closest(".quotes");
+        var group = track ? track.querySelectorAll(".reveal") : [entry.target];
+        Array.prototype.forEach.call(group, function (el) {
+          el.classList.add("is-in");
+          revealObserver.unobserve(el);
+        });
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     reveals.forEach(function (el) { revealObserver.observe(el); });
