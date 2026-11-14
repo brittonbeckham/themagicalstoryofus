@@ -1377,6 +1377,9 @@ body.menu-open .beta-pill { display: none; }
   scrollbar-width: none;
 }
 .chapter-nav .container::-webkit-scrollbar { display: none; }
+@media (min-width: 760px) {
+  .chapter-nav .container { justify-content: center; gap: 48px; }
+}
 .chapter-nav a {
   flex: none;
   padding: 16px 0 14px;
