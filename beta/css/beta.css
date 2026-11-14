@@ -1537,17 +1537,6 @@ body.menu-open .beta-pill { display: none; }
   line-height: 1.2;
   text-wrap: balance;
 }
-.quote-band blockquote::before {
-  content: "\2726";
-  display: block;
-  margin-bottom: 1.25rem;
-  font-size: 1rem;
-  font-style: normal;
-  color: var(--gold);
-}
-.bg-night .quote-band blockquote::before,
-.quote-band.bg-night blockquote::before { color: var(--gold-soft); }
-
 /* ---------- Astrology ---------- */
 
 /* ---------- Limited readings (portal card) ---------- */
