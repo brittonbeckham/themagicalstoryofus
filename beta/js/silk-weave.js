@@ -60,19 +60,25 @@
     ctx.restore();
   }
 
-  function paint(ctx, W, H, t, text, v) {
-    var step = W < 700 ? 5 : 8;
-    var tall = 1 + 0.7 * text.crowd;
-    var amp = Math.min(H * 0.2, 86) * tall * v.amp;
-    var ribbonW = Math.min(H * 0.2, 78) * tall;
-    var span = Math.max(W, 760);
+  /* The ribbons are composed once on a 1920 x 560 stage (the full-width desktop band)
+     and that stage is scaled to cover the band, so every screen size shows the same
+     wave rather than one recomputed for its own width. */
+  var STAGE_W = 1920;
+  var STAGE_H = 560;
+
+  function paint(ctx, t, v, x0, x1) {
+    var W = STAGE_W;
+    var H = STAGE_H;
+    var step = 8;
+    var amp = 86 * v.amp;
+    var ribbonW = 78;
 
     ribbons.forEach(function (r, ri) {
       var dir = v.dirs[ri];
       var p = r.p + v.shift;
       var q = r.q + v.shift * 0.7;
-      var n = W < 600 ? Math.round(r.n * 0.7) : r.n;
-      var k = TAU / (span * r.len);
+      var n = r.n;
+      var k = TAU / (W * r.len);
       var travel = dir * TAU * t / r.travel;
       var sway = Math.cos(TAU * t / r.sway + q);
       var turn = dir * TAU * t / r.twist;
@@ -98,15 +104,14 @@
         ctx.globalAlpha = 0.35 + 0.65 * Math.sin(Math.PI * u);
         ctx.lineWidth = Math.abs(off) < 0.12 ? 1.2 : 0.8;
         ctx.beginPath();
-        for (var x = -step; x <= W + step; x += step) {
+        for (var x = x0; x <= x1 + step; x += step) {
           var y = centre(x) + off * ribbonW * r.width * Math.cos(twist(x) + off * 0.9);
-          if (x === -step) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();
       }
       ctx.globalAlpha = 1;
     });
-    quietBehindText(ctx, text, 0.6);
   }
 
   var reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -160,12 +165,21 @@
   };
   Band.prototype.draw = function () {
     var ctx = this.ctx;
-    ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    var dpr = this.dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = "source-over";
     ctx.globalAlpha = 1;
     ctx.clearRect(0, 0, this.W, this.H);
     ctx.lineJoin = "round";
-    paint(ctx, this.W, this.H, this.t, this.text, this.variant);
+
+    var s = Math.max(this.W / STAGE_W, this.H / STAGE_H);
+    var ox = (this.W - STAGE_W * s) / 2;
+    var oy = (this.H - STAGE_H * s) / 2;
+    ctx.setTransform(dpr * s, 0, 0, dpr * s, dpr * ox, dpr * oy);
+    paint(ctx, this.t, this.variant, Math.floor(-ox / s / 8) * 8 - 8, (this.W - ox) / s);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    quietBehindText(ctx, this.text, 0.6);
   };
 
   function shouldRun() {
