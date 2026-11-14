@@ -204,13 +204,14 @@
       return '<div class="portal-card portal-card--quiet reveal" data-state="none">' +
         '<span class="portal-sigil" aria-hidden="true" style="--art: url(\'/assets/portal/rose-moons.png\')"></span>' +
         '<div class="portal-main">' +
-        '<p class="eyebrow">Portal readings</p>' +
+        '<p class="eyebrow">Personal portal readings</p>' +
         '<h2 class="portal-title">When the sky opens a portal, <em>Carolee opens a reading.</em></h2>' +
-        '<p class="portal-summary">A few times a year, around an eclipse, a retrograde, or a powerful full moon, Carolee offers a short reading tuned to that exact transit and how it moves through your chart. Each one is open for a week or two, then it closes.</p>' +
+        '<p class="portal-summary">A few times a year, around an eclipse, a retrograde, or a powerful full moon, Carolee studies that transit and its power, then reads it against your own birth chart to see exactly how it moves through you. What you receive is a short reading made personally for you. Each portal is open for a week or two, then it closes.</p>' +
         "</div>" +
         '<div class="portal-aside">' +
-        '<p class="portal-aside-label">Hear about the next one first</p>' +
-        notifyForm("Tell me") +
+        '<p class="portal-aside-label">Get a personal transit reading in the next portal</p>' +
+        '<p class="portal-price-note portal-aside-note">Sign up free and we’ll email you the moment it opens.</p>' +
+        notifyForm("Sign me up") +
         "</div>" +
         "</div>";
     };

@@ -1654,6 +1654,7 @@ body.menu-open .beta-pill { display: none; }
 }
 .portal-cta { align-self: flex-start; }
 .portal-aside-label { margin: 0 0 1rem; font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; color: #fff; }
+.portal-aside-label + .portal-aside-note { margin: -0.5rem 0 1.25rem; }
 .portal-notify { margin-top: 0; }
 
 @media (min-width: 900px) {
