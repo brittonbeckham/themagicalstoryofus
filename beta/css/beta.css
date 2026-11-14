@@ -1522,7 +1522,6 @@ body.menu-open .beta-pill { display: none; }
 @media (min-width: 960px) {
   .chapter-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .chapter-grid--flip .chapter-media { order: -1; }
-  .chapter-media { position: sticky; top: calc(var(--header-h) + 88px); }
 }
 
 /* ---------- Quote band ---------- */
