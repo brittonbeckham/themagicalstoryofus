@@ -1817,6 +1817,17 @@ body.menu-open .beta-pill { display: none; }
   mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
 }
 .bg-sand .silk { --silk-a: #9d7b12; --silk-b: #d6ad32; }
+.silk-weave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
 .silk svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .silk path { fill: none; vector-effect: non-scaling-stroke; }
 .silk-ribbon { animation: silk-drift linear infinite; }
