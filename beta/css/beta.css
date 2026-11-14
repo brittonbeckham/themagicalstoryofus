@@ -2030,7 +2030,17 @@ em.shimmer {
 .contact-field select:focus,
 .contact-field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(214, 173, 50, 0.3); }
 .contact-form .btn { width: 100%; }
+.contact-form .btn:disabled { opacity: 0.6; cursor: wait; }
 .contact-form .waitlist-status { margin: -6px 0 0; color: var(--ink); }
+.contact-optin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.contact-optin input { width: 18px; height: 18px; flex: none; margin: 0; accent-color: var(--gold); }
 
 @media (min-width: 560px) {
   .contact-form .btn { justify-self: start; width: auto; }

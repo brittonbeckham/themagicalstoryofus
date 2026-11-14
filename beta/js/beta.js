@@ -544,6 +544,49 @@
     });
   });
 
+  document.querySelectorAll("[data-contact-form]").forEach(function (form) {
+    var status = form.querySelector(".waitlist-status");
+    var button = form.querySelector("button[type=submit]");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      var endpoint = form.getAttribute("data-formspree");
+      if (!endpoint) {
+        status.textContent = "This form isn’t connected yet. Please email us at themagicalstoryofus@gmail.com and we’ll write back soon.";
+        return;
+      }
+      var data = new FormData(form);
+      var joinList = data.get("join_list");
+      data.delete("join_list");
+      data.append("_subject", "Website message: " + (data.get("topic") || "Something else"));
+      status.textContent = "Sending…";
+      button.disabled = true;
+
+      fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (response) {
+          if (!response.ok) throw new Error("send failed");
+          var list = form.getAttribute("data-list");
+          if (joinList && list) {
+            var sub = new FormData();
+            sub.append("fields[email]", data.get("email"));
+            if (data.get("name")) sub.append("fields[name]", data.get("name"));
+            sub.append("ml-submit", "1");
+            sub.append("anticsrf", "true");
+            fetch(list, { method: "POST", body: sub, mode: "no-cors" }).catch(function () {});
+          }
+          form.reset();
+          status.textContent = "Thank you. Your message is on its way to us, and we’ll write back soon.";
+        })
+        .catch(function () {
+          status.textContent = "Something went wrong. Please email us at themagicalstoryofus@gmail.com.";
+        })
+        .then(function () { button.disabled = false; });
+    });
+  });
+
   var chapterNav = document.querySelector(".chapter-nav");
   if (chapterNav && "IntersectionObserver" in window) {
     var links = Array.prototype.slice.call(chapterNav.querySelectorAll("a[href^='#']"));

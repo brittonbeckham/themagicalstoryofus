@@ -103,21 +103,22 @@
           </div>
         </div>
 
-        <!-- MailerLite: paste the form's JSONP subscribe URL into data-ml-action (group "Website contact"). -->
-        <form class="contact-form reveal" style="--d: 1" data-ml-form data-ml-action="" data-pending="Sending…" data-success="Thank you. Your message is on its way to us, and we’ll write back soon." data-fallback="This form isn’t connected yet. Please email us at themagicalstoryofus@gmail.com and we’ll write back soon." method="post" novalidate>
+        <!-- data-formspree: the Formspree form URL (https://formspree.io/f/...), which emails each message to themagicalstoryofus@gmail.com.
+             data-list: MailerLite "MSOU – Site Footer Subscribe" form, used when the list box is ticked. -->
+        <form class="contact-form reveal" style="--d: 1" data-contact-form data-formspree="" data-list="https://assets.mailerlite.com/jsonp/994210/forms/204154610894505257/subscribe" novalidate>
           <div class="contact-row">
             <div class="contact-field">
               <label for="cf-name">Name</label>
-              <input id="cf-name" type="text" name="fields[name]" autocomplete="name">
+              <input id="cf-name" type="text" name="name" autocomplete="name">
             </div>
             <div class="contact-field">
               <label for="cf-email">Email <span>(required)</span></label>
-              <input id="cf-email" type="email" name="fields[email]" autocomplete="email" required>
+              <input id="cf-email" type="email" name="email" autocomplete="email" required>
             </div>
           </div>
           <div class="contact-field">
             <label for="cf-topic">What is this about?</label>
-            <select id="cf-topic" name="fields[contact_topic]">
+            <select id="cf-topic" name="topic">
               <option value="Astrology reading">Astrology reading</option>
               <option value="Couples / individual work">Couples / individual work</option>
               <option value="Ritual Shadow Work book">Ritual Shadow Work book</option>
@@ -127,10 +128,13 @@
           </div>
           <div class="contact-field">
             <label for="cf-message">Message <span>(required)</span></label>
-            <textarea id="cf-message" name="fields[contact_message]" rows="6" maxlength="1000" required></textarea>
+            <textarea id="cf-message" name="message" rows="6" maxlength="2000" required></textarea>
           </div>
-          <input type="hidden" name="ml-submit" value="1">
-          <input type="hidden" name="anticsrf" value="true">
+          <label class="contact-optin"><input type="checkbox" name="join_list" checked> Also add me to your list for offerings and news</label>
+          <div class="visually-hidden" aria-hidden="true">
+            <label for="cf-gotcha">Leave this empty</label>
+            <input id="cf-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
           <button class="btn btn-primary" type="submit">Send message</button>
           <p class="waitlist-status" role="status" aria-live="polite"></p>
         </form>
