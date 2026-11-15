@@ -68,5 +68,5 @@ Open http://localhost:8080/
 - MailerLite list embed: account `994210`, form `jIKAvz`.
 - Analytics: Google Analytics / GTM `G-JNWGR4YDGB` (present on the live site).
 - Images are downloaded from `static.showit.co` into `/assets/` — nothing hotlinks Showit.
-- Nav **Podcast** → Podbean; footer **Podcast** text + Spotify icon → the Spotify show (matching live).
+- Nav and footer **Podcast** links and the Spotify icon → the Spotify show.
 - Nav **Contact** → `mailto:themagicalstoryofus@gmail.com`.
