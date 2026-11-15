@@ -38,7 +38,7 @@
 .portal .p-mandala--right { right: 0; top: 50%; translate: 50% -50%; }
 
 .portal h3 {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: var(--serif, "Source Serif 4", Georgia, serif);
   font-weight: 400;
   font-size: 22px;
   line-height: 1.3;
@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: var(--serif, "Source Serif 4", Georgia, serif);
   font-size: 19px;
   color: var(--green);
   background: #fff;
@@ -188,7 +188,7 @@
 .portal .p-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .portal .p-field label {
   display: block;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--sans, "Source Sans 3", sans-serif);
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -199,7 +199,7 @@
 .portal .p-field label span { text-transform: none; letter-spacing: 0.02em; font-weight: 300; color: #666; }
 .portal .p-field input {
   width: 100%;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--sans, "Source Sans 3", sans-serif);
   font-size: 17px;
   font-weight: 400;
   color: var(--ink);
@@ -334,7 +334,7 @@
 .portal .p-name-main { display: block; }
 .portal .p-name-sub {
   display: block;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--sans, "Source Sans 3", sans-serif);
   font-weight: 400;
   font-style: normal;
   font-size: clamp(15px, 1.6vw, 20px);
@@ -460,7 +460,7 @@
 }
 .portal .p-callout p { margin: 0; }
 .portal .p-callout .p-callout-label {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--sans, "Source Sans 3", sans-serif);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.22em;
@@ -469,7 +469,7 @@
   margin-bottom: 8px;
 }
 .portal .p-urgency {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: var(--serif, "Source Serif 4", Georgia, serif);
   font-style: italic;
   font-size: 17px;
   text-align: center;
@@ -696,7 +696,7 @@
 /* Sliding-scale price */
 .portal .p-offer-card .p-price { margin: 18px 0 8px; line-height: 1; letter-spacing: 0.01em; }
 .portal .p-price-dash { display: inline-block; margin: 0 0.05em; font-weight: 300; opacity: 0.7; transform: translateY(-0.04em); }
-.portal .p-price-note { margin: 0 0 22px; font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.5; color: #6b6b6b; }
+.portal .p-price-note { margin: 0 0 22px; font-family: var(--serif, "Source Serif 4", Georgia, serif); font-style: italic; font-size: 16px; line-height: 1.5; color: #6b6b6b; }
 .portal--dark .p-price-note { color: var(--d-muted); }
 .portal--dark.portal--scorpio-light .p-price-note { color: #6f5661; }
 @media (max-width: 560px) { .portal .p-price-note { font-size: 15px; } }
@@ -708,7 +708,7 @@
 .portal .p-thanks-mark { margin: 0 0 14px; font-size: 22px; color: #b8975a; }
 .portal .p-thanks .title { margin-bottom: 18px; }
 .portal .p-thanks .body-copy { margin: 0 auto 18px; }
-.portal .p-thanks-note { margin: 0; font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 16px; color: #6b6b6b; }
+.portal .p-thanks-note { margin: 0; font-family: var(--serif, "Source Serif 4", Georgia, serif); font-style: italic; font-size: 16px; color: #6b6b6b; }
 .portal--dark .p-thanks { border-bottom-color: rgba(255,255,255,0.08); }
 .portal--dark .p-thanks-mark { color: var(--d-gold); }
 .portal--dark.portal--alt .p-thanks-mark { color: var(--a-accent); }
