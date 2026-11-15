@@ -1,5 +1,5 @@
-/* Page-to-page transitions for the beta.
-   Loaded in <head> on every beta page (before first render) so it can hook
+/* Page-to-page transitions between the main site pages.
+   Loaded in <head> on each of those pages (before first render) so it can hook
    `pagereveal`. Uses the browser's cross-document View Transitions; browsers
    without them navigate normally. */
 (function () {
@@ -11,7 +11,9 @@
 
   var root = document.documentElement;
   var script = document.currentScript;
-  var betaRoot = new URL("../", script ? script.src : window.location.href).pathname;
+  var siteRoot = new URL("../", script ? script.src : window.location.href).pathname;
+  // Only these pages load this script; the portal, feedback, and blog pages do not.
+  var SITE_PAGES = ["", "our-story/", "astrology/", "offerings/", "contact/"];
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function read(key, store) {
@@ -28,20 +30,20 @@
   root.setAttribute("data-vt", reduceMotion ? "fade" : choice);
 
   function preloadSigil() {
-    if (!reduceMotion) new Image().src = new URL("../assets/sigil-400.png", new URL(betaRoot, window.location.href)).href;
+    if (!reduceMotion) new Image().src = new URL("assets/sigil-400.png", new URL(siteRoot, window.location.href)).href;
   }
   if (choice === "sigil") preloadSigil();
 
   var finishDone;
-  window.betaTransitionDone = new Promise(function (resolve) { finishDone = resolve; });
+  window.siteTransitionDone = new Promise(function (resolve) { finishDone = resolve; });
   window.setTimeout(finishDone, 2500);
   if (!("onpagereveal" in window)) finishDone();
 
-  function isBetaPage(href) {
+  function isSitePage(href) {
     var url = new URL(href, window.location.href);
-    return url.origin === window.location.origin &&
-      url.pathname.indexOf(betaRoot) === 0 &&
-      url.pathname.indexOf(betaRoot + "prototypes/") !== 0;
+    if (url.origin !== window.location.origin) return false;
+    var path = url.pathname.replace(/index\.html$/, "");
+    return SITE_PAGES.some(function (page) { return path === siteRoot + page; });
   }
 
   /* ---------- Leaving a page ---------- */
@@ -69,7 +71,7 @@
   window.addEventListener("pageswap", function (event) {
     if (!event.viewTransition) return;
     var entry = event.activation && event.activation.entry;
-    if (entry && entry.url && !isBetaPage(entry.url)) {
+    if (entry && entry.url && !isSitePage(entry.url)) {
       event.viewTransition.skipTransition();
       return;
     }
@@ -106,7 +108,7 @@
       return;
     }
     var from = window.navigation && window.navigation.activation && window.navigation.activation.from;
-    if (from && from.url && !isBetaPage(from.url)) {
+    if (from && from.url && !isSitePage(from.url)) {
       vt.skipTransition();
       finishDone();
       return;
@@ -215,44 +217,4 @@
       root.classList.add("smooth-scroll");
     }
   }, true);
-
-  /* ---------- Switcher in the beta pill ---------- */
-
-  function buildSwitcher() {
-    var pill = document.querySelector(".beta-pill");
-    if (!pill || pill.querySelector(".vt-switch")) return;
-    var label = pill.firstChild;
-    if (label && label.nodeType === 3 && label.textContent.trim()) {
-      var span = document.createElement("span");
-      span.className = "beta-pill-label";
-      span.textContent = label.textContent.trim();
-      pill.replaceChild(span, label);
-    }
-    var group = document.createElement("span");
-    group.className = "vt-switch";
-    group.setAttribute("role", "group");
-    group.setAttribute("aria-label", "Page transition");
-    group.title = "Page transition for your next click";
-    CHOICES.forEach(function (name) {
-      var button = document.createElement("button");
-      button.type = "button";
-      button.setAttribute("data-vt-choice", name);
-      button.textContent = name.charAt(0).toUpperCase() + name.slice(1);
-      button.setAttribute("aria-pressed", String(name === choice));
-      button.addEventListener("click", function () {
-        choice = name;
-        write(STORE_KEY, name, "localStorage");
-        if (!reduceMotion) root.setAttribute("data-vt", name);
-        if (name === "sigil") preloadSigil();
-        group.querySelectorAll("button").forEach(function (b) {
-          b.setAttribute("aria-pressed", String(b === button));
-        });
-      });
-      group.appendChild(button);
-    });
-    pill.insertBefore(group, pill.querySelector("a"));
-  }
-
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", buildSwitcher);
-  else buildSwitcher();
 })();

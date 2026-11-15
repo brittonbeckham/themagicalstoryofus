@@ -509,8 +509,8 @@ body.menu-open .nc-glow { opacity: 1; transition: opacity 1s ease 0.2s; }
   width: 108px;
   height: 116px;
   background: linear-gradient(135deg, #f3d77e, var(--gold) 42%, #8a6a10 70%, #f3d77e);
-  -webkit-mask: url("../../assets/sigil-lines.png") center / contain no-repeat;
-  mask: url("../../assets/sigil-lines.png") center / contain no-repeat;
+  -webkit-mask: url("../assets/sigil-lines.png") center / contain no-repeat;
+  mask: url("../assets/sigil-lines.png") center / contain no-repeat;
   filter: drop-shadow(0 0 10px rgba(214, 173, 50, 0.55));
   opacity: 0;
   transform: scale(0.5);
@@ -1337,62 +1337,6 @@ body.menu-open .nc-foot { opacity: 1; transform: none; transition: opacity 0.6s 
   .footer-base { padding-bottom: 28px; }
 }
 
-/* ---------- Beta pill ---------- */
-
-.beta-pill {
-  position: fixed;
-  left: 16px;
-  bottom: calc(16px + env(safe-area-inset-bottom));
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 6px 6px 14px;
-  border-radius: 24px;
-  background: rgba(10, 10, 10, 0.88);
-  color: var(--night-text);
-  font: 600 0.64rem/1 var(--sans);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-.beta-pill a {
-  padding: 8px 12px;
-  border-radius: 20px;
-  background: var(--gold-soft);
-  color: var(--ink);
-  text-decoration: none;
-}
-body.menu-open .beta-pill { display: none; }
-
-.vt-switch {
-  display: inline-flex;
-  padding: 2px;
-  border: 1px solid var(--night-line);
-  border-radius: 20px;
-}
-.vt-switch button {
-  min-height: 26px;
-  padding: 0 10px;
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  background: transparent;
-  border: 0;
-  border-radius: 20px;
-  cursor: pointer;
-}
-.vt-switch button:hover { color: var(--gold-soft); }
-.vt-switch button[aria-pressed="true"] { background: #fff; color: var(--ink); }
-.vt-switch button:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
-@media (max-width: 459px) {
-  .beta-pill { padding-left: 6px; gap: 6px; }
-  .beta-pill-label { display: none; }
-}
-
 /* ---------- Story: chapter nav ---------- */
 
 .chapter-nav {
@@ -2141,7 +2085,7 @@ html[data-vt="sigil"]::view-transition-new(root) {
   height: 160px;
   margin: -80px 0 0 -80px;
   border-radius: 50%;
-  background: url("../../assets/sigil-400.png") center / cover no-repeat;
+  background: url("../assets/sigil-400.png") center / cover no-repeat;
   box-shadow: 0 0 46px 12px rgba(214, 173, 50, 0.42), 0 0 140px 50px rgba(214, 173, 50, 0.12);
 }
 @media (min-width: 900px) {
@@ -2237,8 +2181,8 @@ html.vt-run[data-vt="moon"] .vt-rim {
   aspect-ratio: 1;
   translate: -50% -50%;
   background: var(--gold);
-  -webkit-mask: url("../../assets/portal/rose-moons.png") center / contain no-repeat;
-  mask: url("../../assets/portal/rose-moons.png") center / contain no-repeat;
+  -webkit-mask: url("../assets/portal/rose-moons.png") center / contain no-repeat;
+  mask: url("../assets/portal/rose-moons.png") center / contain no-repeat;
   opacity: 0.3;
   pointer-events: none;
   animation: portal-turn 240s linear infinite;
@@ -2272,8 +2216,7 @@ body.theme-carolee {
 
 body.theme-carolee .site-header,
 body.theme-carolee .site-footer,
-body.theme-carolee .mobile-menu,
-body.theme-carolee .beta-pill {
+body.theme-carolee .mobile-menu {
   --paper: #ffffff;
   --ink: #0b0b0b;
   --line: rgba(0, 0, 0, 0.12);
