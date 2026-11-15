@@ -1,72 +1,45 @@
 # The Magical Story of Us
 
-Static recreation of the live Showit site [themagicalstoryofus.com](https://themagicalstoryofus.com/) for GitHub Pages.
+Static site for [themagicalstoryofus.com](https://themagicalstoryofus.com/), hosted on GitHub Pages.
 
-This is a faithful front-end of what visitors actually see: home, our story, astrology, offerings, blog (live placeholder posts), and a 404. Photography-template leftovers from Showit (lorem packages, Gallery 1–6) are not included.
+## Pages
 
-## GitHub Pages
+- `/`, `/our-story/`, `/astrology/`, `/offerings/`, `/contact/`: the main site. Styles in `css/beta.css`, scripts in `js/`.
+- `/portal/`: the active limited portal reading. The Astrology page reads the reading's name from this page's `.p-name-main` heading, so the "Open now" link updates when this page changes.
+- `/feedback/`: reading feedback form.
+- `/preview/`: draft portal pages.
+- `/blog/`, `/single-post/`, `404.html`: pages carried over from the original site.
+- `/beta/...`: redirects to the matching main page.
 
-Published from `main`, site root `/`. Preview URL (no custom DNS yet):
+## Deploying
 
-https://brittonbeckham.github.io/themagicalstoryofus/
+The **Check and deploy site** workflow (`.github/workflows/deploy.yml`) runs on every pull request and every push to `main`:
 
-Paths are relative, so this also works later at `themagicalstoryofus.com` once DNS is pointed at GitHub Pages.
+1. **Check links** (`.github/scripts/check_links.py`) fails if any page or stylesheet points at a local file that does not exist.
+2. **Deploy to GitHub Pages** runs after the check passes, on `main` only.
 
-### Enable Pages
+Merge a pull request into `main` and the site deploys within a couple of minutes. GitHub → Settings → Pages has Source set to **GitHub Actions**, and the custom domain `themagicalstoryofus.com` (also in `CNAME`).
 
-1. Push this folder to `brittonbeckham/themagicalstoryofus`.
-2. GitHub → Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)`.
-3. Leave custom domain empty until you are ready to cut over `themagicalstoryofus.com`.
-4. Check **Enforce HTTPS**.
+## Forms
 
-### DNS cutover (drop Showit)
+- Ritual Shadow Work book waitlist (Home, Our Story): MailerLite form "MSOU – Ritual Shadow Work Book Waitlist", group Ritual Shadow Work.
+- Portal sign-up (Astrology): "MSOU – Astrology Portal Readings", group Astrology.
+- Footer sign-up (every page): "MSOU – Site Footer Subscribe", group Magical Story of Us.
+- Contact page: Formspree form `xqpqernd`, emailed to the site's Gmail. The opt-in box also submits the footer form.
 
-At your domain registrar, replace Showit’s records with GitHub Pages:
-
-**Apex (`themagicalstoryofus.com`) — A records**
-
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
-
-Optional IPv6 AAAA:
-
-```
-2606:50c0:8000::153
-2606:50c0:8001::153
-2606:50c0:8002::153
-2606:50c0:8003::153
-```
-
-**`www` — CNAME**
-
-```
-www  CNAME  brittonbeckham.github.io
-```
-
-(If GitHub later shows a different Pages CNAME target in Settings → Pages, use that.)
-
-TTL: 300–3600s. After DNS propagates, HTTPS will provision automatically.
-
-Remove Showit’s old A/CNAME/ANAME records so they do not conflict.
+Each MailerLite form has a matching confirmation automation in MailerLite.
 
 ## Local preview
 
-Any static server from this directory:
+From this directory:
 
 ```bash
-python3 -m http.server 8080
+python -m http.server 8080
 ```
 
-Open http://localhost:8080/
+Open http://localhost:8080/. Root-relative links such as `/portal/` need the server to run from this directory.
 
 ## Notes
 
-- MailerLite list embed: account `994210`, form `jIKAvz`.
-- Analytics: Google Analytics / GTM `G-JNWGR4YDGB` (present on the live site).
-- Images are downloaded from `static.showit.co` into `/assets/` — nothing hotlinks Showit.
-- Nav **Podcast** → Podbean; footer **Podcast** text + Spotify icon → the Spotify show (matching live).
-- Nav **Contact** → `mailto:themagicalstoryofus@gmail.com`.
+- Analytics: Google Analytics `G-JNWGR4YDGB`.
+- Podcast links go to the Spotify show.
