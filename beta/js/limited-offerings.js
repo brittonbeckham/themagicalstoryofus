@@ -30,7 +30,6 @@ window.LIMITED_OFFERINGS = [
     opens: "2026-10-14T00:00:00-06:00",
     closes: "2026-10-28T23:59:00-06:00",
     url: "/portal/",
-    cta: "Receive your reading",
-    art: "/assets/portal/rose-moons.png"
+    cta: "Receive your reading"
   }
 ];

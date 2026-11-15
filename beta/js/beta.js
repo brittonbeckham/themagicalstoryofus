@@ -177,6 +177,37 @@
         "</form>";
     };
 
+    var zodiacWheel = function () {
+      var signs = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
+      var planets = [["☉", 212], ["☽", 118], ["☿", 228], ["♀", 246], ["♂", 300], ["♃", 286], ["♄", 22], ["♆", 8], ["♅", 68]];
+      var point = function (r, deg) {
+        var a = (deg - 90) * Math.PI / 180;
+        return (r * Math.cos(a)).toFixed(2) + " " + (r * Math.sin(a)).toFixed(2);
+      };
+      var line = function (r1, r2, deg) { return "M" + point(r1, deg) + "L" + point(r2, deg); };
+      var ticks = "";
+      for (var d = 0; d < 360; d += 5) ticks += line(d % 30 ? 79 : 76, 82, d);
+      var spokes = "";
+      for (var s = 0; s < 360; s += 30) spokes += line(82, 98, s);
+      var glyph = function (text, r, deg, size) {
+        var xy = point(r, deg).split(" ");
+        return '<text x="' + xy[0] + '" y="' + xy[1] + '" font-size="' + size + '">' + text + "\uFE0E</text>";
+      };
+      var aspects = [[0, 4], [0, 6], [1, 5], [2, 8], [3, 6], [4, 8], [5, 7]].map(function (pair) {
+        return "M" + point(56, planets[pair[0]][1]) + "L" + point(56, planets[pair[1]][1]);
+      }).join("");
+      return '<svg class="portal-sigil" viewBox="-100 -100 200 200" aria-hidden="true">' +
+        '<g fill="none" stroke="currentColor" stroke-width="0.6">' +
+        '<circle r="98"/><circle r="82"/><circle r="70" stroke-dasharray="1 2.5"/><circle r="56"/>' +
+        '<path d="' + spokes + ticks + '"/>' +
+        '<path d="' + aspects + '" stroke-width="0.4" opacity="0.8"/>' +
+        "</g>" +
+        '<g fill="currentColor" text-anchor="middle" dominant-baseline="central">' +
+        signs.map(function (sign, i) { return glyph(sign, 90, i * 30 + 15, 9); }).join("") +
+        planets.map(function (p) { return glyph(p[0], 63, p[1], 7); }).join("") +
+        "</g></svg>";
+    };
+
     var offerCard = function (o, state) {
       var left = state === "open" ? timeLeft(o.closes) : "";
       var status = state === "open"
@@ -190,7 +221,7 @@
             '<a class="btn btn-light portal-cta" href="' + esc(o.url) + '">' + esc(o.cta || "Reserve your reading") + "</a>"
           : notifyForm("Notify me"));
       return '<div class="portal-card reveal" data-state="' + state + '">' +
-        '<span class="portal-sigil" aria-hidden="true" style="--art: url(\'' + esc(o.art || "/assets/portal/rose-moons.png") + '\')"></span>' +
+        zodiacWheel() +
         '<div class="portal-main">' +
         '<p class="portal-status"><span class="portal-dot" aria-hidden="true"></span>' + esc(status) + "</p>" +
         '<p class="eyebrow">' + esc(o.kind || "Limited reading") + "</p>" +
@@ -204,10 +235,16 @@
 
     var nextPortalCard = function () {
       return '<div class="portal-card portal-card--quiet reveal" data-state="none">' +
-        '<span class="portal-sigil" aria-hidden="true" style="--art: url(\'/assets/portal/rose-moons.png\')"></span>' +
+        zodiacWheel() +
         '<div class="portal-main">' +
         '<p class="eyebrow">Personal portal readings</p>' +
         '<h2 class="portal-title">When the sky opens a portal, <em>Carolee opens a reading.</em></h2>' +
+        '<a class="portal-live" href="/portal/" data-portal-live hidden>' +
+        '<span class="portal-dot" aria-hidden="true"></span>' +
+        '<span class="portal-live-label">Open now</span>' +
+        '<span class="portal-live-name"></span>' +
+        '<span class="portal-live-cta">View the active portal</span>' +
+        "</a>" +
         '<p class="portal-summary">A few times a year, around an eclipse, a retrograde, or a powerful full moon, Carolee studies that transit and its power, then reads it against your own birth chart to see exactly how it moves through you. What you receive is a short reading made personally for you. Each portal is open for a week or two, then it closes.</p>' +
         "</div>" +
         '<div class="portal-aside">' +
@@ -228,6 +265,23 @@
       target.innerHTML = html;
       slot.hidden = false;
     });
+
+    // The portal page is the source of truth for the active reading's name.
+    var liveLinks = document.querySelectorAll("[data-portal-live]");
+    if (liveLinks.length && "DOMParser" in window) {
+      fetch("/portal/", { credentials: "same-origin" })
+        .then(function (response) { return response.ok ? response.text() : ""; })
+        .then(function (html) {
+          var page = new DOMParser().parseFromString(html, "text/html");
+          var name = page.querySelector(".p-name-main");
+          if (!name || !name.textContent.trim()) return;
+          Array.prototype.forEach.call(liveLinks, function (link) {
+            link.querySelector(".portal-live-name").textContent = name.textContent.trim();
+            link.hidden = false;
+          });
+        })
+        .catch(function () {});
+    }
   }
 
   var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
