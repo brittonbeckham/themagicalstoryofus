@@ -10,8 +10,8 @@
   var root = document.documentElement;
   var script = document.currentScript;
   var siteRoot = new URL("../", script ? script.src : window.location.href).pathname;
-  // Only these pages load this script; the portal, feedback, and blog pages do not.
-  var SITE_PAGES = ["", "our-story/", "astrology/", "offerings/", "contact/"];
+  // Only these pages load this script; the feedback, preview, and blog pages do not.
+  var SITE_PAGES = ["", "our-story/", "astrology/", "offerings/", "contact/", "portal/"];
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function read(key, store) {
