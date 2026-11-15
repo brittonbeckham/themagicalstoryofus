@@ -1,17 +1,30 @@
 /* Portal page on the main site styles.
    Loaded after beta.css and portal.css. Supplies the layout basics portal.css
-   expects (page width, sections, rules, headings) and sets buttons and inputs
-   to the main site's shape and type. Colours stay with the portal theme. */
+   expects (page width, sections, rules, headings, card) and sets buttons and
+   inputs to the main site's shape and type. Colours stay with the portal theme.
+
+   Layout rules sit inside :where(.portal) so they never outrank portal.css,
+   which sizes its own sections (the offer card, the 680px birth-details form). */
 
 .portal { padding-top: var(--header-h); font-family: var(--sans); }
-.portal .center { text-align: center; }
-.portal .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter, 24px); }
-.portal .section { padding: 56px 0 64px; }
-.portal .section.tight { padding: 48px 0; }
-.portal .section-head { max-width: none; margin: 0 auto 28px; text-align: center; }
-.portal .rule { width: 100%; height: 1px; margin: 12px 0 18px; border: 0; }
-.portal .rule.short { max-width: 270px; }
-.portal .rule.center { margin-left: auto; margin-right: auto; }
+
+:where(.portal) .center { text-align: center; }
+:where(.portal) .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+:where(.portal) .section { padding: 56px 0 64px; }
+:where(.portal) .section.tight { padding: 48px 0; }
+:where(.portal) .section-head { max-width: none; margin: 0 auto 28px; text-align: center; }
+:where(.portal) .rule { width: 100%; height: 1px; margin: 12px 0 18px; border: 0; }
+:where(.portal) .rule.short { max-width: 270px; }
+:where(.portal) .rule.center { margin-left: auto; margin-right: auto; }
+:where(.portal) .body-copy p { margin: 0 0 1.1em; }
+:where(.portal) .body-copy p:last-child { margin-bottom: 0; }
+:where(.portal) .reading-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 42px 40px 36px;
+  border-radius: 18px;
+  text-align: center;
+}
 
 .portal .title {
   margin: 0 0 0.4em;
@@ -34,8 +47,6 @@
   text-align: center;
 }
 .portal .body-copy { font: 400 1.05rem/1.7 var(--sans); }
-.portal .body-copy p { margin: 0 0 1.1em; }
-.portal .body-copy p:last-child { margin-bottom: 0; }
 .portal .story-kicker {
   margin: 0 0 18px;
   font: 600 0.76rem/1.4 var(--sans);
@@ -43,10 +54,9 @@
   text-transform: uppercase;
   text-align: center;
 }
-
-.portal .reading-card { max-width: 520px; margin: 0 auto; padding: 42px 40px 36px; text-align: center; }
+.portal .p-offer-card { width: 100%; }
 .portal .reading-card .tag { margin: 0 0 8px; font: italic 400 1.2rem/1.4 var(--serif); }
-.portal .reading-card .price { margin: 8px 0 18px; font: 500 3rem/1 var(--serif); }
+.portal .reading-card .price { font-family: var(--serif); font-weight: 500; }
 
 .portal .btn {
   display: inline-flex;
@@ -76,6 +86,7 @@
 }
 
 @media (max-width: 960px) {
-  .portal .section { padding: 40px 0; }
-  .portal .reading-card { padding: 28px 20px; }
+  :where(.portal) .wrap { padding: 0 18px; }
+  :where(.portal) .section { padding: 40px 0; }
+  :where(.portal) .reading-card { padding: 28px 20px; }
 }
