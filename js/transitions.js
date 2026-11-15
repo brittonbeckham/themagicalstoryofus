@@ -3,9 +3,7 @@
    `pagereveal`. Uses the browser's cross-document View Transitions; browsers
    without them navigate normally. */
 (function () {
-  var DEFAULT_TRANSITION = "peel";
-  var CHOICES = ["peel", "sigil", "moon"];
-  var STORE_KEY = "tmsou-transition";
+  var TRANSITION = "sigil";
   var TONE_KEY = "tmsou-transition-tone";
   var PEEL_MS = 1050;
 
@@ -23,10 +21,7 @@
     try { window[store].setItem(key, value); } catch (e) {}
   }
 
-  var fromQuery = new URLSearchParams(window.location.search).get("transition");
-  if (CHOICES.indexOf(fromQuery) > -1) write(STORE_KEY, fromQuery, "localStorage");
-  var stored = read(STORE_KEY, "localStorage");
-  var choice = CHOICES.indexOf(stored) > -1 ? stored : DEFAULT_TRANSITION;
+  var choice = TRANSITION;
   root.setAttribute("data-vt", reduceMotion ? "fade" : choice);
 
   function preloadSigil() {
