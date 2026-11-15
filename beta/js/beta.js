@@ -529,7 +529,7 @@
       }
       var action = form.getAttribute("data-ml-action");
       if (!action) {
-        status.textContent = form.getAttribute("data-fallback") || "Sign-ups open soon. In the meantime, email us at themagicalstoryofus@gmail.com.";
+        status.textContent = form.getAttribute("data-fallback") || "Sign-ups open soon. Please check back shortly.";
         return;
       }
       status.textContent = form.getAttribute("data-pending") || "Adding you to the list…";
@@ -539,7 +539,7 @@
           status.textContent = form.getAttribute("data-success") || "You’re on the list. Thank you.";
         })
         .catch(function () {
-          status.textContent = "Something went wrong. Please email us at themagicalstoryofus@gmail.com.";
+          status.textContent = "Something went wrong. Please try again in a moment.";
         });
     });
   });
@@ -555,7 +555,7 @@
       }
       var endpoint = form.getAttribute("data-formspree");
       if (!endpoint) {
-        status.textContent = "This form isn’t connected yet. Please email us at themagicalstoryofus@gmail.com and we’ll write back soon.";
+        status.textContent = "This form isn’t connected yet. Please check back shortly.";
         return;
       }
       var data = new FormData(form);
@@ -581,7 +581,7 @@
           status.textContent = "Thank you. Your message is on its way to us, and we’ll write back soon.";
         })
         .catch(function () {
-          status.textContent = "Something went wrong. Please email us at themagicalstoryofus@gmail.com.";
+          status.textContent = "Something went wrong. Please try again in a moment.";
         })
         .then(function () { button.disabled = false; });
     });
