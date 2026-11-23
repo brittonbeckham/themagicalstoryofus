@@ -131,6 +131,7 @@
       margin: 0 auto;
     }
     .portal .at-split--flip .at-photo { order: 2; }
+    .portal .at-photo--tall { max-width: 440px; width: 100%; justify-self: center; }
     .portal .at-split .section-head { text-align: left; margin-bottom: 28px; }
     .portal .at-split .section-head .rule { margin-left: 0; }
     .portal .at-split .body-copy p { margin: 0 0 1.1em; }
@@ -168,8 +169,9 @@
       .portal .at-split-grid { grid-template-columns: 1fr; gap: 40px; }
       .portal .at-split--flip .at-photo { order: 0; }
       .portal .at-split .at-photo { max-width: 520px; margin: 0 auto; width: 100%; }
+      .portal .at-split .at-photo--tall { max-width: 420px; }
       .portal .at-split .section-head { text-align: center; }
-      .portal .at-split .section-head .rule { margin-left: auto; }
+      .portal .at-split .section-head .rule { margin-left: auto; margin-right: auto; }
       .portal .at-offer { padding: 96px 0; }
       .portal .at-offer .p-offer-grid { gap: 48px; }
       .portal .at-offer .p-offer-card { padding: 56px 24px 52px; }
@@ -261,8 +263,8 @@
     <!-- THE SKY -->
     <section class="section gray at-split" id="about">
       <div class="wrap at-split-grid">
-        <figure class="at-photo">
-          <img src="../../assets/astro-hero.jpg" alt="Carolee in the desert at sunrise, arms lifted, the sun bright behind her" width="1067" height="670" loading="lazy">
+        <figure class="at-photo at-photo--tall">
+          <img src="../../assets/astro-hero-mobile.jpg" alt="Carolee kneeling in the desert sand at sunrise in a flowing dress, hair wild, sand slipping through her hands" width="800" height="1200" loading="lazy">
         </figure>
         <div>
           <div class="section-head">
