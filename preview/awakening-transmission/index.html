@@ -12,11 +12,11 @@
   <meta property="og:url" content="https://themagicalstoryofus.com/preview/awakening-transmission/">
   <meta property="og:title" content="Awakening Transmission | The Magical Story of Us">
   <meta property="og:description" content="The Full Moon in Gemini rises beside Uranus, the great awakener. Book your Awakening Transmission with Carolee, $55. Book by 5 PM MST Monday for ritual instructions; the portal closes Wednesday at midnight.">
-  <meta property="og:image" content="https://themagicalstoryofus.com/preview/awakening-transmission/og-awakening.jpg">
+  <meta property="og:image" content="https://themagicalstoryofus.com/preview/awakening-transmission/og-awakening-plum.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Awakening Transmission | The Magical Story of Us">
   <meta name="twitter:description" content="The Full Moon in Gemini rises beside Uranus, the great awakener. Book your Awakening Transmission with Carolee, $55. Book by 5 PM MST Monday for ritual instructions; the portal closes Wednesday at midnight.">
-  <meta name="twitter:image" content="https://themagicalstoryofus.com/preview/awakening-transmission/og-awakening.jpg">
+  <meta name="twitter:image" content="https://themagicalstoryofus.com/preview/awakening-transmission/og-awakening-plum.jpg">
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" href="../../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,8 +95,28 @@
     }
     .portal .at-hero { padding: 96px 0 80px; text-align: center; }
     .portal .at-hero .at-photo { max-width: 460px; margin: 0 auto 56px; }
-    .portal .at-portal { max-width: 520px; }
-    .portal .at-portal-video { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; background: #4a1520; box-shadow: 0 0 90px rgba(var(--a-accent-rgb), 0.18); }
+    /* Hero portal: the loop's own glow (burgundy centre to indigo) continues into the page, so there is no square edge.
+       The mask only fades the plain gradient corners (beyond 92% of the half-width); the moon artwork ends well inside that. */
+    .portal .at-hero { overflow: hidden; }
+    .portal .at-portal { max-width: 520px; position: relative; }
+    .portal .at-portal::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 300%; height: 300%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle closest-side, #2b1838 0%, #241530 33.3%, #1b1338 37%, #101130 42.7%, rgba(16,17,48,0.55) 62%, rgba(16,17,48,0) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .portal .at-portal-video {
+      position: relative; z-index: 1;
+      display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+      background: transparent;
+      -webkit-mask-image: radial-gradient(circle closest-side, #000 92%, transparent 100%);
+      mask-image: radial-gradient(circle closest-side, #000 92%, transparent 100%);
+    }
+    .portal .at-hero .wrap > *:not(.at-portal) { position: relative; z-index: 2; }
     .portal .at-hero-note { max-width: 520px; margin: 22px auto 0; font-size: 15px; line-height: 1.6; color: var(--d-muted); }
     .portal .at-ritual-note { margin: 0 0 6px; font-size: 16px; line-height: 1.55; color: var(--a-accent); }
     .portal .at-hero .title { font-size: clamp(44px, 6.4vw, 80px); margin-bottom: 0.3em; }
@@ -212,7 +232,7 @@
   </div>
 
   <main class="portal portal--dark portal--alt portal--scorpio-garnet" id="top">
-    <!-- Awakening Transmission preview. Unlisted (noindex). Hero loop: concept2-full-moon-portal-venus-subtle. -->
+    <!-- Awakening Transmission preview. Unlisted (noindex). Hero loop: concept2-portal-plum-gradient. -->
 
     <section class="section white p-thanks" id="thank-you" hidden aria-live="polite">
       <div class="wrap p-thanks-wrap">
@@ -227,8 +247,8 @@
     <section class="section white at-hero">
       <div class="wrap">
         <figure class="at-photo at-portal">
-          <video class="at-portal-video" autoplay muted loop playsinline preload="auto" poster="full-moon-portal.jpg" width="1080" height="1080" aria-label="A glowing full moon held inside a ring of moon phases, in deep rose and champagne">
-            <source src="full-moon-portal.mp4" type="video/mp4">
+          <video class="at-portal-video" autoplay muted loop playsinline preload="auto" poster="full-moon-portal-plum.jpg" width="1080" height="1080" aria-label="A glowing full moon held inside a ring of moon phases, glowing rose to midnight indigo">
+            <source src="full-moon-portal-plum.mp4" type="video/mp4">
           </video>
         </figure>
         <h1 class="title center p-name"><span class="p-name-main">Awakening Transmission</span><span class="p-name-sub">Your Full Moon in Gemini reading</span></h1>
