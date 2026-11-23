@@ -219,6 +219,21 @@
     @media (max-width: 720px) { .portal .at-offer { padding-top: 72px; } .portal .at-offer-band { margin-bottom: 40px; } }
     /* On phones Cosmic Clock opens on its time dial, not the wheel, so show the still there and link out */
     @media (max-width: 720px) { .portal .at-chart-frame iframe { display: none; } .portal .at-chart-frame { border-radius: 0; background-color: transparent; } }
+    /* Horizontal booking card on desktop: offer on the left, booking on the right */
+    .portal .at-offer .at-offer-single { max-width: 1120px; }
+    .portal .at-offer .at-offer-single .p-offer-card { max-width: 1120px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0; padding: 80px 0; text-align: center; }
+    .portal .at-card-left, .portal .at-card-right { padding: 0 72px; }
+    .portal .at-card-right { border-left: 1px solid rgba(var(--a-accent-rgb), 0.22); }
+    .portal .at-offer .at-card-left .at-includes { margin-bottom: 28px; }
+    .portal .at-offer .at-card-left .at-details { margin-bottom: 0; }
+    .portal .at-card-right .p-pay { margin: 0; }
+    .portal .at-card-right .at-ritual-note { margin-bottom: 28px; font-size: 17px; }
+    .portal .at-close-date { margin: 32px 0 0; padding-top: 24px; border-top: 1px solid rgba(var(--a-accent-rgb), 0.16); font-size: 15px; line-height: 1.7; color: var(--d-muted); }
+    @media (max-width: 900px) {
+      .portal .at-offer .at-offer-single .p-offer-card { grid-template-columns: 1fr; padding: 56px 0 52px; max-width: 640px; }
+      .portal .at-card-left, .portal .at-card-right { padding: 0 24px; }
+      .portal .at-card-right { border-left: 0; border-top: 1px solid rgba(var(--a-accent-rgb), 0.22); margin-top: 40px; padding-top: 40px; }
+    }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNWGR4YDGB"></script>
   <script>
@@ -364,7 +379,7 @@
             <h2 class="title">Courage of the&nbsp;heart</h2>
           </div>
           <div class="body-copy">
-            <p>And in Leo, Mars and Jupiter are still side by side after meeting last week, bringing courage, big-hearted fire and the call to be seen. The South Node is right there with them too, clearing away old patterns at the same time as all of this. This much fire can feel like a lot. But I see an invitation in it: to give what&rsquo;s waking up in you a voice. It&rsquo;s time to step more fully into who the cosmos know you to be. This Uranus-full moon conjunction is right on time for our personal and collective liberation.</p>
+            <p>Right now in Leo, Mars and Jupiter are still side by side after meeting last week, bringing courage, big-hearted fire and the call to be seen. The South Node is right there with them too, clearing away old patterns at the same time as all of this. This much fire can feel like a lot. But I see an invitation in it: to give what&rsquo;s waking up in you a voice. It&rsquo;s time to step more fully into who the cosmos know you to be. This Uranus-full moon conjunction is right on time for our personal and collective liberation.</p>
             <p>I remember well the last time there was a full moon conjunct Uranus. It was November of 2024, and the conjunction occurred in Taurus. Sudden shifts occurred in that portal, and because I was aware of this conjunction, I was able to roll more easily with what came from it and trust that it all was part of my destiny. Awareness of the transits and their impact on us personally makes such a difference in how we move with the sudden shifts we experience.</p>
           </div>
         </div>
@@ -404,7 +419,7 @@
             <h2 class="title">What you&rsquo;ll&nbsp;receive</h2>
           </div>
           <div class="body-copy">
-            <p>So it feels right to offer the gift of this reading. The Awakening Transmission is a personal reading of where this full moon and Uranus land in your chart, with a teaching on full moon ritual and my support as it all integrates. You&rsquo;ll receive a recording of your reading as well as unique-to-you ritual guidance so that you can know exactly what to do to honor this energy and activate it for your highest good.</p>
+            <p>It feels right to offer the gift of this reading. The Awakening Transmission is a personal reading of where this full moon and Uranus land in your chart, with a teaching on full moon ritual and my support as it all integrates. You&rsquo;ll receive a recording of your reading as well as unique-to-you ritual guidance so that you can know exactly what to do to honor this energy and activate it for your highest good.</p>
           </div>
           <ul class="at-receive body-copy">
             <li>A personal reading of where this full moon and Uranus fall in your chart, and what is ready to awaken in you</li>
@@ -452,6 +467,7 @@
       </div>
       <div class="wrap p-offer-grid at-offer-single">
         <div class="reading-card p-offer-card">
+          <div class="at-card-left">
           <p class="eyebrow center">Full Moon in Gemini &middot; Uranus</p>
           <h2 class="p-name"><span class="p-name-main">Awakening Transmission</span><span class="p-name-sub">Your Full Moon in Gemini reading</span></h2>
           <p class="price p-price">$55</p>
@@ -462,13 +478,17 @@
             <li>Teaching on full moon ritual</li>
             <li>My integration support after the full moon</li>
           </ul>
-          <p class="at-details">You&rsquo;ll receive a recording of your reading.<br>The reading portal closes Wednesday, November&nbsp;25th, at midnight&nbsp;(MST).</p>
+          <p class="at-details">You&rsquo;ll receive a recording of your reading.</p>
+          </div>
+          <div class="at-card-right">
           <div class="p-pay">
             <p class="at-ritual-note">Book by 5&nbsp;PM this evening (MST), and I&rsquo;ll send you exact ritual instructions, specific to you and your blueprint activations, for tomorrow&rsquo;s transits.</p>
             <a class="btn btn-solid" href="https://buy.stripe.com/eVqeVd8FD6CMbhYeK82Ji09">Pay with Stripe &middot; $55</a>
             <p class="p-pay-note">Stripe checkout gathers your birth details as you pay, so there is nothing more to&nbsp;fill&nbsp;in.</p>
             <a class="btn btn-outline" href="https://venmo.com/u/carolee-beckham" target="_blank" rel="noopener">Pay with Venmo</a>
             <p class="p-venmo">Venmo: <strong>@carolee-beckham</strong><br>Please send $55, and include your name and &ldquo;Awakening Transmission&rdquo; in the payment note, then fill in the <a href="#birth-details">birth-details form below</a>.</p>
+          </div>
+            <p class="at-close-date">The reading portal closes Wednesday, November&nbsp;25th, at midnight&nbsp;(MST).</p>
           </div>
         </div>
       </div>
