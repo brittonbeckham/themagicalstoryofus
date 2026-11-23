@@ -176,6 +176,10 @@
       .portal .at-offer .p-offer-grid { gap: 48px; }
       .portal .at-offer .p-offer-card { padding: 56px 24px 52px; }
     }
+    /* Photo credits: small and quiet, always below the photo, never over it */
+    .portal .at-credit { margin: 12px 0 0; font-size: 11.5px; line-height: 1.5; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,235,227,0.5); text-align: left; }
+    .portal .at-credit a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(242,235,227,0.22); transition: color .2s, border-color .2s; }
+    .portal .at-credit a:hover, .portal .at-credit a:focus-visible { color: rgba(228,208,168,0.9); border-color: rgba(228,208,168,0.6); }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNWGR4YDGB"></script>
   <script>
@@ -265,6 +269,7 @@
       <div class="wrap at-split-grid">
         <figure class="at-photo at-photo--tall">
           <img src="../../assets/astro-hero-mobile.jpg" alt="Carolee kneeling in the desert sand at sunrise in a flowing dress, hair wild, sand slipping through her hands" width="800" height="1200" loading="lazy">
+          <figcaption class="at-credit">Photo by <a href="https://lara-maysa-ingram.mykajabi.com/oracularleader" target="_blank" rel="noopener">Lara Maysa</a></figcaption>
         </figure>
         <div>
           <div class="section-head">
@@ -284,6 +289,7 @@
       <div class="wrap at-split-grid">
         <figure class="at-photo">
           <img src="../../assets/portal/carolee-priestess.jpg" alt="Carolee in a red gown, hands resting over her heart" width="932" height="1161" loading="lazy">
+          <figcaption class="at-credit">Photo by <a href="https://www.instagram.com/jonathancanlas/" target="_blank" rel="noopener">Jon Canlas</a></figcaption>
         </figure>
         <div>
           <div class="section-head">
