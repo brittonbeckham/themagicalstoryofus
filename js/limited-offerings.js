@@ -15,6 +15,24 @@
 */
 window.LIMITED_OFFERINGS = [
   {
+    name: "Awakening Transmission",
+    subtitle: "Your Full Moon in Gemini Reading",
+    kind: "Limited transit reading",
+    summary: "The Full Moon in Gemini rises right beside Uranus, the great awakener, while Mars and Jupiter stand together in Leo. A personal reading of where this full moon and Uranus fall in your chart, and what is ready to awaken in you.",
+    transits: ["Full Moon in Gemini", "Uranus", "Mars + Jupiter in Leo"],
+    includes: [
+      "Your personal Awakening Transmission",
+      "Teaching on full moon ritual",
+      "My integration support after the full moon"
+    ],
+    price: "$55",
+    priceNote: "Personal reading · ritual teaching · support",
+    opens: "2026-11-23T00:00:00-07:00",
+    closes: "2026-11-25T23:59:00-07:00",
+    url: "/preview/awakening-transmission/#offer",
+    cta: "Book your Awakening Transmission"
+  },
+  {
     name: "Retrograde Revelations",
     subtitle: "Your Underworld Portal Reading",
     kind: "Limited transit reading",
